@@ -1,2 +1,2 @@
-# poll-web
+# pollweb
 WebEngineering course project@UnivAQ
