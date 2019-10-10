@@ -1,0 +1,157 @@
+/*
+    color1: #52B1FF
+    color2: #333333
+    color3: #FFFFFF
+    color4: #EBE0D3
+    color5: #C9ACE8
+*/
+
+body,html {
+    color: #333333;
+    padding:0; 
+    margin:0;
+    font-family: Lato, Verdana, Arial, Helvetica;
+    font-size: 11pt;
+    background-color: #EBE0D3;
+}
+
+#header {    
+    right: 0;
+    height:50px;
+    font-size: 30pt;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.subtitle {
+    font-size: 50%;
+}
+
+#body {
+   
+}
+
+#footer {
+    height:30px;        
+    font-size: 9pt;
+    text-align: center;
+}
+
+input {
+    border: 1px solid #53829D;
+    background:  white;
+    font-size: 80%;
+}
+
+.menu{
+    font-size: 80%;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.menu a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+}
+
+.menu a:hover {
+    background-color: #333333;
+    color: white;
+}
+
+.menu ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.menu li {
+    margin:0;
+    padding:0;
+    display: block;
+}
+
+.figures {
+    overflow: hidden;
+}
+
+.figure {
+    border: 1px solid #CCC;
+    padding: 5px;
+    margin: 10px;
+    float:right;     
+}
+
+.figure img {
+    display: block;     
+}
+
+.figure .caption {
+    display: block;     
+    text-align: center;
+    font-size: 80%;
+}
+
+select,input,textarea {
+    width: 85%;
+    border-radius: 3px;
+    border-color: #C9ACE8;
+    border: 2px solid #C9ACE8;
+}
+input {
+    height: 20px;
+}
+
+textarea {
+    height: 60px;
+}
+
+select.small,input.small {
+    width: 15%;
+}
+
+select.medium,input.medium {
+    width: 40%;
+}
+
+.clabel {
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 959px) {
+    body,html {    
+        font-size: 10pt;
+    }
+    #background {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    
+    #header {
+        font-size: 20pt;
+    }
+    
+    .menu{ 
+        border-bottom: 2px dashed #C9ACE8;
+        background-color: transparent;
+    }
+    .menu2{ 
+        border-top: 2px dashed #C9ACE8;
+        border-bottom: 0;
+        background-color: transparent;
+    }
+   
+    #body{
+        border-radius: 10px;
+        box-shadow: 0 0 5px gray;
+        background-color: white;
+        margin-top: 10%;
+    }
+}
