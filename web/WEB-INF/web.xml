@@ -51,7 +51,7 @@
     </session-config>
     <context-param>
         <param-name>view.outline_template</param-name>
-        <param-value>outline.ftl.html</param-value>
+        <param-value>outline.ftlh</param-value>
     </context-param>
     <context-param>
         <param-name>view.date_format</param-name>
@@ -75,10 +75,10 @@
     </context-param>
     <context-param>
         <param-name>view.error_template</param-name>
-        <param-value>error.ftl.html</param-value>
+        <param-value>error.ftlh</param-value>
     </context-param>
     <context-param>
         <param-name>view.data.author</param-name>
-        <param-value>Andrea&amp;Laura&amp;Vincenzo</param-value>
+        <param-value>Denis&amp;Laura&amp;Vincenzo</param-value>
     </context-param>
 </web-app>
