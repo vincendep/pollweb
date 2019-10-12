@@ -1,1 +1,1 @@
-<h3>number</h3>
+<input type="number" name="${question.code}"/>

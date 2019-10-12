@@ -55,7 +55,7 @@ public class TemplateResult {
     }
 
     private void init() {
-        cfg = new Configuration(Configuration.VERSION_2_3_26);
+        cfg = new Configuration(Configuration.VERSION_2_3_29);
         //impostiamo l'encoding di default per l'input e l'output
         //set the default input and outpout encoding
         if (context.getInitParameter("view.encoding") != null) {

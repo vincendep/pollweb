@@ -1,1 +1,1 @@
-<h3>datequestion</h3>
+<input type="date" name="${question.code}"/>

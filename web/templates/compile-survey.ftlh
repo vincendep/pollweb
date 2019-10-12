@@ -1,8 +1,8 @@
 <h2>${survey.title}</h2>
 <p>${survey.openingText}</p>
-<form action="/pollweb/survey?id=#{survey.id}" method="post">
+<form action="/pollweb/compile-survey?id=#{survey.id}" method="post">
     <#list survey.questions as question>
-    <h4>#{question?counter}. ${question.text}</h4>
+        <h4>#{question?counter}. ${question.text}</h4>
         <#if question.getQuestionType() == "short text">
             <#include "questions/short-text-question.ftlh">
         <#elseif question.getQuestionType() == "long text">
@@ -16,8 +16,9 @@
         <#elseif question.getQuestionType() == "multiple choice">
             <#include "questions/multiple-choice-question.ftlh">
         </#if>
-    </#list>  
-    <input type="submit" name="submit" class="medium"/>
+    </#list>
+    </br>
+    <input type="submit" name="submit" value="Conferma" class="medium" />
 </form>
 <p>${survey.closingText}</p>
 

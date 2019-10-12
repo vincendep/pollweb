@@ -1,0 +1,1 @@
+<h3>Congratulazioni! Hai compilato il sondaggio: <strong>${survey.title}</strong></h3>

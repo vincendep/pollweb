@@ -5,6 +5,7 @@
  */
 package it.univaq.f4i.iw.pollweb.business.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,12 +21,14 @@ public class Survey {
     private String title;
     private String openingText;
     private String closingText;
+    private LocalDate pubblicationDate;
     private List<Question> questions = new ArrayList<>();
     private User manager;
     private boolean active;
     private Set<SurveyResponse> surveyResponses = new HashSet<>();
 
     public Survey() {
+        this.pubblicationDate = LocalDate.now();
         this.active = true;
     }
     
@@ -59,6 +62,14 @@ public class Survey {
 
     public void setClosingText(String closingText) {
         this.closingText = closingText;
+    }
+
+    public LocalDate getPubblicationDate() {
+        return pubblicationDate;
+    }
+
+    public void setPubblicationDate(LocalDate pubblicationDate) {
+        this.pubblicationDate = pubblicationDate;
     }
 
     public List<Question> getQuestions() {

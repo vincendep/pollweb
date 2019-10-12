@@ -1,1 +1,1 @@
-<h3>shorttext</h3>
+<input type="text" name="${question.code}"/>

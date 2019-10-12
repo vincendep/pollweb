@@ -8,7 +8,6 @@ package it.univaq.f4i.iw.pollweb.business.model;
 import java.util.Objects;
 
 /**
- *
  * @author vince
  */
 public class Participant {
@@ -23,7 +22,7 @@ public class Participant {
     public Participant() {
         this.submitted = false;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -47,7 +46,7 @@ public class Participant {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -63,11 +62,11 @@ public class Participant {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-    
+
     public void setSubmitted(boolean b) {
         this.submitted = b;
     }
-    
+
     public boolean isSubmitted() {
         return this.submitted;
     }
@@ -79,7 +78,11 @@ public class Participant {
     public void setReservedSurvey(ReservedSurvey reservedSurvey) {
         this.reservedSurvey = reservedSurvey;
     }
-    
+
+    public boolean hasAlreadySubmitted() {
+        return this.submitted;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -116,6 +119,6 @@ public class Participant {
         }
         return true;
     }
-    
-    
+
+
 }

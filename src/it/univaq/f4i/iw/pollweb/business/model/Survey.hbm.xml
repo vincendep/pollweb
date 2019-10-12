@@ -48,6 +48,7 @@ Contributor(s):
         <property name="title"/>
         <property name="openingText"/>
         <property name="closingText"/>
+        <property name="pubblicationDate"/>
         <list name="questions" cascade="all">
             <key>
                 <column name="id_survey"/>

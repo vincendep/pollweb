@@ -3,10 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Errore</title>
-        <link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>
+        <#--<link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>-->
     </head>
     <body>
-        <div class="body">
+        <div class="content">
             <div><a href="/pollweb">Return to homepage</a></div>
             <h1>Error</h1>
             <p>The system encountered the following error while handling your request:</p>

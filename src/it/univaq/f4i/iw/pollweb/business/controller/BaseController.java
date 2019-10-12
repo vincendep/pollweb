@@ -6,6 +6,7 @@
 package it.univaq.f4i.iw.pollweb.business.controller;
 
 import it.univaq.f4i.iw.framework.result.FailureResult;
+import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 import it.univaq.f4i.iw.pollweb.data.hibernate.HibernateDataLayer;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,14 +23,12 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class BaseController extends HttpServlet {
         
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processBaseRequest(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processBaseRequest(request, response);
     }
     
@@ -43,9 +43,10 @@ public abstract class BaseController extends HttpServlet {
     private void processBaseRequest(HttpServletRequest request, HttpServletResponse response) {
         DataLayer datalayer = new HibernateDataLayer();   
         request.setAttribute("datalayer", datalayer);
-        Long userId = (Long) request.getSession().getAttribute("logged_user");
-        if (userId != null) {
-            request.setAttribute("logged_user", datalayer.getUserDAO().findById(userId));
+        HttpSession session = SecurityLayer.checkSession(request);
+        if (session != null) {
+            Integer userid = (Integer) session.getAttribute("userid");
+            request.setAttribute("logged_user", datalayer.getUserDAO().findById(userid));
         }
         try {
             processRequest(request, response);
@@ -56,6 +57,6 @@ public abstract class BaseController extends HttpServlet {
             datalayer.destroy(); 
         }
     }
-    
+
     protected abstract void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException;
 }

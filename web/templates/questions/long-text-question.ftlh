@@ -1,1 +1,1 @@
-<h3>longtext</h3>
+<textarea name="${question.code}"></textarea>

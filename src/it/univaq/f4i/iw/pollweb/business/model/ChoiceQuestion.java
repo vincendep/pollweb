@@ -48,7 +48,7 @@ public class ChoiceQuestion extends Question {
     }
     
     public Option getOption(int index) {
-        return this.getOptions().get(index - 1);
+        return this.getOptions().get(index );
     }
     
     public void addOption(Option  option) {
