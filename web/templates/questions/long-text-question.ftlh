@@ -1,1 +1,0 @@
-<textarea name="${question.code}"></textarea>

@@ -1,116 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <!-- PAGES -->
     <servlet>
-        <servlet-name>home-page-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.HomePageController</servlet-class>
+        <servlet-name>home-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.HomePage</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>home-page-controller</servlet-name>
-        <url-pattern></url-pattern>
+        <servlet-name>home-page</servlet-name>
+        <url-pattern/>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>account-page-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.AccountPageController</servlet-class>
+        <servlet-name>account-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.AccountPage</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>account-page-controller</servlet-name>
+        <servlet-name>account-page</servlet-name>
         <url-pattern>/account</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>about-page-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.AboutPageController</servlet-class>
+        <servlet-name>about-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.AboutPage</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>about-page-controller</servlet-name>
+        <servlet-name>about-page</servlet-name>
         <url-pattern>/about</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>login-page-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.LoginPageController</servlet-class>
+        <servlet-name>login-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.LoginPage</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>login-page-controller</servlet-name>
+        <servlet-name>login-page</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>survey-page-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.SurveyPageController</servlet-class>
+        <servlet-name>compile-survey-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.CompileSurveyPage</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>survey-page-controller</servlet-name>
+        <servlet-name>compile-survey-page</servlet-name>
         <url-pattern>/survey</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>publish-survey-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.PublishSurveyController</servlet-class>
+        <servlet-name>survey-result-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.SurveyResultPage</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>publish-survey-controller</servlet-name>
-        <url-pattern>/publish-survey</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>submit-survey-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.SubmitSurveyController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>submit-survey-controller</servlet-name>
-        <url-pattern>/submit-survey</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>survey-responses-page-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.SurveyResultPageController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>survey-responses-page-controller</servlet-name>
+        <servlet-name>survey-result-page</servlet-name>
         <url-pattern>/account/survey/results</url-pattern>
     </servlet-mapping>
-
     <servlet>
-        <servlet-name>create-survey-page-controller</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.CreateSurveyPageController</servlet-class>
+        <servlet-name>create-survey-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.CreateSurveyPage</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>create-survey-page-controller</servlet-name>
-        <url-pattern>/account/create-survey</url-pattern>
+        <servlet-name>create-survey-page</servlet-name>
+        <url-pattern>/account/make-survey</url-pattern>
     </servlet-mapping>
-
+    
+    <!-- CONTROLLERS -->
     <servlet>
-        <servlet-name>authentication</servlet-name>
+        <servlet-name>surveys-controller</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.SurveysController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>surveys-controller</servlet-name>
+        <url-pattern>/surveys</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>authentication-controller</servlet-name>
         <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.AuthenticationController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>authentication</servlet-name>
+        <servlet-name>authentication-controller</servlet-name>
         <url-pattern>/auth</url-pattern>
     </servlet-mapping>
-
+    
+    
+    <!-- MISC -->
     <welcome-file-list>
         <welcome-file>/</welcome-file>
     </welcome-file-list>
-
     <resource-ref>
         <res-ref-name>jdbc/pollweb</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
-    
     <listener>
         <listener-class>it.univaq.f4i.iw.pollweb.data.hibernate.HibernateUtil</listener-class>
     </listener>
-    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-
     <context-param>
         <param-name>view.outline_template</param-name>
         <param-value>outline.ftlh</param-value>
