@@ -7,10 +7,10 @@
     </head>
     <body>
         <div class="content">
-            <div><a href="/pollweb">Return to homepage</a></div>
             <h1>Error</h1>
             <p>The system encountered the following error while handling your request:</p>
             <p><b>${error!"Unknown error"}</b></p>
+            <span><a href="/pollweb">Return to homepage</a></span>
         </div>
     </body>
 </html>

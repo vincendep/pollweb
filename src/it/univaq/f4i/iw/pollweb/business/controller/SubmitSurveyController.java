@@ -1,38 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package it.univaq.f4i.iw.pollweb.business.controller;
 
 import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;
-import it.univaq.f4i.iw.pollweb.business.controller.BaseController;
 import it.univaq.f4i.iw.pollweb.business.model.*;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
-import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author vincenzo
- */
-public class CompileSurveyPageController extends BaseController {
+public class SubmitSurveyController extends BaseController {
 
-    private void action_default(HttpServletRequest request, HttpServletResponse response, Survey survey) throws TemplateManagerException {
-        if (! survey.isActive()) {
-            request.setAttribute("message", "The survey is closed and no longer fillable! :(");
-            action_error(request, response);
-        } else {
-            request.setAttribute("survey", survey);
-            request.setAttribute("page_title", "Survey page");
-            TemplateResult res = new TemplateResult(getServletContext());
-            res.activate("compile-survey.ftlh", request, response);
-        }   
-    }
-    
     private void action_submit(HttpServletRequest request, HttpServletResponse response, Survey survey) throws TemplateManagerException {
         SurveyResponse surveyResponse = null;
 
@@ -118,31 +99,20 @@ public class CompileSurveyPageController extends BaseController {
         }
         return surveyResponse;
     }
-    
+
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
-            if (request.getParameter("id") == null) {
-                request.setAttribute("message", "Parametro mancante");
-                action_error(request, response);
-            } else {
-                long surveyId = Long.valueOf(request.getParameter("id"));
-                Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
-                if (survey != null) {
-                    if (request.getParameter("submit") != null) {
-                        action_submit(request, response, survey);
-                    } else {
-                        action_default(request, response, survey);
-                    }     
-                } else {
-                    request.setAttribute("message", "Unknown survey");
-                    action_error(request, response);
-                }
+            int surveyId = Integer.valueOf(request.getParameter("survey"));
+            Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
+            if (survey != null) {
+                action_submit(request, response, survey);
             }
-        } catch (TemplateManagerException | NumberFormatException e) {
-            request.setAttribute("exception", e);
+        } catch (NumberFormatException ex) {
+            request.setAttribute("message", "400 BAD REQUEST");
             action_error(request, response);
-        } 
+        } catch (TemplateManagerException e) {
+            Logger.getLogger(SubmitSurveyController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 }
-

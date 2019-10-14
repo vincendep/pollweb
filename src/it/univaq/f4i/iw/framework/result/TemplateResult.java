@@ -99,7 +99,7 @@ public class TemplateResult {
 
         //impostiamo il gestore degli oggetti - trasformer� in hash i Java beans
         //set the object handler that allows us to "view" Java beans as hashes
-        DefaultObjectWrapperBuilder owb = new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_26);
+        DefaultObjectWrapperBuilder owb = new DefaultObjectWrapperBuilder(Configuration.VERSION_2_3_29);
         owb.setForceLegacyNonListCollections(false);
         owb.setDefaultDateType(TemplateDateModel.DATETIME);
         cfg.setObjectWrapper(owb.build());

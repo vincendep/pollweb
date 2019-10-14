@@ -21,5 +21,5 @@
             </#list>
         </ul>
     </section>
-    <a href="account/create-survey">add new survey</a>
+    <a href="account/create-survey">Crea sondaggio</a>
 </div>

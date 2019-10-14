@@ -5,8 +5,6 @@
  */
 package it.univaq.f4i.iw.pollweb.business.controller;
 
-import it.univaq.f4i.iw.framework.result.TemplateManagerException;
-import it.univaq.f4i.iw.framework.result.TemplateResult;
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.model.Participant;
 import it.univaq.f4i.iw.pollweb.business.model.User;
@@ -42,7 +40,7 @@ public class AuthenticationController extends BaseController {
         }
     }
 
-    private void action_login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void action_login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if (email != null && password != null) {
@@ -56,24 +54,14 @@ public class AuthenticationController extends BaseController {
                 action_error(request, response);
             }
         } else {
-            request.setAttribute("message", "Missing params");
-        } 
-    }
-    
-    private void action_logout(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getSession().removeAttribute("logged_user");
-        response.sendRedirect("/pollweb");
-    }
-    
-    private void action_default(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, TemplateManagerException {
-        try {
-            TemplateResult res = new TemplateResult(getServletContext());
-            request.setAttribute("page_title", "Login page");
-            res.activate("login.ftlh", request, response);
-        } catch (TemplateManagerException ex) {
-            request.setAttribute("message", "Template manager exception: " + ex.getMessage());
+            request.setAttribute("message", "400 BAD REQUEST");
             action_error(request, response);
         }
+    }
+    
+    private void action_logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SecurityLayer.disposeSession(request);
+        response.sendRedirect("/pollweb");
     }
     
     @Override
@@ -85,10 +73,8 @@ public class AuthenticationController extends BaseController {
                 action_logout(request, response);
             } else if (request.getAttribute("authentication") != null) {
                 action_authenticate(request, response);
-            } else {
-                action_default(request, response);
             }
-        } catch ( IOException | NumberFormatException | TemplateManagerException ex) {
+        } catch ( IOException | NumberFormatException  ex) {
             request.setAttribute("exception", ex);
             action_error(request, response);
         }

@@ -1,28 +1,21 @@
-/*
-    color1: #52B1FF
-    color2: #333333
-    color3: #FFFFFF
-    color4: #EBE0D3
-    color5: #C9ACE8
-*/
 
 body,html {
-    color: #333333;
     padding:0; 
     margin:0;
-    font-family: Lato, Verdana, Arial, Helvetica;
+    font-family: Verdana, Arial, Helvetica;
     font-size: 11pt;
-    background-color: #EBE0D3;
+    background: #5CDB95;
 }
 
 #header {    
     right: 0;
     height:50px;
-    font-size: 30pt;
+    font-size: 20pt;
     font-weight: bold;
     text-align: center;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    background-color: #53829D;
+    color: white;
+
 }
 
 .subtitle {
@@ -30,13 +23,15 @@ body,html {
 }
 
 #body {
-   
+    background-color: white;
 }
 
 #footer {
     height:30px;        
     font-size: 9pt;
     text-align: center;
+    background-color: #73A2BD;
+    color: white;
 }
 
 input {
@@ -45,10 +40,20 @@ input {
     font-size: 80%;
 }
 
-.menu{
+.menu {
+    background: white;
+    color: #73A2BD;
     font-size: 80%;
     padding: 5px;
     overflow: hidden;
+}
+
+.menu.horizontal {
+    border-bottom: 2px dashed #53829D;
+}
+
+.menu.vertical {
+    border-right: 2px dashed #53829D;
 }
 
 .menu a {
@@ -60,7 +65,7 @@ input {
 }
 
 .menu a:hover {
-    background-color: #333333;
+    background-color: #73A2BD;
     color: white;
 }
 
@@ -74,6 +79,16 @@ input {
     margin:0;
     padding:0;
     display: block;
+
+}
+
+.menu.horizontal li {
+    margin: 0 5px;
+    float:left;
+}
+
+.menu.vertical li {
+    margin: 5px 0;    
 }
 
 .figures {
@@ -99,16 +114,6 @@ input {
 
 select,input,textarea {
     width: 85%;
-    border-radius: 3px;
-    border-color: #C9ACE8;
-    border: 2px solid #C9ACE8;
-}
-input {
-    height: 20px;
-}
-
-textarea {
-    height: 60px;
 }
 
 select.small,input.small {
@@ -123,35 +128,17 @@ select.medium,input.medium {
     font-weight: bold;
 }
 
+
+
 @media only screen and (max-width: 959px) {
     body,html {    
         font-size: 10pt;
     }
-    #background {
-        height: 200px;
-    }
 }
 
 @media only screen and (max-width: 767px) {
-    
-    #header {
-        font-size: 20pt;
-    }
-    
-    .menu{ 
-        border-bottom: 2px dashed #C9ACE8;
-        background-color: transparent;
-    }
-    .menu2{ 
-        border-top: 2px dashed #C9ACE8;
-        border-bottom: 0;
-        background-color: transparent;
-    }
-   
-    #body{
-        border-radius: 10px;
-        box-shadow: 0 0 5px gray;
-        background-color: white;
-        margin-top: 10%;
+    .menu, .menu.horizontal, .menu.vertical { 
+        border-bottom: 2px dashed #53829D;
+        border-right: none;
     }
 }

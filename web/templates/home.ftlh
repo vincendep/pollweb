@@ -3,7 +3,7 @@
     <ul>
         <#list surveys?sort_by("pubblicationDate") as survey>
             <li>
-                <a href="compile-survey?id=#{survey.id}">${survey.getTitle()}</a>
+                <a href="survey?id=#{survey.id}">${survey.getTitle()}</a> - responsabile: ${survey.manager.name} ${survey.manager.surname}
             </li>
         </#list>
     </ul>

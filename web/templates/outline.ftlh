@@ -3,11 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Pollweb - Online Surveys</title>
-    <#--
-    <link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
+    <#--<link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/grid.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>
-    -->
+    <link rel="stylesheet" href="/pollweb/style/custom.css" type="text/css"/>-->
 </head>
 <body>
 <header>
@@ -30,7 +29,7 @@
     </ul>
     <hr/>
 </header>
-<div>
+<div class="content">
     <#include content_tpl>
 </div>
 <footer>
