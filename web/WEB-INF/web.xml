@@ -92,8 +92,15 @@
         <servlet-name>authentication-controller</servlet-name>
         <url-pattern>/auth</url-pattern>
     </servlet-mapping>
-    
-    
+    <servlet>
+        <servlet-name>participants-controller</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.ParticipantsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>participants-controller</servlet-name>
+        <url-pattern>/participants</url-pattern>
+    </servlet-mapping>
+      
     <!-- MISC -->
     <welcome-file-list>
         <welcome-file>/</welcome-file>

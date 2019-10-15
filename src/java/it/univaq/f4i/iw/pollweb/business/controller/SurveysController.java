@@ -88,7 +88,7 @@ public class SurveysController extends BaseController {
             survey.setActive(true);
             response.sendRedirect("account");
         } else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
     
@@ -99,12 +99,8 @@ public class SurveysController extends BaseController {
             survey.setActive(false);
             response.sendRedirect("account");
         } else {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
-    }
-    
-    private void action_publish(HttpServletRequest request, HttpServletResponse response) {
-        
     }
 
     @Override
@@ -112,8 +108,6 @@ public class SurveysController extends BaseController {
         try {
             if (request.getParameter("submit") != null) {
                 action_submit(request, response);
-            } else if (request.getParameter("publish") != null) {
-                action_publish(request, response);
             } else if (request.getParameter("create") != null) {
                 action_create(request, response);
             } else if (request.getParameter("open") != null) {

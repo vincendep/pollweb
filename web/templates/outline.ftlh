@@ -12,7 +12,7 @@
 <header>
     <h1>Pollweb</h1>
     <h3>${page_title!"Untitled page"}</h3>
-    <ul>
+    <ul class="menu">
         <li><a href="/pollweb">Homepage</a></li>
         <li><a href="/pollweb/about">About page</a></li>
         <#if logged_user??>

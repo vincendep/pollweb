@@ -29,7 +29,6 @@ public class Survey {
 
     public Survey() {
         this.pubblicationDate = LocalDate.now();
-        this.active = false;
     }
     
     public Long getId() {

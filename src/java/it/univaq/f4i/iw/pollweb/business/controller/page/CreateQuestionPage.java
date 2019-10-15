@@ -6,6 +6,7 @@
 package it.univaq.f4i.iw.pollweb.business.controller.page;
 
 import it.univaq.f4i.iw.framework.result.TemplateResult;
+import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.controller.BaseController;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class CreateQuestionPage extends BaseController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
-            request.setAttribute("survey", request.getParameter("survey"));
+            request.setAttribute("survey", SecurityLayer.checkNumeric(request.getParameter("survey")));
             request.setAttribute("page_title", "Create question page");
             request.setAttribute("type", request.getParameter("type"));
             TemplateResult res = new TemplateResult(getServletContext());
