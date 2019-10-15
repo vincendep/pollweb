@@ -1,5 +1,5 @@
 <section>
-    <h3>All Surveys</h3>
+    <h3>Tutti i sondaggi</h3>
     <ul>
         <#list surveys?sort_by("pubblicationDate") as survey>
             <li>

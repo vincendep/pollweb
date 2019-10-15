@@ -52,16 +52,11 @@ class UserDAOImpl extends DAO implements UserDAO {
     
     @Override
     public void saveOrUpdate(User user) {
-        session.beginTransaction();
         session.saveOrUpdate(user);
-        session.getTransaction().commit();
     }
 
     @Override
     public void delete(User user) {
-        session.beginTransaction();
         session.delete(user);
-        session.getTransaction().commit();
-    }
-    
+    } 
 }

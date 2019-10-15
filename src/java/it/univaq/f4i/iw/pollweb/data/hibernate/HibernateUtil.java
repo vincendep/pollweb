@@ -54,6 +54,7 @@ public class HibernateUtil implements ServletContextListener {
     private void populateDB() {
         // test data
         HibernateDataLayer dl = new HibernateDataLayer();
+        dl.getSession().beginTransaction();
         SurveyDAO sd = dl.getSurveyDAO();
         UserDAO ud = dl.getUserDAO();
         ParticipantDAO pd = dl.getParticipantDAO();
@@ -144,5 +145,9 @@ public class HibernateUtil implements ServletContextListener {
         sd.saveOrUpdate(rs);
         pd.saveOrUpdate(p);
         pd.saveOrUpdate(p1);
+        
+        dl.getSession().flush();
+        dl.getSession().getTransaction().commit();
+        dl.getSession().close();
     }
 }

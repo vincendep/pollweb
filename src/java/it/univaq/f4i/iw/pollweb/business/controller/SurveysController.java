@@ -5,6 +5,7 @@ import it.univaq.f4i.iw.framework.result.TemplateResult;
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.model.*;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
+import it.univaq.f4i.iw.pollweb.data.dao.SurveyDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -65,6 +66,70 @@ public class SurveysController extends BaseController {
         }
     }
 
+    private void action_create(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Survey survey = "Riservato".equals(request.getParameter("type")) ? new ReservedSurvey() : new Survey();
+        survey.setTitle(request.getParameter("title"));
+        survey.setOpeningText(request.getParameter("openingText"));
+        survey.setClosingText(request.getParameter("closingText"));
+        survey.setManager((User) request.getAttribute("logged_user"));
+        if (survey.getTitle() != null && ! (survey.getTitle().equals(""))) {
+            SurveyDAO dao = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO();
+            dao.saveOrUpdate(survey);
+            response.sendRedirect("account");
+        } else {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+    
+    private void action_open(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int surveyId = SecurityLayer.checkNumeric(request.getParameter("n"));
+        Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
+        if (survey != null) {
+            survey.setActive(true);
+            response.sendRedirect("account");
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+    }
+    
+    private void action_close(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int surveyId = SecurityLayer.checkNumeric(request.getParameter("n"));
+        Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
+        if (survey != null) {
+            survey.setActive(false);
+            response.sendRedirect("account");
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+    }
+    
+    private void action_publish(HttpServletRequest request, HttpServletResponse response) {
+        
+    }
+
+    @Override
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        try {
+            if (request.getParameter("submit") != null) {
+                action_submit(request, response);
+            } else if (request.getParameter("publish") != null) {
+                action_publish(request, response);
+            } else if (request.getParameter("create") != null) {
+                action_create(request, response);
+            } else if (request.getParameter("open") != null) {
+                action_open(request, response);
+            } else if (request.getParameter("close") != null) {
+                action_close(request, response);
+            } else {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            }
+        } catch (TemplateManagerException e) {
+            throw  new ServletException(e);
+        } catch (IOException e) {
+            Logger.getLogger(SurveysController.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
     private SurveyResponse createSurveyResponseFromRequest(HttpServletRequest request, Survey survey) {
         SurveyResponse surveyResponse = new SurveyResponse();
         surveyResponse.setSurvey(survey);
@@ -101,26 +166,5 @@ public class SurveysController extends BaseController {
             }
         }
         return surveyResponse;
-    }
-    
-    private void action_publish(HttpServletRequest request, HttpServletResponse response) {
-        
-    }
-
-    @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        try {
-            if (request.getParameter("submit") != null) {
-                action_submit(request, response);
-            } else if (request.getParameter("publish") != null) {
-                action_publish(request, response);
-            } else {
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-            }
-        } catch (TemplateManagerException e) {
-            throw  new ServletException(e);
-        } catch (IOException e) {
-            Logger.getLogger(SurveysController.class.getName()).log(Level.SEVERE, null, e);
-        }
     }
 }

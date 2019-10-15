@@ -27,16 +27,12 @@ class QuestionDAOImpl extends DAO implements QuestionDAO {
 
     @Override
     public void saveOrUpdate(Question question) {
-        session.beginTransaction();
         session.saveOrUpdate(question);
-        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Question question) {
-        session.beginTransaction();
         session.delete(question);
-        session.getTransaction().commit();
     }
     
 }

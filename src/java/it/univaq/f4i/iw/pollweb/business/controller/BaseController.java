@@ -41,7 +41,8 @@ public abstract class BaseController extends HttpServlet {
     }
     
     private void processBaseRequest(HttpServletRequest request, HttpServletResponse response) {
-        DataLayer datalayer = new HibernateDataLayer();   
+        DataLayer datalayer = new HibernateDataLayer();
+        datalayer.init();
         request.setAttribute("datalayer", datalayer);
         HttpSession session = SecurityLayer.checkSession(request);
         if (session != null) {

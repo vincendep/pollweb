@@ -1,6 +1,6 @@
 <h2>${survey.title}</h2>
 <p>${survey.openingText}</p>
-<form action="/pollweb/submit-survey" method="post">
+<form action="/pollweb/surveys?n=${survey.id}" method="post">
     <input type="hidden" name="survey" value="#{survey.id}">
     <#list survey.questions as question>
         <h4>#{question?counter}. ${question.text}</h4>

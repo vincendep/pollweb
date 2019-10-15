@@ -20,21 +20,12 @@ import org.hibernate.Session;
  *
  * @author vince
  */
-public class HibernateDataLayer extends DataLayer {
+public final class HibernateDataLayer extends DataLayer {
 
     private final Session session;
     
     public HibernateDataLayer() {
         this.session = HibernateUtil.getSessionFactory().openSession();
-        this.init();
-    }
-    
-    public Session getSession() {
-        return this.session;
-    }
-
-    @Override
-    public void init() {
         registerDAO(Survey.class, new SurveyDAOImpl(this.session));
         registerDAO(Answer.class, new AnswerDAOImpl(this.session));
         registerDAO(Question.class, new QuestionDAOImpl(this.session));
@@ -44,8 +35,19 @@ public class HibernateDataLayer extends DataLayer {
         registerDAO(Option.class, new OptionDAOImpl(this.session));
     }
     
+    public Session getSession() {
+        return this.session;
+    }
+
+    @Override
+    public void init() {
+        this.session.beginTransaction();
+    }
+    
     @Override
     public void destroy() {
+        this.session.flush();
+        this.session.getTransaction().commit();
         this.session.close();
     }
 }

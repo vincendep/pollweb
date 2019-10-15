@@ -5,8 +5,8 @@
     <title>Pollweb - Online Surveys</title>
     <#--<link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/grid.css" type="text/css"/>
-    <link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>
-    <link rel="stylesheet" href="/pollweb/style/custom.css" type="text/css"/>-->
+    <link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>-->
+    <link rel="stylesheet" href="/pollweb/style/custom.css" type="text/css"/>
 </head>
 <body>
 <header>

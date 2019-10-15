@@ -29,7 +29,7 @@ public class Survey {
 
     public Survey() {
         this.pubblicationDate = LocalDate.now();
-        this.active = true;
+        this.active = false;
     }
     
     public Long getId() {
@@ -82,6 +82,10 @@ public class Survey {
     
     public void addQuestion(Question q) {
         getQuestions().add(q);
+    }
+    
+    public Question removeQuestion(int index) {
+        return this.questions.remove(index);
     }
 
     public User getManager() {

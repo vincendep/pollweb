@@ -13,11 +13,16 @@
     </section>
     </hr>
     <section>
-        <h3>Your Surveys</h3>
+        <h3>Sondaggi gestiti</h3>
         <ul>
-            <#list surveys?sort_by("pubblicationDate") as survey>
-                <li><a href="account/survey/results?n=#{survey.id}">${survey.title}</a> | status: <#if survey.active>Aperto<#else>Chiuso</#if> |
-                    data di pubblicazione: ${survey.pubblicationDate} </li>
+            <#list surveys?sort_by("pubblicationDate")?reverse as survey>
+                <li><a href="account/survey-details?n=#{survey.id}">${survey.title}</a> | status: <#if survey.active>Aperto<#else>Chiuso</#if> |
+                    data di pubblicazione: ${survey.pubblicationDate} 
+                    <form action="surveys" method="post">
+                        <input type="hidden" name="n" value="${survey.id}"/>
+                        <input type="submit" <#if !survey.active>name="open" value="Apri sondaggio"<#else>name="close" value="Chiudi sondaggio"</#if>"/>
+                    </form>
+                </li>
             </#list>
         </ul>
     </section>

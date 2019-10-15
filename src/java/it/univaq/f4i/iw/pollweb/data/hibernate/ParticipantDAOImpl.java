@@ -44,18 +44,11 @@ class ParticipantDAOImpl extends DAO implements ParticipantDAO {
 
     @Override
     public void saveOrUpdate(Participant participant) {
-        session.beginTransaction();
         session.saveOrUpdate(participant);
-        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Participant participant) {
-        session.beginTransaction();
         session.delete(participant);
-        session.getTransaction().commit();
-    }
-
-    
-    
+    }  
 }

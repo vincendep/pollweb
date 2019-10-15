@@ -1,5 +1,3 @@
-header h1 {
-    font-size: 5em;
-    margin: auto;
-    text-align: center;
+li form {
+    display: inline;
 }

@@ -68,16 +68,12 @@ class SurveyDAOImpl extends DAO implements SurveyDAO {
 
     @Override
     public void saveOrUpdate(Survey survey) {
-        session.beginTransaction();
         session.saveOrUpdate(survey);
-        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Survey survey) {
-        session.beginTransaction();
         session.delete(survey);
-        session.getTransaction().commit();
     }
     
 }
