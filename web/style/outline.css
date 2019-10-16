@@ -9,6 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
 }
 
 header {
@@ -35,18 +36,22 @@ header .title {
 }
 
 .content {
-    padding: 2em;
+    padding: 1.5em;
     flex: 1;
 }
 
 footer {
-    padding: 2em;
+    padding: 2em 0;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: #222;
     color: white;
     text-align: center;
+}
+
+footer img {
+    height: 5em;
 }
 
 /* NavBar Style */
@@ -86,5 +91,9 @@ ul.topnav li.right {
     ul.topnav li.right, 
     ul.topnav li {
         float: none !important;
+    }
+    
+    .content {
+        padding: 0.5em;
     }
 }

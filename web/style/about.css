@@ -1,0 +1,9 @@
+.univaq {
+   display: flex;
+   justify-content: center;
+}
+
+.univaq img {
+    margin: 1em;
+    height: 15em;
+}

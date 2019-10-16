@@ -3,10 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Pollweb - Online Surveys</title>
-    <#--<link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
-    <link rel="stylesheet" href="/pollweb/style/grid.css" type="text/css"/>
-    <link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>-->
+    <link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/outline.css" type="text/css"/>
+    <link rel="stylesheet" href="/pollweb/style/about.css" type="text/css"/>
 </head>
 <body>
 <header>
@@ -34,11 +33,5 @@
         Copyright &copy; 2014 ${defaults.author}. Page compiled on ${compiled_on?datetime}
     </p>
 </footer>
-
-<script>
-    function setActive(element) {
-        element.
-    }
-</script>
 </body>
 </html>
