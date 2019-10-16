@@ -56,7 +56,7 @@ Contributor(s):
             <index column="position"></index>
             <one-to-many class="it.univaq.f4i.iw.pollweb.business.model.Question"></one-to-many>
         </list>
-        <set inverse="true" name="surveyResponses">
+        <set inverse="true" name="surveyResponses" cascade="delete">
             <key>
                 <column name="id_survey"/>
             </key>
@@ -65,7 +65,7 @@ Contributor(s):
         <property name="active"/>
         <many-to-one name="manager" column="id_user"></many-to-one>
         <subclass name="it.univaq.f4i.iw.pollweb.business.model.ReservedSurvey" discriminator-value="private">
-            <set inverse="true" name="participants">
+            <set inverse="true" name="participants" cascade="all">
                 <key>
                     <column name="id_survey"></column>
                 </key>

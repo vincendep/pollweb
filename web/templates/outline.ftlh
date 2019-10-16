@@ -6,35 +6,39 @@
     <#--<link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/grid.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>-->
-    <link rel="stylesheet" href="/pollweb/style/custom.css" type="text/css"/>
+    <link rel="stylesheet" href="/pollweb/style/outline.css" type="text/css"/>
 </head>
 <body>
 <header>
-    <h1>Pollweb</h1>
-    <h3>${page_title!"Untitled page"}</h3>
-    <ul class="menu">
-        <li><a href="/pollweb">Homepage</a></li>
-        <li><a href="/pollweb/about">About page</a></li>
-        <#if logged_user??>
-            <li><a href="/pollweb/account">
-                    <div>Ciao, ${logged_user.name}</div>
-                    <div>Account</div>
-                </a></li>
-            <li>
-                <form action="/pollweb/auth"><input type="submit" name="logout" value="Esci"/></form>
-            </li>
-        <#else>
-            <li><a href="/pollweb/login">Accedi</a></li>
-        </#if>
-    </ul>
-    <hr/>
+    <div class="title">
+        <h1>Pollweb</h1>
+        <h3>${page_title!"Untitled page"}</h3>
+    </div>
+    <nav>
+        <ul class="topnav">
+            <li><a href="/pollweb">Homepage</a></li>
+            <li><a href="/pollweb/about">About</a></li>
+            <#if logged_user??>
+                <li style="float: right;"><a href="/pollweb/account">Account</a></li>
+            <#else>
+                <li style="float: right;"><a href="/pollweb/login">Accedi</a></li>
+            </#if>
+        </ul>
+    </nav>
 </header>
 <div class="content">
     <#include content_tpl>
 </div>
 <footer>
-    <hr/>
-    Copyright &copy; 2014 ${defaults.author}. Page compiled on ${compiled_on?datetime}
+    <p>
+        Copyright &copy; 2014 ${defaults.author}. Page compiled on ${compiled_on?datetime}
+    </p>
 </footer>
+
+<script>
+    function setActive(element) {
+        element.
+    }
+</script>
 </body>
 </html>

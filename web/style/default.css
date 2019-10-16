@@ -7,7 +7,7 @@ body,html {
     background: #5CDB95;
 }
 
-#header {    
+header {    
     right: 0;
     height:50px;
     font-size: 20pt;
@@ -22,11 +22,11 @@ body,html {
     font-size: 50%;
 }
 
-#body {
+body {
     background-color: white;
 }
 
-#footer {
+footer {
     height:30px;        
     font-size: 9pt;
     text-align: center;

@@ -10,7 +10,7 @@
             <li>Sondaggio aperti: #{openSurveys?size}</li>
             <li>Sondaggi chiusi: #{surveys?size - openSurveys?size}</li>
     </section>
-    </section>
+    <form action="/pollweb/auth"><input type="submit" name="logout" value="Esci"/></form>
     </hr>
     <section>
         <h3>Sondaggi gestiti</h3>
@@ -21,6 +21,7 @@
                     <form action="surveys" method="post">
                         <input type="hidden" name="n" value="${survey.id}"/>
                         <input type="submit" <#if !survey.active>name="open" value="Apri sondaggio"<#else>name="close" value="Chiudi sondaggio"</#if>"/>
+                        <input type="submit" name="delete" value="Elimina"/>
                     </form>
                 </li>
             </#list>
