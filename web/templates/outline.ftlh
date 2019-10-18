@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/outline.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/custom.css" type="text/css"/>
+    <script src="https://kit.fontawesome.com/11a7f05f45.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -18,20 +19,20 @@
             <li><a href="/pollweb">Homepage</a></li>
             <li><a href="/pollweb/about">About</a></li>
             <#if logged_user??>
-                <li style="float: right;"><a href="/pollweb/account">Account</a></li>
+                <li style="float: right;"><a href="/pollweb/account"><i class="far fa-user-circle"></i> Account</a></li>
             <#else>
                 <li style="float: right;"><a href="/pollweb/login">Accedi</a></li>
             </#if>
         </ul>
     </nav>
 </header>
-<div class="content">
+<main>
     <#include content_tpl>
-</div>
+</main>
 <footer>
-    <p>
-        Copyright &copy; 2014 ${defaults.author}. Page compiled on ${compiled_on?datetime}
-    </p>
+    <p>Copyright &copy; 2019 ${defaults.author}</p>
+    <img src="/pollweb/images/univaq.png"/>
+    <p>Page compiled on ${compiled_on?datetime}</p>
 </footer>
 </body>
 </html>

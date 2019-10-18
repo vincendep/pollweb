@@ -4,6 +4,3 @@
 <p>
     Nam non est eu enim vehicula pretium. Sed tristique libero diam, quis placerat velit rutrum eget. Etiam ut rhoncus nunc. Sed tempor ante molestie lacus sollicitudin, vitae pulvinar nisi interdum. Vestibulum porta elit eget suscipit convallis. Nam gravida, libero eget lobortis tristique, magna magna rutrum magna, eget finibus tellus dui ac mi. Integer scelerisque odio nisi, et commodo mi gravida vel. Vestibulum malesuada purus lectus. In ultrices nunc sed justo semper, nec volutpat arcu euismod. Maecenas vitae odio bibendum, hendrerit dolor non, sodales odio. Donec tincidunt consequat auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 <p>
-<div class="univaq">
-    <img src="/pollweb/images/univaq.gif"/>
-</div>

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'August';
-  src: url('../fonts/Hey August.ttf'); /* IE9 Compat Modes */
+  src: url('../fonts/hey_august.otf'); /* IE9 Compat Modes */
 }
 
 body {
@@ -23,19 +23,19 @@ header .title {
     font-family: 'August', sans-serif;
 }
 
-.title h1 {
+header .title h1 {
     text-align: center;
     font-size: 5em;
     margin-bottom: 0;
 }
 
-.title h3 {
+header .title h3 {
     text-align: center;
     font-size: 2em;
     margin-top: 0;
 }
 
-.content {
+main {
     padding: 1.5em;
     flex: 1;
 }
@@ -88,12 +88,11 @@ ul.topnav li.right {
 }
 
 @media screen and (max-width: 600px) {
-    ul.topnav li.right, 
-    ul.topnav li {
-        float: none !important;
-    }
+    .title {display: none;}
+    main {padding: 0.5em;}
+    footer {padding: 0; margin: 0;}
+    footer img {display: none;}
     
-    .content {
-        padding: 0.5em;
-    }
+    ul.topnav li.right, 
+    ul.topnav li {float: none !important;}
 }

@@ -115,6 +115,10 @@ public class Survey {
         getSurveyResponses().add(sr);
         sr.setSurvey(this);
     }
+    
+    public boolean isReserved() {
+        return false;
+    }
 
     @Override
     public int hashCode() {
@@ -152,7 +156,4 @@ public class Survey {
         }
         return true;
     }
-
-    
-    
 }

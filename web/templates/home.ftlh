@@ -1,9 +1,22 @@
 <section>
-    <h3>Tutti i sondaggi</h3>
-    <ul>
+	<div class="title">
+	    <h3>Tutti i sondaggi</h3>
+	    <p>Lista completa di tutti i sondaggi pubblicati su Pollweb</p>
+    </div>
+    <ul class="list">
         <#list surveys?sort_by("pubblicationDate") as survey>
             <li>
-                <a href="survey?id=#{survey.id}">${survey.getTitle()}</a> - responsabile: ${survey.manager.name} ${survey.manager.surname}
+            	<a class="item" href="survey?id=#{survey.id}">
+	            	<div class="icon icon--left">
+	            	<#if survey.isReserved()><span class="fas fa-user-lock fa-3x"></span><#else><span class="fas fa-users fa-3x"></span></#if>
+	            	</div>
+	            	<div class="text">
+		                <h4 class="head">${survey.getTitle()}</h4>
+		                <p class="info">Responsabile: ${survey.manager.name} ${survey.manager.surname}</p> 
+		                <p class="info">Data di pubblicazione: ${survey.pubblicationDate}</p>
+	            	</div>
+	            	<div class="icon icon--right"><i class="fas fa-greater-than fa-2x"></i></div>
+            	</a>
             </li>
         </#list>
     </ul>

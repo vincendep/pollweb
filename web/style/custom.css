@@ -10,6 +10,12 @@ and open the template in the editor.
 
 :root {
     --primary-color: #222;
+    --primary-color-contrast: #DDD;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
 .btn {
@@ -29,6 +35,98 @@ and open the template in the editor.
 }
 
 .btn:hover {
-    background-color: white;
+    background-color: var(--primary-color-contrast);
     color: var(--primary-color);
+}
+
+
+
+
+
+/* LOGIN PAGE */
+
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-field {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 0.3em 0;
+  margin: 0.5em 0;
+}
+
+
+
+
+
+/* HOMEPAGE */
+.title {
+  text-align: center;
+}
+
+
+.list {
+  padding: 0.2em;
+  list-style-type: none;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.list .item {
+  position: relative;
+  display: flex;
+  padding: 0.3em;
+  border-bottom: 1px solid black;
+  margin-bottom: 0.7em;
+}
+
+.item a {display: block;}
+
+.list .icon {
+  align-self: center;
+  margin-right: 1em;
+}
+
+.icon--left {
+  float:left;
+} 
+
+.icon--right {
+  float: right;
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text .head {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+.text .info {
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .text .info {
+    display: none;
+  }
+
+  .icon--right {
+    display: none;
+  }
 }

@@ -23,4 +23,9 @@ public class ReservedSurvey extends Survey {
     public void setParticipants(Set<Participant> participants) {
         this.participants = participants;
     }
+    
+    @Override
+    public boolean isReserved() {
+        return true;
+    }
 }
