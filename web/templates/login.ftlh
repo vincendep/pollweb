@@ -3,5 +3,5 @@
     </br>
     <label>Password: <input type="password" name="password"/></label>
     </br>
-    <input type="submit" name="login" value="Accedi" class="medium">
+    <input class="btn btn--small" type="submit" name="login" value="Accedi" class="medium">
 </form>
