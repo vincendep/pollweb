@@ -8,10 +8,10 @@
             <li>
             	<a class="item" href="survey?id=#{survey.id}">
 	            	<div class="icon icon--left">
-                            <#if survey.getType() == "reserved">
-                                <span class="fas fa-user-lock fa-3x"></span>
+                            <#if survey.class.simpleName == "ReservedSurvey">
+                                <span class="fas fa-user-lock fa-2x"></span>
                             <#else>
-                                <span class="fas fa-users fa-3x"></span>
+                                <span class="fas fa-users fa-2x"></span>
                             </#if>
 	            	</div>
 	            	<div class="text">

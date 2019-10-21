@@ -23,9 +23,4 @@ public class ReservedSurvey extends Survey {
     public void setParticipants(Set<Participant> participants) {
         this.participants = participants;
     }
-    
-    @Override
-    public String getType() {
-        return "reserved";
-    }
 }

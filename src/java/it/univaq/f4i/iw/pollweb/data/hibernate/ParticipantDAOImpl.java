@@ -24,7 +24,7 @@ class ParticipantDAOImpl extends DAO implements ParticipantDAO {
     }
 
     @Override
-    public Participant findById(Long id) {
+    public Participant findById(long id) {
         return session.get(Participant.class, id);
     }
     

@@ -13,7 +13,7 @@ import it.univaq.f4i.iw.pollweb.business.model.Participant;
  */
 public interface ParticipantDAO {
     
-    Participant findById(Long id);
+    Participant findById(long id);
     Participant findByEmailAndPasswordAndSurveyId(String email, String password, Long surveyId);
     void saveOrUpdate(Participant participant);
     void delete(Participant participant);

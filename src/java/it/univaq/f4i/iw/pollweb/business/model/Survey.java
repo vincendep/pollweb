@@ -116,10 +116,6 @@ public class Survey {
         sr.setSurvey(this);
     }
     
-    public String getType() {
-        return "public";
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
