@@ -8,6 +8,6 @@
 		<input class="input text-input" type="password" name="password"/>
 	</div>
 	<div class="form-field">
-    	<input class="btn btn--small" type="submit" name="login" value="Accedi" class="medium">
+    	<input class="btn" type="submit" name="login" value="Accedi" class="medium">
     </div>
 </form>

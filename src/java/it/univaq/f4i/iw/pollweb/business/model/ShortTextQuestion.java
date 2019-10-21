@@ -27,6 +27,6 @@ public class ShortTextQuestion extends TextQuestion {
 
     @Override
     public String getQuestionType() {
-        return "long text";
+        return "short text";
     }
 }

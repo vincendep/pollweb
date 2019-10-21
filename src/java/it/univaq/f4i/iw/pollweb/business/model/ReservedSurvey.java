@@ -25,7 +25,7 @@ public class ReservedSurvey extends Survey {
     }
     
     @Override
-    public boolean isReserved() {
-        return true;
+    public String getType() {
+        return "reserved";
     }
 }

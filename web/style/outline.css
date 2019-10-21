@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'August';
+  font-family: 'august';
   src: url('../fonts/hey_august.otf'); /* IE9 Compat Modes */
 }
 
@@ -20,7 +20,7 @@ header {
 }
 
 header .title {
-    font-family: 'August', sans-serif;
+    font-family: 'august', sans-serif;
 }
 
 header .title h1 {
@@ -55,7 +55,7 @@ footer img {
 }
 
 /* NavBar Style */
-ul.topnav {
+.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -63,11 +63,11 @@ ul.topnav {
     background-color: #333;
 }
 
-ul.topnav li {
+.topnav li {
     float: left;
 }
 
-ul.topnav li a {
+.topnav li a {
     display: block;
     color: white;
     text-align: center;
@@ -75,15 +75,15 @@ ul.topnav li a {
     text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {
+.topnav li a:hover:not(.active) {
     background-color: #111;
 }
 
-ul.topnav li a.active {
+.topnav li a.active {
     background-color: #4CAF50;
 }
 
-ul.topnav li.right {
+.topnav li.right {
     float: right;
 }
 

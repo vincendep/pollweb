@@ -116,8 +116,8 @@ public class Survey {
         sr.setSurvey(this);
     }
     
-    public boolean isReserved() {
-        return false;
+    public String getType() {
+        return "public";
     }
 
     @Override

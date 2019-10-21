@@ -40,7 +40,7 @@ public class SurveysController extends BaseController {
     }
     
     private void action_create(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Survey survey = "Riservato".equals(request.getParameter("type")) ? new ReservedSurvey() : new Survey();
+        Survey survey = "reserved".equals(request.getParameter("type")) ? new ReservedSurvey() : new Survey();
         survey.setTitle(request.getParameter("title"));
         survey.setOpeningText(request.getParameter("openingText"));
         survey.setClosingText(request.getParameter("closingText"));

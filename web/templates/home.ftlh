@@ -8,7 +8,11 @@
             <li>
             	<a class="item" href="survey?id=#{survey.id}">
 	            	<div class="icon icon--left">
-	            	<#if survey.isReserved()><span class="fas fa-user-lock fa-3x"></span><#else><span class="fas fa-users fa-3x"></span></#if>
+                            <#if survey.getType() == "reserved">
+                                <span class="fas fa-user-lock fa-3x"></span>
+                            <#else>
+                                <span class="fas fa-users fa-3x"></span>
+                            </#if>
 	            	</div>
 	            	<div class="text">
 		                <h4 class="head">${survey.getTitle()}</h4>
