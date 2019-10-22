@@ -237,7 +237,7 @@ input {
 
 .info-utente {
   margin-bottom: 3em;
-  border-bottom: 1px solid gray;
+  border-bottom: 3px solid gray;
 }
 
 .info-utente h3 {

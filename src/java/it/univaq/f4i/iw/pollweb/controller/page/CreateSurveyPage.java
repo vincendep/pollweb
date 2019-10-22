@@ -1,4 +1,4 @@
-package it.univaq.f4i.iw.pollweb.business.controller.page;
+package it.univaq.f4i.iw.pollweb.controller.page;
 
 import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;

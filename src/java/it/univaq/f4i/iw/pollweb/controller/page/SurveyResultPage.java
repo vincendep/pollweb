@@ -1,37 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package it.univaq.f4i.iw.pollweb.business.controller.page;
+package it.univaq.f4i.iw.pollweb.controller.page;
 
 import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;
+import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.controller.BaseController;
 import it.univaq.f4i.iw.pollweb.business.model.Survey;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-/**
- *
- * @author vince
- */
-public class HomePage extends BaseController {
+public class SurveyResultPage extends BaseController {
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
-            List<Survey> surveys = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findAll();
-            request.setAttribute("surveys", surveys);
-            request.setAttribute("page_title", "Homepage");
+            int surveyId = SecurityLayer.checkNumeric(request.getParameter("n"));
+            DataLayer dataLayer = (DataLayer) request.getAttribute("datalayer");
+            Survey survey = dataLayer.getSurveyDAO().findById(surveyId);
             TemplateResult res = new TemplateResult(getServletContext());
-            res.activate("home.ftlh", request, response);
-        } catch (TemplateManagerException ex) {
+            request.setAttribute("title","Survey result page");
+            request.setAttribute("survey", survey);
+            res.activate("survey-result.ftlh", request, response);
+        } catch (NumberFormatException | TemplateManagerException ex) {
             throw new ServletException(ex);
         }
     }

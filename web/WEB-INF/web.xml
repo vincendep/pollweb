@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
     <!-- PAGES -->
     <servlet>
         <servlet-name>home-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.HomePage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.HomePage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>home-page</servlet-name>
@@ -12,7 +11,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>account-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.AccountPage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.AccountPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>account-page</servlet-name>
@@ -20,7 +19,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>about-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.AboutPage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.AboutPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>about-page</servlet-name>
@@ -28,7 +27,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>login-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.LoginPage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.LoginPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>login-page</servlet-name>
@@ -36,7 +35,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>compile-survey-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.CompileSurveyPage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.CompileSurveyPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>compile-survey-page</servlet-name>
@@ -44,7 +43,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>survey-details-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.SurveyDetailsPage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.SurveyDetailsPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>survey-details-page</servlet-name>
@@ -52,7 +51,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>create-survey-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.CreateSurveyPage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.CreateSurveyPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>create-survey-page</servlet-name>
@@ -60,13 +59,12 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>create-question-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.page.CreateQuestionPage</servlet-class>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.CreateQuestionPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>create-question-page</servlet-name>
         <url-pattern>/account/create-question</url-pattern>
     </servlet-mapping>
-    
     <!-- CONTROLLERS -->
     <servlet>
         <servlet-name>surveys-controller</servlet-name>
@@ -100,7 +98,27 @@
         <servlet-name>participants-controller</servlet-name>
         <url-pattern>/participants</url-pattern>
     </servlet-mapping>
-      
+    <!-- FILTERS -->
+    <filter>
+        <filter-name>authentication-filter</filter-name>
+        <filter-class>it.univaq.f4i.iw.pollweb.filter.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>account-page</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>survey-details-page</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>create-survey-page</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>create-question-page</servlet-name>
+    </filter-mapping>
     <!-- MISC -->
     <welcome-file-list>
         <welcome-file>/</welcome-file>
@@ -111,6 +129,7 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
+    <!-- LISTENERS -->
     <listener>
         <listener-class>it.univaq.f4i.iw.pollweb.data.hibernate.HibernateUtil</listener-class>
     </listener>
@@ -119,6 +138,7 @@
             30
         </session-timeout>
     </session-config>
+    <!-- PARAMS -->
     <context-param>
         <param-name>view.outline_template</param-name>
         <param-value>outline.ftlh</param-value>
