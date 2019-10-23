@@ -24,9 +24,4 @@ public class ShortTextQuestion extends TextQuestion {
     public void setPattern(String pattern) {
         this.pattern = pattern;
     }
-
-    @Override
-    public String getQuestionType() {
-        return "short text";
-    }
 }

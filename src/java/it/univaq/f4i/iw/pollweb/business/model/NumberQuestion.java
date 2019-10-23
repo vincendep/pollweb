@@ -34,9 +34,4 @@ public class NumberQuestion extends Question {
     public void setMaxValue(int maxValue) {
         this.maxValue = maxValue;
     }
-
-    @Override
-    public String getQuestionType() {
-        return "number";
-    }
 }

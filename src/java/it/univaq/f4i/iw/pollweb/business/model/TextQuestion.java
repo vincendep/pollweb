@@ -34,9 +34,4 @@ public class TextQuestion extends Question {
     public void setMaxLength(int maxLength) {
         this.maxLength = maxLength;
     }
-
-    @Override
-    public String getQuestionType() {
-        return "long text";
-    }
 }

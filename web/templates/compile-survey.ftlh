@@ -7,24 +7,20 @@
             <div class="question">
                 <h4>#{question?counter}. ${question.text}</h4>
                 <#if question.note??><p>${question.note}</p></#if>
-                <#if question.getQuestionType() == "short text">
+                <#if question.class.simpleName == "ShortTextQuestion">
                     <input type="text" name="${question.code}"/>
-                <#elseif question.getQuestionType() == "long text">
+                <#elseif question.class.simpleName == "TextQuestion">
                     <textarea rows="4" name="${question.code}"></textarea>
-                <#elseif question.getQuestionType() == "number">
+                <#elseif question.class.simpleName == "NumberQuestion">
                     <input type="number" name="${question.code}"/>
-                <#elseif question.getQuestionType() == "date">
+                <#elseif question.class.simpleName == "DateQuestion">
                     <input type="date" name="${question.code}"/>
-                <#elseif question.getQuestionType() == "single choice">
+                <#elseif question.class.simpleName == "ChoiceQuestion">
                     <div class="options">
                         <#list question.options as option>
-                            <label><input type="radio" name="${question.code}" value="${option?index}"/> ${option.text}</label>
-                        </#list>
-                    </div>
-                <#elseif question.getQuestionType() == "multiple choice">
-                    <div class="options">
-                        <#list question.options as option>
-                            <label><input type="checkbox" name="${question.code}" value="${option?index}"/> ${option.text} </label>
+                            <label>
+                                <input <#if question.maxNumberOfChoices == 1>type="radio"<#else>type="checkbox"</#if> name="${question.code}" value="${option?index}"/> ${option.text}
+                            </label>
                         </#list>
                     </div>
                 </#if>

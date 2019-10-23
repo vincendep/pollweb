@@ -36,9 +36,4 @@ public class DateQuestion extends Question {
     public void setMaxDate(LocalDate maxDate) {
         this.maxDate = maxDate;
     }
-
-    @Override
-    public String getQuestionType() {
-        return "date";
-    }
 }

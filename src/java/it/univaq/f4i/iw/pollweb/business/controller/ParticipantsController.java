@@ -36,6 +36,7 @@ public class ParticipantsController extends BaseController {
     }
     
     private void action_add_from_file(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // TODO read from csv file
         throw new UnsupportedOperationException("Not implemented yet.");
     }
     

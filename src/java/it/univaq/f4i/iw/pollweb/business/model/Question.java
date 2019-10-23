@@ -95,6 +95,4 @@ public abstract class Question {
         }
         return true;
     }
-    
-    public abstract String getQuestionType();
 }

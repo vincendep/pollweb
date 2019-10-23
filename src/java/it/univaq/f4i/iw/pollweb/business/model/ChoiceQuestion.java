@@ -54,13 +54,4 @@ public class ChoiceQuestion extends Question {
     public void addOption(Option  option) {
         this.options.add(option);
     }
-
-    @Override
-    public String getQuestionType() {
-        if (this.maxNumberOfChoices == 1) {
-            return "single choice";
-        } else {
-            return "multiple choice";
-        }
-    } 
 }
