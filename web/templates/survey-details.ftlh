@@ -1,5 +1,18 @@
 <#assign mandatoryQuestions = survey.questions?filter(question -> question.mandatory)>
 <h3>${survey.title}</h3>
+<p>Status: 
+    <#if survey.active>
+        Aperto <form action="/pollweb/surveys" method="post">
+            <input type="hidden" name="n" value="#{survey.id}"/>
+            <input type="submit" name="close" value="Chiudi"/>
+        </form>
+    <#else>
+        Chiuso <form action="/pollweb/surveys" method="post">
+            <input type="hidden" name="n" value="#{survey.id}"/>
+            <input type="submit" name="open" value="Apri"/>
+        </form>
+    </#if>
+</p>
 <p>Numero di domande: #{survey.questions?size} (#{mandatoryQuestions?size} obbligatorie)</p>
 <p>Numero di compilazioni: #{survey.surveyResponses?size}</p>
 <section>

@@ -59,7 +59,7 @@ public class SurveysController extends BaseController {
         Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
         if (survey != null) {
             survey.setActive(true);
-            response.sendRedirect("account");
+            response.sendRedirect("account/survey-details?n=" + surveyId);
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
@@ -70,7 +70,7 @@ public class SurveysController extends BaseController {
         Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
         if (survey != null) {
             survey.setActive(false);
-            response.sendRedirect("account");
+            response.sendRedirect("account/survey-details?n=" + surveyId);
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
