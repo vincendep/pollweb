@@ -1,9 +1,14 @@
 <div class="survey-sheet">
-    <h2>${survey.title}</h2>
-    <p>${survey.openingText}</p>
+    <i id="larrow" onclick="back()" class="arrow fas fa-arrow-left fa-2x"></i>
+    <i id="rarrow" onclick="next()" class="arrow fas fa-arrow-right fa-2x"></i>
+    <div class="opening">
+        <h2>${survey.title}</h2>
+        <p>${survey.openingText}</p>
+    </div>
     <form action="/pollweb/surveys?n=${survey.id}" method="post">
         <input type="hidden" name="survey" value="#{survey.id}">
         <#list survey.questions as question>
+
             <div class="question">
                 <h4>#{question?counter}. ${question.text}</h4>
                 <#if question.note??><p>${question.note}</p></#if>
@@ -26,8 +31,41 @@
                 </#if>
             </div>
         </#list>
-        <p>${survey.closingText}</p>
-        <input class="btn" type="submit" name="submit" value="Conferma" class="medium" />
+        <div class="closing">
+            <p>${survey.closingText}</p>
+            <input class="btn" type="submit" name="submit" value="Conferma" class="medium" />
+        </div>
     </form>
 </div>
 
+<script type="text/javascript">
+    document.getElementById("larrow").style.display = "block";
+    document.getElementById("rarrow").style.display = "block";
+
+    let pages = [];
+    pages.push(...document.getElementsByClassName("opening"));
+    pages.push(...document.getElementsByClassName("question"));
+    pages.push(...document.getElementsByClassName("closing"));
+    
+    for (let page of pages) {
+        page.style.display = "none";
+    }
+    let currPage = 0;
+    pages[currPage].style.display = "block";
+
+    function back() {
+        if (currPage > 0) {
+            pages[currPage].style.display = "none";
+            currPage--;
+            pages[currPage].style.display = "block";
+        }
+    }
+
+    function next() {
+        if (currPage < pages.length - 1) {
+            pages[currPage].style.display = "none";
+            currPage++;
+            pages[currPage].style.display = "block";
+        }
+    }
+</script>

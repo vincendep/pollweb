@@ -177,6 +177,11 @@ input {
   text-align: center;
 }
 
+.opening, .closing {
+    width: 100%;
+    text-align: center;
+}
+
 .question {
   display: flex;
   flex-direction: column;
@@ -225,7 +230,17 @@ input {
   overflow: unset;
 }
 
+.survey-sheet .arrow:hover {
+  cursor: pointer;
+}
 
+#larrow {
+  display: none;
+}
+
+#rarrow {
+  display: none;
+}
 
 
 /* ACCOUNT PAGE */
