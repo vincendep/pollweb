@@ -152,93 +152,38 @@ input {
 
 /* COMPILE SURVEY PAGE */
 
-.survey-sheet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.survey-sheet form {
-  width: 100%;
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.survey-sheet form .btn {
-  max-width: 20em;
-  align-self: center;
-}
-
-.survey-sheet form p {
-  text-align: center;
-}
-
 .opening, .closing {
-    width: 100%;
-    text-align: center;
-}
-
-.question {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  border: 2px solid gray;
   text-align: center;
-  padding: 1.5em;
-  margin: 2em;
-  border-radius: 15px;
-  box-shadow: 7px 7px 10px;
-  max-height: 150px;
-  overflow: unset;
 }
 
-.question h4 {
-  margin: 0;
-  margin-bottom: 1em;
+#larrow, #rarrow {
+  display: none;
+  position: fixed;
+  top: 51%;
 }
 
-.question input {
-  border-radius: 5px;
- box-shadow: 1px 1px 5px;
-}
-
-.question input[type="text"] {
-  align-self: stretch;
-}
-
-.question textarea {
-  align-self: stretch;
-  border-radius: 5px;
-  resize: none;
-  box-shadow: 1px 1px 5px;
-}
-
-.question label {
-  display: block;
-  margin: 0 2em 1em 0;
-}
-
-.question .options {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-height: 130px;
-  overflow: unset;
-}
-
-.survey-sheet .arrow:hover {
+#larrow:hover, #rarrow:hover {
   cursor: pointer;
 }
 
 #larrow {
-  display: none;
+  left: 0.8em;
 }
 
 #rarrow {
-  display: none;
+  right: 0.8em;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 6px 6px 10px;
+  padding: 1.5em;
+  margin: 3em;
+}
+
+.card input[type="text"], .card textarea {
+  width: 100%;
 }
 
 

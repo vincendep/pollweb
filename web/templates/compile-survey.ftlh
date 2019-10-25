@@ -1,15 +1,12 @@
-<div class="survey-sheet">
-    <i id="larrow" onclick="back()" class="arrow fas fa-arrow-left fa-2x"></i>
-    <i id="rarrow" onclick="next()" class="arrow fas fa-arrow-right fa-2x"></i>
+<i id="larrow" onclick="back()" class="arrow fas fa-arrow-left fa-2x"></i>  
     <div class="opening">
         <h2>${survey.title}</h2>
         <p>${survey.openingText}</p>
     </div>
-    <form action="/pollweb/surveys?n=${survey.id}" method="post">
+    <form id="survey" action="/pollweb/surveys?n=${survey.id}" method="post">
         <input type="hidden" name="survey" value="#{survey.id}">
         <#list survey.questions as question>
-
-            <div class="question">
+            <div class="question card">
                 <h4>#{question?counter}. ${question.text}</h4>
                 <#if question.note??><p>${question.note}</p></#if>
                 <#if question.class.simpleName == "ShortTextQuestion">
@@ -31,13 +28,12 @@
                 </#if>
             </div>
         </#list>
-        <div class="closing">
-            <p>${survey.closingText}</p>
-            <input class="btn" type="submit" name="submit" value="Conferma" class="medium" />
-        </div>
     </form>
-</div>
-
+    <div class="closing">
+        <p>${survey.closingText}</p>
+        <input form="survey" class="btn" type="submit" name="submit" value="Conferma" class="medium" />
+    </div>
+<i id="rarrow" onclick="next()" class="fas fa-arrow-right fa-2x"></i>
 <script type="text/javascript">
     document.getElementById("larrow").style.display = "block";
     document.getElementById("rarrow").style.display = "block";
