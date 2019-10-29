@@ -65,6 +65,22 @@
         <servlet-name>create-question-page</servlet-name>
         <url-pattern>/account/create-question</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>manage-users-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.ManageUsersPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manage-users-page</servlet-name>
+        <url-pattern>/account/manage-users</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>survey-results-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.SurveyResultPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>survey-results-page</servlet-name>
+        <url-pattern>/account/survey-results</url-pattern>
+    </servlet-mapping>
     <!-- CONTROLLERS -->
     <servlet>
         <servlet-name>surveys-controller</servlet-name>
@@ -98,6 +114,14 @@
         <servlet-name>participants-controller</servlet-name>
         <url-pattern>/participants</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>users-controller</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.UsersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>users-controller</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
     <!-- FILTERS -->
     <filter>
         <filter-name>authentication-filter</filter-name>
@@ -118,6 +142,14 @@
     <filter-mapping>
         <filter-name>authentication-filter</filter-name>
         <servlet-name>create-question-page</servlet-name>
+    </filter-mapping>
+    <filter>
+        <filter-name>administrator-filter</filter-name>
+        <filter-class>it.univaq.f4i.iw.pollweb.filter.AdministratorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>administrator-filter</filter-name>
+        <servlet-name>manage-users-page</servlet-name>
     </filter-mapping>
     <!-- MISC -->
     <welcome-file-list>

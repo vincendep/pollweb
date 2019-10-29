@@ -44,11 +44,11 @@ Contributor(s):
         <id name="id">
             <generator class="increment"/>
         </id>
-        <property name="name"/>
-        <property name="surname"/>
-        <property name="email"/>
-        <property name="password"/>
-        <property name="role">
+        <property name="name" not-null="true"/>
+        <property name="surname" not-null="true"/>
+        <property name="email" unique="true"/>
+        <property name="password" not-null="true"/>
+        <property name="role" not-null="true">
             <type name="org.hibernate.type.EnumType">
                 <param name="enumClass">it.univaq.f4i.iw.pollweb.business.model.Role</param>
                 <param name="useNamed">true</param>

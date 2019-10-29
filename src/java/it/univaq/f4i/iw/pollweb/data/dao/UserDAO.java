@@ -6,6 +6,7 @@
 package it.univaq.f4i.iw.pollweb.data.dao;
 
 import it.univaq.f4i.iw.pollweb.business.model.User;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,7 @@ import it.univaq.f4i.iw.pollweb.business.model.User;
  */
 public interface UserDAO {
     
+    List<User> findAll();
     User findById(long id);
     User findByEmail(String email);
     User findByEmailAndPassword(String email, String password);

@@ -20,9 +20,9 @@ public class SurveyResultPage extends BaseController {
             DataLayer dataLayer = (DataLayer) request.getAttribute("datalayer");
             Survey survey = dataLayer.getSurveyDAO().findById(surveyId);
             TemplateResult res = new TemplateResult(getServletContext());
-            request.setAttribute("title","Survey result page");
+            request.setAttribute("page_title","Survey result page");
             request.setAttribute("survey", survey);
-            res.activate("survey-result.ftlh", request, response);
+            res.activate("survey-results.ftlh", request, response);
         } catch (NumberFormatException | TemplateManagerException ex) {
             throw new ServletException(ex);
         }

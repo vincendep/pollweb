@@ -1,17 +1,21 @@
     <#assign openSurveys = surveys?filter(survey -> survey.active)>
-    <div class="account-content">
-        <section class="info-utente">
+    <div class="account-content info-utente">
+        <div class="info-utente">
             <h3>Informazioni personali</h3>
             <ul>
                 <li>Nome: ${logged_user.name}</li>
                 <li>Cognome: ${logged_user.surname}</li>
                 <li>Email: ${logged_user.email}</li>
                 <li>Sondaggi pubblicati: ${surveys?size}</li>
-                <li>Sondaggio aperti: #{openSurveys?size}</li>
-                <li>Sondaggi chiusi: #{surveys?size - openSurveys?size}</li>
+                <li>Livello utente: <#if logged_user.role == "RESPONSIBLE">Responsabile<#else>Amministratore</#if></li>
             </ul>
-            <form action="/pollweb/auth"><input class="btn" type="submit" name="logout" value="Logout"/></form>
-        </section>
+            <div style="text-align: center;">
+                <form style="display: inline-block;" action="/pollweb/auth"><input class="btn" type="submit" name="logout" value="Logout"/></form>
+                <#if logged_user.role == "ADMINISTRATOR">
+                    <form style="display: inline-block;" action="account/manage-users" method="get"><input class="btn" type="submit" value="Gestisci utenti"/></form>
+                </#if>
+            </div>
+        </div>
         <section class="my-surveys">
             <h3>Sondaggi gestiti</h3>
             <table>
@@ -19,7 +23,7 @@
                     <tr>
                         <td><strong>Titolo</strong></td>
                         <td class="status"><strong>Status</strong></td>
-                        <td class="pubblication-date"><strong>Data di pubblicazione</strong></td>
+                        <td class="tipo"><strong>Tipo</strong></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +31,7 @@
                 <tr>   
                     <td><a href="account/survey-details?n=#{survey.id}">${survey.title} <i class="fas fa-edit"></i></a></td>
                     <td class="status"><#if survey.active>Aperto<#else>Chiuso</#if></td>
-                    <td class="pubblication-date">${survey.pubblicationDate}</td>
+                    <td class="tipo"><#if survey.class.simpleName == "ReservedSurvey">Riservato<#else>Pubblico</#if></td>
                     <td class="trash-icon">
                         <form action="/pollweb/surveys" method="post">
                             <input type="hidden" name="n" value="#{survey.id}">

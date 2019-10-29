@@ -126,7 +126,7 @@ public class HibernateUtil implements ServletContextListener {
         User u = new User(); 
         u.setEmail("vincenzodepetris@gmail.com");
         u.setPassword("password");
-        u.setRole(Role.RESPONSIBLE);
+        u.setRole(Role.ADMINISTRATOR);
         u.setSurname("De Petris");
         u.setName("Vincenzo");
         s.setManager(u);
@@ -134,11 +134,11 @@ public class HibernateUtil implements ServletContextListener {
         ud.saveOrUpdate(u);
         
         User u1 = new User();
-        u1.setEmail("andreapagliarini@gmail.com");
+        u1.setEmail("pippo@gmail.com");
         u1.setRole(Role.ADMINISTRATOR);
         u1.setPassword("password");
-        u1.setName("Andrea");
-        u1.setSurname("Pagliarini");
+        u1.setName("Pippo");
+        u1.setSurname("Pippo");
         ud.saveOrUpdate(u1);
         
         sd.saveOrUpdate(s);

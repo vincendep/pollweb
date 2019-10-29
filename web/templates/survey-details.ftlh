@@ -14,7 +14,11 @@
     </#if>
 </p>
 <p>Numero di domande: #{survey.questions?size} (#{mandatoryQuestions?size} obbligatorie)</p>
-<p>Numero di compilazioni: #{survey.surveyResponses?size}</p>
+<p>Numero di risposte: #{survey.surveyResponses?size}</p>
+<form action="survey-results" method="get">
+    <input type="hidden" name="n" value="#{survey.id}"/>
+    <input type="submit" value="Mostra risultati"/>
+</form>
 <section>
     <h4>Domande:</h5>
     <ol>

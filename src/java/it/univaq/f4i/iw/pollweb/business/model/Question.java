@@ -5,7 +5,9 @@
  */
 package it.univaq.f4i.iw.pollweb.business.model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  *
@@ -18,6 +20,7 @@ public abstract class Question {
     private String text;
     private String note;
     private boolean mandatory;
+    private Set<Answer> answers = new HashSet<>();
 
     public Question() {
         this.mandatory = true;
@@ -63,6 +66,14 @@ public abstract class Question {
         this.mandatory = mandatory;
     }
 
+    public Set<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

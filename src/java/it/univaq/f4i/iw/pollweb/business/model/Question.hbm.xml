@@ -49,6 +49,12 @@ Contributor(s):
         <property name="text" not-null="true"/>
         <property name="note"/>
         <property name="mandatory" not-null="true"/>
+        <set inverse="true" name="answers" cascade="delete">
+            <key>
+                <column name="id_question"/>
+            </key>
+            <one-to-many class="it.univaq.f4i.iw.pollweb.business.model.Answer"></one-to-many>
+        </set>
         <subclass name="it.univaq.f4i.iw.pollweb.business.model.ChoiceQuestion" discriminator-value="choice">
             <property name="minNumberOfChoices" column="min_num_choices"/>
             <property name="maxNumberOfChoices" column="max_num_choices"/>

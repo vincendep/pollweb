@@ -8,6 +8,7 @@ package it.univaq.f4i.iw.pollweb.data.hibernate;
 import it.univaq.f4i.iw.pollweb.business.model.User;
 import it.univaq.f4i.iw.pollweb.data.dao.UserDAO;
 import it.univaq.f4i.iw.pollweb.data.dao.DAO;
+import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
@@ -23,7 +24,14 @@ class UserDAOImpl extends DAO implements UserDAO {
     public UserDAOImpl(Session s) {
         super(s);
     }
-
+    
+     @Override
+    public List<User> findAll() {
+        String hql = "FROM User";
+        Query<User> query = session.createQuery(hql);
+        return query.getResultList();
+    }
+    
     @Override
     public User findById(long id) {
         return session.get(User.class, id);
