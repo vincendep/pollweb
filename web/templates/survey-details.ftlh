@@ -25,10 +25,26 @@
         <#list survey.questions as question>
             <li>
                 ${question.text} - <#if question.mandatory>(obbligatoria)</#if>
-                <form action="/pollweb/questions" method="post">
-                    <input type="hidden" name="survey" value="#{survey.id}"/>
+                <form style="display: inline-block;" action="/pollweb/questions" method="post">
+                    <input type="hidden" name="n" value="#{survey.id}"/>
                     <input type="hidden" name="question-index" value="#{question?index}"/>
-                    <input type="submit" name="delete" value="Rimuovi"/>
+                    <button type="submit" name="delete">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+                <form style="display: inline-block;" action="/pollweb/questions" method="post">
+                    <input type="hidden" name="n" value="#{survey.id}"/>
+                    <input type="hidden" name="question-index" value="#{question?index}"/>
+                    <button type="submit" name="down">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </form>
+                <form style="display: inline-block;" action="/pollweb/questions" method="post">
+                    <input type="hidden" name="n" value="#{survey.id}"/>
+                    <input type="hidden" name="question-index" value="#{question?index}"/>
+                    <button type="submit" name="up">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
                 </form>
             </li>
         </#list>
@@ -48,6 +64,7 @@
         </fieldset>
     </form>
 </section>
+
 <#if survey.class.simpleName == "ReservedSurvey">
     <section>
         <h4>Partecipanti</h4>
@@ -81,6 +98,7 @@
         <form action="/pollweb/participants" method="post" enctype="multipart/form-data">
             <fieldset>
                 <legend>Importa partecipanti da CSV</legend>
+                <input type="reset" value="Reset"/>
                 <input type="file" name="csv"/></br>
                 <input type="hidden" name="survey" value="#{survey.id}"/>
                 <input type="submit" name="add-from-file" value="Aggiungi partecipanti"/>

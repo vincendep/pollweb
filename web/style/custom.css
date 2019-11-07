@@ -179,11 +179,13 @@ input {
   border-radius: 10px;
   box-shadow: 6px 6px 10px;
   padding: 1.5em;
-  margin: 3em;
+  margin: 3em auto;
+  max-width: 800px;
 }
 
 .card input[type="text"], .card textarea {
   width: 100%;
+  resize: none;
 }
 
 

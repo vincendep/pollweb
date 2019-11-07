@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author vince
+ * This class filters out the requests made by non administrator users
  */
 public class AdministratorFilter implements Filter {
 

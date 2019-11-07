@@ -87,6 +87,13 @@ public class Survey {
         return this.questions.remove(index);
     }
 
+    public void swapQuestions(int index1, int index2) {
+        Question q1 = this.questions.get(index1);
+        Question q2 = this.questions.get(index2);
+        this.questions.set(index1, q2);
+        this.questions.set(index2, q1);
+    }
+    
     public User getManager() {
         return manager;
     }

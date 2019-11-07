@@ -7,6 +7,9 @@
     <input name="name" type="text" required /></br>
     <label for="surname">Cognome: </label>
     <input name="surname" type="text" required /></br>
+    <label for="role">Ruolo: </label>
+    <input type="radio" name="role" value="responsible" checked>Responsabile</input>
+    <input type="radio" name="role" value="administrator">Amministratore</input></br>
     <input type="submit" name="add" value="Aggiungi utente" />
 </form>
 <ul>
