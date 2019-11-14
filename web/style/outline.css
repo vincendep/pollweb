@@ -15,8 +15,8 @@ body {
 header {
     padding: 0;
     margin: 0;
-    color: white;
-    background-color: mediumblue;
+    color: #4299e1;
+    background-color: #F5F5F5;
 }
 
 header .title {
@@ -45,8 +45,8 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: mediumblue;
-    color: white;
+    background-color: #F5F5F5;
+    color: #222;
     text-align: center;
 }
 
@@ -60,7 +60,7 @@ footer img {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: lightblue;
+    background-color: #7F7F7F;
 }
 
 .topnav li {
@@ -76,7 +76,7 @@ footer img {
 }
 
 .topnav li a:hover:not(.active) {
-    background-color: mediumblue;
+    background-color: #111;
 }
 
 .topnav li a.active {

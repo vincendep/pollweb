@@ -9,14 +9,14 @@ and open the template in the editor.
 */
 
 :root {
-    --primary-color: mediumblue;
+    --primary-color: #222;;
     --primary-color-contrast: #DDD;
     --danger-color: red;
     --warning-color: yellow;
 }
 
 a {
-  color: #222;
+  color: blue;;
   color: var(--primary-color);
   text-decoration: none;
 }
@@ -26,10 +26,10 @@ input {
 }
 
 .btn {
-  background-color: white;
-  border: 2px solid mediumblue;
+  background-color: #4299e1;
+  border: 2px solid;
   border-radius: 10px;
-  color: black;
+  color: white;
   padding: 12px 25px;
   text-align: center;
   text-decoration: none;
@@ -47,8 +47,8 @@ input {
 }
 
 .btn:hover {
-    background-color: mediumblue;
-    color: white;
+    background-color: white;
+    color: var(--primary-color);
 }
 
 .btn--danger:hover {
@@ -407,3 +407,95 @@ label {
     margin-top: 0;
  }
 }
+
+/*SURVEY-DETAILS*/
+ 
+ .arrow-btn{
+  font-size: 12px;
+  padding: 6px 15px;
+  border-radius: 10px;
+  background-color: #d3d3d3;
+  border: 2px solid grey;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+ }
+
+ .arrow-btn:hover {
+   background-color: white;
+    color: var(--primary-color);
+ }
+ 
+ .delete-btn{
+  font-size: 12px;
+  padding: 6px 15px;
+  background-color: #a0a0a0;
+  border-radius: 10px;
+ }
+ 
+ .delete-btn:hover {
+    background-color: black;
+    color: var(--primary-color);
+ }
+ 
+ .total{
+     width: 100%;
+     
+ }
+
+ .border{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: auto;
+    width: 30%;
+    text-align: center;
+
+}
+.lines1{
+    border-width: 3px;
+    width: 50%;
+     
+}
+
+.lines2{
+    border: 0.5px solid black;
+    width: 60%;
+}
+
+.question{
+    width: 40%;
+   margin-left: auto;
+   margin-right: auto;
+    
+}
+
+h4 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+
+.small-btn{
+  font-size: 12px;
+  padding: 6px 15px;
+  border-radius: 10px;
+  background-color: #4299e1;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+ }
+
+ .small-btn:hover {
+   background-color: white;
+    color: var(--primary-color);
+ }

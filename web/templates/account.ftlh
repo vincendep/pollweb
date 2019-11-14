@@ -35,7 +35,7 @@
                     <td class="trash-icon">
                         <form action="/pollweb/surveys" method="post">
                             <input type="hidden" name="n" value="#{survey.id}">
-                            <button type="submit" name="delete">
+                            <button class="delete-btn" type="submit" name="delete">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </form></td>
