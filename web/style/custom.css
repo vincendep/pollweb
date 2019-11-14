@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 :root {
-    --primary-color: #222;
+    --primary-color: mediumblue;
     --primary-color-contrast: #DDD;
     --danger-color: red;
     --warning-color: yellow;
@@ -26,10 +26,10 @@ input {
 }
 
 .btn {
-  background-color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  background-color: white;
+  border: 2px solid mediumblue;
   border-radius: 10px;
-  color: white;
+  color: black;
   padding: 12px 25px;
   text-align: center;
   text-decoration: none;
@@ -47,8 +47,8 @@ input {
 }
 
 .btn:hover {
-    background-color: white;
-    color: var(--primary-color);
+    background-color: mediumblue;
+    color: white;
 }
 
 .btn--danger:hover {
@@ -256,4 +256,154 @@ input {
 
 td .trash-icon {
   text-align: center;
+}
+
+/*CREATE SURVEY*/
+ 
+ .create-survey {
+     display: block;
+     text-align: center;
+     font-size: 20px;
+     
+ }
+ 
+.create-survey input {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px;
+ 
+}
+
+.create-survey textarea {
+   border-radius: 5px;
+   box-shadow: 1px 1px 5px;
+   align-self: stretch;
+}
+
+.create-survey h4 {
+  margin-bottom: 1em;
+}
+
+/*SURVEY DETAILS*/
+ .survey-details {
+     text-align: center;
+     font-size: 25px;
+ }
+ 
+ .questions {
+    
+     font-size: 20px;
+     text-justify: auto;
+ }
+ 
+ .questions h4 {
+  margin-bottom: 1em;
+}
+
+.questions fieldset {
+    width:50%;
+}
+
+
+.left  {
+    float : left;  
+    text-align: center;
+    font-size: 25px;
+    width: 40%;
+}
+
+.clear {clear:both; 
+       line-height:0.01px; 
+       font-size:0.01px;}
+
+.right {
+    padding-right: 100px;
+    float: right;
+    text-align: center;
+    font-size: 25px;
+    width: 40%;
+}
+
+.details {
+   
+    widht: 100%;
+}
+
+.details input {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px;
+ 
+}
+
+/*MANAGE-USERS*/
+
+.center
+{
+    margin: auto;
+    width: 20%;
+}
+
+.container input[type=text], textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+
+.container input[type=password]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.container input[type=email]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.container {
+  width:40%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin: auto;
+  padding-left: 25%;
+}
+
+.col-25 {
+  float: left;
+  width: 20%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 40%;
+  margin-top: 6px;
+  
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75{
+    width: 60%;
+    margin-top: 0;
+ }
 }
