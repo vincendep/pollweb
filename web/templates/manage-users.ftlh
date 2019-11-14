@@ -44,7 +44,10 @@
 </div>
 </br></br>
 <div class="row">
+<div class="col-25"></div>
+<div class="col-75">
     <input class="btn" type="submit" name="add" value="Aggiungi utente" />   
+</div>
 </div>
 </form> 
 
@@ -55,7 +58,7 @@
         <li>${user.email} 
             <form style="display: inline;" action="/pollweb/users" method="post">
                 <input type="hidden" name="n" value="#{user.id}">
-                <button class="btn--small" type="submit" name="delete">
+                <button class="delete-btn" type="submit" name="delete">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>

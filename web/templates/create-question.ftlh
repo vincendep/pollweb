@@ -1,63 +1,155 @@
-<form class="auth-form" action="/pollweb/questions" method="get">
+<div class="container">
+<form action="/pollweb/questions" method="get">
     <input type="hidden" name="survey" value="#{survey}"/>
     <input type="hidden" name="type" value="${type}"/>
-    <div class="form-field">
+    <div class="row">
+        <div class="col-25">
         <label>Titolo:</label>
+        </div>
+        <div class="col-75">
         <input type="text" name="text"/>
+        </div>
     </div>
-    <div class="form-field">
+
+    <div class="row">
+        <div class="col-25">
         <label>Codice:</label>
+        </div>
+        <div class="col-75">
         <input type="text" name="code"/>
+        </div>
     </div>
-    <div class="form-field">
+
+    <div class="row">
+        <div class="col-25">
         <label>Nota:</label>
+        </div>
+        <div class="col-75">
         <textarea name="note"></textarea>
-    </div>
-    <div class="title">
+        </div>
+    </div></br>
+
+ <div class="row">
+    <div class="col-25">
     <input type="checkbox" name="mandatory" checked>Obbligatoria</input></br>
     </div>
+</div>
+   
     
     <#if type == "short text">
-        <div class="form-field">
+
+        <div class="row">
+            <div class="col-25">
             <label>Minimo numero di caratteri:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="min-num-char"/><br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
             <label>Massimo numero di caratteri:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="max-num-char"/><br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
             <label>Pattern: </label>
+            </div>
+            <div class="col-75">
             <input type="text" name="pattern"/><br>
+            </div>
         </div>
     <#elseif type == "long text">
-        <div class="form-field">
+        <div class="row">
+            <div class="col-25">
             <label>Minimo numero di caratteri:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="min-num-char"/></br>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-25">
             <label>Massimo numero di caratteri:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="max-num-char"/></br>
+            </div>
         </div>
     <#elseif type == "date">
-        <div class="form-field">
+        <div class="row">
+            <div class="col-25">
             <label>Data minima:</label>
+            </div>
+            <div class="col-75">
             <input type="date" name="min-date"/></br>
+            </div>
+        </div></br>
+
+        <div class="row">
+            <div class="col-25">
             <label>Data massima:</label>
+            </div>
+            <div class="col-75">
             <input type="date" name="max-date"/></br>
+            </div>
         </div>
+
     <#elseif type == "number">
-        <div class="form-field">   
+        <div class="row">
+            <div class="col-25">   
             <label>Minimo numero:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="min-num"/></br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25"> 
             <label>Massimo numero:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="max-num"/></br>
+            </div>
         </div>
     <#elseif type == "choice">
-        <div class="form-field">   
+        <div class="row">
+            <div class="col-25">    
             <label>Minimo numero di scelte:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="min-num-choices"/><br>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-25">
             <label>Massimo numero di scelte:</label>
+            </div></br>
+            <div class="col-75">
             <input type="number" name="max-num-choices"/><br>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
             <label>Scelte: </label>
+            </div>
+            <div class="col-75">
             <textarea name="choices">Inserire le scelte separate da ";"</textarea>
+             </div>
         </div>
     </#if>
-    <div class="title">
-    <input type="submit" class="btn" name="create" value="Conferma"/>
-</div>
+        <div class="row">
+            <div class="col-25"></div>
+            <div class="col-75">
+            <input type="submit" class="btn" name="create" value="Conferma"/>
+            </div>
+        </div> 
 </form>
+</div>

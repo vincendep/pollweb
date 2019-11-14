@@ -37,7 +37,10 @@
 </div></br>
 
 <div class="row">
+    <div class="col-25"></div>
+    <div class="col-75">
     <input type="submit" name="create" value="Crea sondaggio" class="btn"/>
+    </div>
 </div>
 </form>
 </div>

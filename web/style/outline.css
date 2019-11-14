@@ -15,8 +15,8 @@ body {
 header {
     padding: 0;
     margin: 0;
-    color: #4299e1;
-    background-color: #F5F5F5;
+    color: white;
+    background-color: #5e86c1;
 }
 
 header .title {
@@ -45,7 +45,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #F5F5F5;
+    background-color: #5e86c1;
     color: #222;
     text-align: center;
 }
@@ -60,7 +60,7 @@ footer img {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #7F7F7F;
+    background-color: #9ebee2;
 }
 
 .topnav li {
@@ -69,14 +69,15 @@ footer img {
 
 .topnav li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 .topnav li a:hover:not(.active) {
-    background-color: #111;
+    background-color: white;
+    color: var(--primary-color);
 }
 
 .topnav li a.active {

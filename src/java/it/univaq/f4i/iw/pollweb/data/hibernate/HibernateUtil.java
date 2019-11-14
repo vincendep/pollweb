@@ -117,10 +117,10 @@ public class HibernateUtil implements ServletContextListener {
         p.setReservedSurvey(rs);
         
         Participant p1 = new Participant();
-        p1.setEmail("lauradegidio@gmail.com");
+        p1.setEmail("lauradiegidio@gmail.com");
         p1.setPassword("password");
         p1.setName("Laura");
-        p1.setSurname("D'Egidio");
+        p1.setSurname("Di Egidio");
         p1.setReservedSurvey(rs);
         
         User u = new User(); 
@@ -134,12 +134,20 @@ public class HibernateUtil implements ServletContextListener {
         ud.saveOrUpdate(u);
         
         User u1 = new User();
-        u1.setEmail("pippo@gmail.com");
+        u1.setEmail("lauradiegidio@gmail.com");
         u1.setRole(Role.ADMINISTRATOR);
         u1.setPassword("password");
-        u1.setName("Pippo");
-        u1.setSurname("Pippo");
+        u1.setName("Laura");
+        u1.setSurname("Di Egidio");
         ud.saveOrUpdate(u1);
+        
+        User u2 = new User();
+        u2.setEmail("denisdipatrizio@gmail.com");
+        u2.setRole(Role.ADMINISTRATOR);
+        u2.setPassword("password");
+        u2.setName("Denis");
+        u2.setSurname("Di Patrizio");
+        ud.saveOrUpdate(u2);
         
         sd.saveOrUpdate(s);
         sd.saveOrUpdate(rs);

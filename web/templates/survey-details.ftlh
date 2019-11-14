@@ -11,7 +11,7 @@
 </form>
 </div>
     <section>
-        <h4>Domande:</h4>
+        <h4 class="queston-center">Domande:</h4>
 </div>
     <div class="question">
         <ol>
@@ -54,7 +54,7 @@
                 <option value="date">Data</option>
                 <option value="short text">Testo breve</option>
             </select> 
-            <input type="submit" class="arrow-btn" name="add" value="Aggiungi"/>
+            <input type="submit" class="small-btn" name="add" value="Aggiungi"/>
         
     </form>
 </div><br>
@@ -92,16 +92,16 @@
                     <input type="password" name="password"/><br>
                 </label>
                 <input type="hidden" name="survey" value="#{survey.id}"/>
-                <input type="submit" class="arrow-btn" name="add" value="Aggiungi partecipante"/>
+                <input type="submit" class="small-btn" name="add" value="Aggiungi partecipante"/>
         </form>
 </section> <br>
         <section class="border">
         <form action="/pollweb/participants" method="post" enctype="multipart/form-data">
                 <legend>Importa partecipanti da CSV</legend><br>
-                <input class="arrow-btn" type="reset" value="Reset"/>&nbsp;
+                <input class="small-btn" type="reset" value="Reset"/>&nbsp;
                 <input type="file" name="csv"/></br>
                 <input type="hidden" name="survey" value="#{survey.id}"/><br>
-                <input type="submit" class="arrow-btn" name="add-from-file" value="Aggiungi partecipanti"/>
+                <input type="submit" class="small-btn" name="add-from-file" value="Aggiungi partecipanti"/>
         </form>
 </section> <br>
 </#if>

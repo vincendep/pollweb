@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 :root {
-    --primary-color: #222;;
+    --primary-color: #222;
     --primary-color-contrast: #DDD;
     --danger-color: red;
     --warning-color: yellow;
@@ -30,7 +30,7 @@ input {
   border: 2px solid;
   border-radius: 10px;
   color: white;
-  padding: 12px 25px;
+  padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -338,8 +338,9 @@ td .trash-icon {
 
 .center
 {
-    margin: auto;
-    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+    
 }
 
 .container input[type=text], textarea{
@@ -359,6 +360,22 @@ td .trash-icon {
   resize: vertical;
 }
 
+.container input[type=date]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.container input[type=number]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
 .container input[type=email]{
   width: 100%;
   padding: 12px;
@@ -366,18 +383,20 @@ td .trash-icon {
   border-radius: 4px;
   resize: vertical;
 }
+
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
 
 .container {
-  width:40%;
+  width:50%;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 10px;
   margin: auto;
-  padding-left: 25%;
+  padding-left: 18%;
 }
 
 .col-25 {
@@ -390,7 +409,6 @@ label {
   float: left;
   width: 40%;
   margin-top: 6px;
-  
 }
 
 /* Clear floats after the columns */
@@ -439,7 +457,7 @@ label {
  
  .delete-btn:hover {
     background-color: black;
-    color: var(--primary-color);
+    color: white;
  }
  
  .total{
@@ -468,12 +486,11 @@ label {
 
 .question{
     width: 40%;
-   margin-left: auto;
-   margin-right: auto;
+   margin: auto;
     
 }
 
-h4 {
+.queston-center {
     text-align: center;
 }
 h3 {
