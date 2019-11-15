@@ -6,7 +6,7 @@
         <p>Numero di domande: #{survey.questions?size} (#{mandatoryQuestions?size} obbligatorie)</p>
         <p>Numero di risposte: #{survey.surveyResponses?size}</p>
 <form action="survey-results" method="get">
-    <input type="hidden" name="n" value="#{survey.id}"/>
+    <input type="hidden" name="survey" value="#{survey.id}"/>
     <input type="submit" class="small-btn" value="Mostra risultati"/>
 </form>
 </div>
@@ -54,7 +54,7 @@
                 <option value="date">Data</option>
                 <option value="short text">Testo breve</option>
             </select> 
-            <input type="submit" class="small-btn" name="add" value="Aggiungi"/>
+            <input type="submit" class="small-btn" value="Aggiungi"/>
         
     </form>
 </div><br>

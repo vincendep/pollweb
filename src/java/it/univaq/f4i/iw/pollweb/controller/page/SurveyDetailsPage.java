@@ -9,8 +9,10 @@ import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.controller.BaseController;
+import it.univaq.f4i.iw.pollweb.business.controller.Utility;
 import it.univaq.f4i.iw.pollweb.business.model.Survey;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -26,15 +28,20 @@ public class SurveyDetailsPage extends BaseController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
-            int surveyId = SecurityLayer.checkNumeric(request.getParameter("n"));
-            Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
-            request.setAttribute("survey", survey);
-            request.setAttribute("page_title", "Survey details page");
-            TemplateResult res = new TemplateResult(getServletContext());
-            res.activate("survey-details.ftlh", request, response);
+            if (Utility.userManageSurvey(request)) {
+                int surveyId = SecurityLayer.checkNumeric(request.getParameter("survey"));
+                Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
+                request.setAttribute("survey", survey);
+                request.setAttribute("page_title", "Survey details page");
+                TemplateResult res = new TemplateResult(getServletContext());
+                res.activate("survey-details.ftlh", request, response);
+            } else {
+                response.sendRedirect("/pollweb");
+            }
         } catch (TemplateManagerException ex) {
             throw new ServletException(ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SurveyDetailsPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

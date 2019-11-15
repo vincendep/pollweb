@@ -29,7 +29,7 @@
                 <tbody>
                 <#list surveys?sort_by("pubblicationDate")?reverse as survey>
                 <tr>   
-                    <td><a href="account/survey-details?n=#{survey.id}">${survey.title} <i class="fas fa-edit"></i></a></td>
+                    <td><a href="account/survey-details?survey=#{survey.id}">${survey.title} <i class="fas fa-edit"></i></a></td>
                     <td class="status"><#if survey.active>Aperto<#else>Chiuso</#if></td>
                     <td class="tipo"><#if survey.class.simpleName == "ReservedSurvey">Riservato<#else>Pubblico</#if></td>
                     <td class="trash-icon">

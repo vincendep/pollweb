@@ -5,9 +5,14 @@
  */
 package it.univaq.f4i.iw.pollweb.controller.page;
 
+import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.controller.BaseController;
+import it.univaq.f4i.iw.pollweb.business.controller.Utility;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,13 +26,19 @@ public class CreateQuestionPage extends BaseController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
-            request.setAttribute("survey", SecurityLayer.checkNumeric(request.getParameter("survey")));
-            request.setAttribute("page_title", "Create question page");
-            request.setAttribute("type", request.getParameter("type"));
-            TemplateResult res = new TemplateResult(getServletContext());
-            res.activate("create-question.ftlh", request, response);
-        } catch (Exception e) {
+            if (Utility.userManageSurvey(request)) {
+                request.setAttribute("survey", SecurityLayer.checkNumeric(request.getParameter("survey")));
+                request.setAttribute("page_title", "Create question page");
+                request.setAttribute("type", request.getParameter("type"));
+                TemplateResult res = new TemplateResult(getServletContext());
+                res.activate("create-question.ftlh", request, response);
+            } else {
+                response.sendRedirect("/pollweb");
+            }
+        } catch (TemplateManagerException | NumberFormatException e) {
             throw new ServletException(e);
+        } catch (IOException ex) {
+            Logger.getLogger(CreateQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
