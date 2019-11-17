@@ -6,7 +6,7 @@
     <ul class="list">
         <#list surveys?sort_by("pubblicationDate") as survey>
             <li>
-            	<a class="item" href="survey?id=#{survey.id}">
+            	<a class="item" href="compile-survey?survey=#{survey.id}">
 	            	<div class="icon icon--left">
                             <#if survey.class.simpleName == "ReservedSurvey">
                                 <span class="fas fa-user-lock fa-2x"></span>

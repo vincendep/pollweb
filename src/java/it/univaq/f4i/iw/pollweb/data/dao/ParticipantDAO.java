@@ -14,7 +14,7 @@ import it.univaq.f4i.iw.pollweb.business.model.Participant;
 public interface ParticipantDAO {
     
     Participant findById(long id);
-    Participant findByEmailAndPasswordAndSurveyId(String email, String password, Long surveyId);
+    Participant findByEmailAndPasswordAndSurveyId(String email, String password, long surveyId);
     void saveOrUpdate(Participant participant);
     void delete(Participant participant);
 }

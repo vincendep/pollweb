@@ -8,6 +8,7 @@ package it.univaq.f4i.iw.pollweb.controller.page;
 import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;
 import it.univaq.f4i.iw.pollweb.business.controller.BaseController;
+import it.univaq.f4i.iw.pollweb.business.model.Role;
 import it.univaq.f4i.iw.pollweb.business.model.User;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 import java.util.List;
@@ -24,6 +25,10 @@ public class ManageUsersPage extends BaseController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
+            User user = (User) request.getAttribute("logged_user");
+            if (user.getRole() != Role.ADMINISTRATOR) {
+                throw new ServletException("L'utente corrente non è un amministratore");
+            }
             List<User> users = ((DataLayer) request.getAttribute("datalayer")).getUserDAO().findAll();
             TemplateResult res = new TemplateResult((getServletContext()));
             request.setAttribute("page_title", "Manage users page");

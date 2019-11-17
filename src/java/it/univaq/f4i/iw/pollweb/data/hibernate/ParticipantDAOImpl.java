@@ -29,7 +29,7 @@ class ParticipantDAOImpl extends DAO implements ParticipantDAO {
     }
     
     @Override
-    public Participant findByEmailAndPasswordAndSurveyId(String email, String password, Long surveyId) {
+    public Participant findByEmailAndPasswordAndSurveyId(String email, String password, long surveyId) {
         String hql = "FROM Participant WHERE email = :email AND password = :password AND id_survey = :surveyId";
         Query<Participant> query = session.createQuery(hql);
         query.setParameter("email", email);

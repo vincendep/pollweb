@@ -39,7 +39,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>compile-survey-page</servlet-name>
-        <url-pattern>/survey</url-pattern>
+        <url-pattern>/compile-survey</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>survey-details-page</servlet-name>
@@ -143,15 +143,11 @@
         <filter-name>authentication-filter</filter-name>
         <servlet-name>create-question-page</servlet-name>
     </filter-mapping>
-    <filter>
-        <filter-name>administrator-filter</filter-name>
-        <filter-class>it.univaq.f4i.iw.pollweb.filter.AdministratorFilter</filter-class>
-    </filter>
     <filter-mapping>
-        <filter-name>administrator-filter</filter-name>
+        <filter-name>authentication-filter</filter-name>
         <servlet-name>manage-users-page</servlet-name>
     </filter-mapping>
-    <!-- MISC -->
+
     <welcome-file-list>
         <welcome-file>/</welcome-file>
     </welcome-file-list>
@@ -165,6 +161,7 @@
     <listener>
         <listener-class>it.univaq.f4i.iw.pollweb.data.hibernate.HibernateUtil</listener-class>
     </listener>
+    
     <session-config>
         <session-timeout>
             30

@@ -9,41 +9,49 @@ import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.controller.BaseController;
+import it.univaq.f4i.iw.pollweb.business.model.ReservedSurvey;
 import it.univaq.f4i.iw.pollweb.business.model.Survey;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author vincenzo
+ * @author vince
  */
-public class CreateQuestionPage extends BaseController {
+@WebServlet(name = "authentication-page", urlPatterns = {"/authentication"})
+public class AuthenticationPage extends BaseController {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
-            if (request.getParameter("survey") == null || request.getParameter("type") == null) {
-                throw new ServletException("Parametro mancante");
-            }
-            String typeParam = request.getParameter("type");
-            if ((!"short text".equals(typeParam)) && (!"long text".equals(typeParam)) && (!"number".equals(typeParam)) && (!"date".equals(typeParam)) && (!"date".equals(typeParam))) {
-                throw new ServletException("Parametro type invalido");
-            }
+            if (request.getParameter("survey") == null) {
+                throw new ServletException("Parametro survey mancante");
+            } 
             long surveyId = SecurityLayer.checkNumeric(request.getParameter("survey"));
             Survey survey = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findById(surveyId);
-            if (survey == null || ! (survey.getManager().equals(request.getAttribute("logged_user")))) {
+            if (survey == null || ! (survey instanceof ReservedSurvey)) {
                 throw new ServletException("Parametro survey invalido");
-            }
-            request.setAttribute("survey", survey.getId());
-            request.setAttribute("page_title", "Create question page");
-            request.setAttribute("type", request.getParameter("type"));
+            } 
             TemplateResult res = new TemplateResult(getServletContext());
-            res.activate("create-question.ftlh", request, response);
+            request.setAttribute("page_title", "Account page");
+            request.setAttribute("survey", survey.getId());
+            res.activate("authentication.ftlh", request, response);
         } catch (TemplateManagerException |NumberFormatException e) {
             throw new ServletException(e);
         }
     }
-    
 }
