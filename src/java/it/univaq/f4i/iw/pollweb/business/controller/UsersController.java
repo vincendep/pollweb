@@ -26,7 +26,7 @@ public class UsersController extends BaseController {
         user.setSurname(request.getParameter("surname"));
         user.setEmail(request.getParameter("email"));
         user.setPassword(request.getParameter("password"));
-        if (request.getParameter("role") == "administrator") {
+        if ("administrator".equals(request.getParameter("role"))) {
             user.setRole(Role.ADMINISTRATOR);
         } else {
             user.setRole(Role.RESPONSIBLE);
@@ -44,6 +44,10 @@ public class UsersController extends BaseController {
     
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        User user = (User) request.getAttribute("logged_user");
+        if (user.getRole() != Role.ADMINISTRATOR) {
+            throw new ServletException("Non hai i permessi per eseguire questa operazione");
+        }
         try {
             if (request.getParameter("add") != null) {
                 action_add(request, response);

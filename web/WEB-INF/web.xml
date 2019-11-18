@@ -81,6 +81,14 @@
         <servlet-name>survey-results-page</servlet-name>
         <url-pattern>/account/survey-results</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>authentication-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.AuthenticationPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>authentication-page</servlet-name>
+        <url-pattern>/authentication</url-pattern>
+    </servlet-mapping>
     <!-- CONTROLLERS -->
     <servlet>
         <servlet-name>surveys-controller</servlet-name>
@@ -122,6 +130,14 @@
         <servlet-name>users-controller</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>compile-survey-controller</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.business.controller.CompileSurveyController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>compile-survey-controller</servlet-name>
+        <url-pattern>/compile-survey-controller</url-pattern>
+    </servlet-mapping>
     <!-- FILTERS -->
     <filter>
         <filter-name>authentication-filter</filter-name>
@@ -147,7 +163,23 @@
         <filter-name>authentication-filter</filter-name>
         <servlet-name>manage-users-page</servlet-name>
     </filter-mapping>
-
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>surveys-controller</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>questions-controller</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>participants-controller</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>users-controller</servlet-name>
+    </filter-mapping>  
+    
     <welcome-file-list>
         <welcome-file>/</welcome-file>
     </welcome-file-list>

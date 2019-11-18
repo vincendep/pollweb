@@ -3,7 +3,7 @@
         <h2>${survey.title}</h2>
         <p>${survey.openingText}</p>
     </div>
-    <form id="survey" action="/pollweb/surveys?n=${survey.id}" method="post">
+    <form id="survey" action="/pollweb/compile-survey-controller?survey=${survey.id}" method="post">
         <input type="hidden" name="survey" value="#{survey.id}">
         <#list survey.questions as question>
             <div class="question card">

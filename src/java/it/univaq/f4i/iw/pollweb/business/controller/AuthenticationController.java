@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AuthenticationController extends BaseController {
 
-    private void action_login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void action_login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if (email != null && password != null) {
@@ -31,11 +31,10 @@ public class AuthenticationController extends BaseController {
                 SecurityLayer.createSession(request, email, user.getId().intValue());
                 response.sendRedirect("/pollweb");
             } else {
-                request.setAttribute("message", "Username o password errati");
-                action_error(request, response);
+                throw new ServletException("Username o password errati");
             }
         } else {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            throw new ServletException("Parametri mancanti");
         }
     }
     

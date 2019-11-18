@@ -32,14 +32,6 @@ public abstract class BaseController extends HttpServlet {
         processBaseRequest(request, response);
     }
     
-    protected void action_error(HttpServletRequest request, HttpServletResponse response) {
-        if (request.getAttribute("exception") != null) {
-            (new FailureResult(getServletContext())).activate((Exception) request.getAttribute("exception"), request, response);
-        } else {
-            (new FailureResult(getServletContext())).activate((String) request.getAttribute("message"), request, response);
-        }
-    }
-    
     private void processBaseRequest(HttpServletRequest request, HttpServletResponse response) {
         DataLayer datalayer = new HibernateDataLayer();
         datalayer.init();

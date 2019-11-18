@@ -19,21 +19,21 @@
             <li>
                 ${question.text} - <#if question.mandatory>(obbligatoria)</#if>
                 <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                    <input type="hidden" name="n" value="#{survey.id}"/>
+                    <input type="hidden" name="survey" value="#{survey.id}"/>
                     <input type="hidden" name="question-index" value="#{question?index}"/>
                     <button type="submit" class="delete-btn" name="delete">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </form>
                 <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                    <input type="hidden" name="n" value="#{survey.id}"/>
+                    <input type="hidden" name="survey" value="#{survey.id}"/>
                     <input type="hidden" name="question-index" value="#{question?index}"/>
                     <button class="arrow-btn" type="submit" name="down">
                         <i class="fas fa-arrow-down"></i>
                     </button>
                 </form>
                 <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                    <input type="hidden" name="n" value="#{survey.id}"/>
+                    <input type="hidden" name="survey" value="#{survey.id}"/>
                     <input type="hidden" name="question-index" value="#{question?index}"/>
                     <button class="arrow-btn" type="submit" name="up">
                         <i class="fas fa-arrow-up"></i>
@@ -71,7 +71,7 @@
                     <li>${participant.email}
                         <form style="display: inline-block;" action="/pollweb/participants" method="post">
                             <input type="hidden" name="survey" value="#{survey.id}">
-                            <input type="hidden" name="n" value="#{participant.id}">
+                            <input type="hidden" name="participant" value="#{participant.id}">
                             <button class="delete-btn" type="submit" name="delete"> 
                                 <i class="fas fa-times"></i>
                             </button>
@@ -109,12 +109,12 @@
 <p>Status: 
     <#if survey.active>
         Aperto <form action="/pollweb/surveys" method="post">
-            <input type="hidden" name="n" value="#{survey.id}"/>
+            <input type="hidden" name="survey" value="#{survey.id}"/>
             <input type="submit" class="btn" name="close" value="Chiudi"/>
         </form>
     <#else>
         Chiuso <form action="/pollweb/surveys" method="post">
-            <input type="hidden" name="n" value="#{survey.id}"/>
+            <input type="hidden" name="survey" value="#{survey.id}"/>
             <input type="submit" class="btn" name="open" value="Apri"/>
         </form>
     </#if> 

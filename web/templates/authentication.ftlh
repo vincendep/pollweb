@@ -4,5 +4,5 @@
     <input type="email" name="email" required/>
     <label for="password"/>
     <input type="password" name="password" required />
-    <input type="submit" name="auth" value="Autenticati"/>
+    <input type="submit" name="authenticate" value="Autenticati"/>
 </form>
