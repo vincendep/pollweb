@@ -31,7 +31,7 @@
 </main>
 <footer>
     <p>Copyright &copy; 2019 ${defaults.author}</p>
-    <img src="/pollweb/images/univaq.png"/>
+    <img src="/pollweb/images/univaq.png" alt="univaq"/>
     <p>Page compiled on ${compiled_on?datetime}</p>
 </footer>
 </body>

@@ -8,7 +8,7 @@
     <div class="col-75">
     <input type="text" name="title"/>
     </div>
-</div></br>
+</div><br>
 <div class="row">
     <div class="col-25">
     <label>Testo di apertura: </label>
@@ -16,7 +16,7 @@
     <div class="col-75">
     <textarea name="openingText"></textarea>
     </div>
-</div></br>
+</div><br>
 <div class="row">
     <div class="col-25">
     <label>Testo di chiusura:</label>
@@ -25,16 +25,16 @@
     <textarea name="closingText"></textarea>
    
     </div>
-</div></br>
+</div><br>
 <div class="row">
     <div class="col-25">
     <label>Tipo sondaggio:  </label>
-    </div></br>
+    </div><br>
     <div class="col-75">
-        <input type="radio" name="type" value="reserved"> &nbsp; Riservato</input>&nbsp;
-        <input type="radio" name="type" value="public" checked> &nbsp; Pubblico</input>
+        <input type="radio" name="type" value="reserved"> &nbsp; Riservato &nbsp;
+        <input type="radio" name="type" value="public" checked> &nbsp; Pubblico
     </div>
-</div></br>
+</div><br>
 
 <div class="row">
     <div class="col-25"></div>

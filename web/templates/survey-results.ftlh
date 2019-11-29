@@ -10,15 +10,11 @@
             <h4>#{question?counter} - ${question.text}</h4>
             <p>Numero di risposte: #{question.answers?size}</p>
         </li>
-
     </#list>
-
+</ul>
 <i id="rarrow" onclick="next()" class="fas fa-arrow-right fa-2x"></i>
 
-</ul>
-
-
-<script type="text/javascript">
+<script>
     document.getElementById("larrow").style.display = "block";
     document.getElementById("rarrow").style.display = "block";
 
