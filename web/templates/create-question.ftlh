@@ -27,11 +27,11 @@
         <div class="col-75">
         <textarea name="note"></textarea>
         </div>
-    </div></br>
+    </div><br>
 
  <div class="row">
     <div class="col-25">
-    <input type="checkbox" name="mandatory" checked>Obbligatoria</input></br>
+    <input type="checkbox" name="mandatory" checked>Obbligatoria<br>
     </div>
 </div>
    
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-25">
             <label>Minimo numero di caratteri:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
             <input type="number" name="min-num-char"/><br>
             </div>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-25">
             <label>Massimo numero di caratteri:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
             <input type="number" name="max-num-char"/><br>
             </div>
@@ -68,17 +68,17 @@
         <div class="row">
             <div class="col-25">
             <label>Minimo numero di caratteri:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
-            <input type="number" name="min-num-char"/></br>
+            <input type="number" name="min-num-char"/><br>
             </div>
         </div>
          <div class="row">
             <div class="col-25">
             <label>Massimo numero di caratteri:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
-            <input type="number" name="max-num-char"/></br>
+            <input type="number" name="max-num-char"/><br>
             </div>
         </div>
     <#elseif type == "date">
@@ -87,16 +87,16 @@
             <label>Data minima:</label>
             </div>
             <div class="col-75">
-            <input type="date" name="min-date"/></br>
+            <input type="date" name="min-date"/><br>
             </div>
-        </div></br>
+        </div><br>
 
         <div class="row">
             <div class="col-25">
             <label>Data massima:</label>
             </div>
             <div class="col-75">
-            <input type="date" name="max-date"/></br>
+            <input type="date" name="max-date"/><br>
             </div>
         </div>
 
@@ -104,24 +104,24 @@
         <div class="row">
             <div class="col-25">   
             <label>Minimo numero:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
-            <input type="number" name="min-num"/></br>
+            <input type="number" name="min-num"/><br>
             </div>
         </div>
         <div class="row">
             <div class="col-25"> 
             <label>Massimo numero:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
-            <input type="number" name="max-num"/></br>
+            <input type="number" name="max-num"/><br>
             </div>
         </div>
     <#elseif type == "choice">
         <div class="row">
             <div class="col-25">    
             <label>Minimo numero di scelte:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
             <input type="number" name="min-num-choices"/><br>
             </div>
@@ -130,7 +130,7 @@
         <div class="row">
             <div class="col-25">
             <label>Massimo numero di scelte:</label>
-            </div></br>
+            </div><br>
             <div class="col-75">
             <input type="number" name="max-num-choices"/><br>
             </div>
