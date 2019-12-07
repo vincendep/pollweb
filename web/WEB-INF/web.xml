@@ -89,14 +89,6 @@
         <servlet-name>authentication-page</servlet-name>
         <url-pattern>/authentication</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>show-results-page</servlet-name>
-        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.ShowResultPage</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>show-results-page</servlet-name>
-        <url-pattern>/show-results</url-pattern>
-    </servlet-mapping>
     <!-- CONTROLLERS -->
     <servlet>
         <servlet-name>surveys-controller</servlet-name>
