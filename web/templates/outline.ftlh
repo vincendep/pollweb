@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="UTF-8"/>
     <title>Pollweb - Online Surveys</title>
     <link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/outline.css" type="text/css"/>
@@ -31,8 +31,9 @@
 </main>
 <footer>
     <p>Copyright &copy; 2019 ${defaults.author}</p>
-    <img src="/pollweb/images/univaq.png"/>
+    <img src="/pollweb/images/univaq.png" alt="pollweb"/>
     <p>Page compiled on ${compiled_on?datetime}</p>
 </footer>
 </body>
 </html>
+

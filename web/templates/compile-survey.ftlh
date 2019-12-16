@@ -31,7 +31,7 @@
     </form>
     <div class="closing">
         <p>${survey.closingText}</p>
-        <input form="survey" class="btn" type="submit" name="submit" value="Conferma" class="medium" />
+        <input form="survey" class="btn" type="submit" name="submit" value="Conferma"  />
     </div>
 <i id="rarrow" onclick="next()" class="fas fa-arrow-right fa-2x"></i>
 <script type="text/javascript">

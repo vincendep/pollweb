@@ -10,9 +10,8 @@
     <input type="submit" class="small-btn" value="Mostra risultati"/>
 </form>
 </div>
-    <section>
+   
         <h4 class="queston-center">Domande:</h4>
-</div>
     <div class="question">
         <ol>
         <#list survey.questions as question>
@@ -39,13 +38,13 @@
                         <i class="fas fa-arrow-up"></i>
                     </button> 
                 </form>
-            </li> <hr class="lines2">
+            </li> 
         </#list>
-</ol>
+        </ol>
     </div>
 <div class="border">
-    <form  action="create-question" method="get" >    
-            <legend>Aggiungi domanda</legend>
+    <form  action="create-question" method="get" ><br>    
+            Aggiungi domanda <br>
             <input type="hidden" name="survey" value="#{survey.id}"/>
             <select name="type">
                 <option value="long text">Testo lungo</option>
@@ -58,7 +57,7 @@
         
     </form>
 </div><br>
-</section>
+
 <hr class="lines1">
 
 
@@ -82,31 +81,31 @@
         </div>
 <hr class="lines1"><br>
 
-<section class="border">
-        <form action="/pollweb/participants" method="post">
-                <legend>Aggiungi partecipante</legend><br>
+<div class="border">
+        <form action="/pollweb/participants" method="post"><br>
+                Aggiungi partecipante<br>
                 <label>Email: &nbsp; &nbsp; &nbsp;
                     <input type="email" name="email"/>
                 </label><br>
                 <label>Password: 
                     <input type="password" name="password"/><br>
-                </label>
-                <input type="hidden" name="survey" value="#{survey.id}"/>
+                </label><br>
+                <input type="hidden" name="survey" value="#{survey.id}"/><br>
                 <input type="submit" class="small-btn" name="add" value="Aggiungi partecipante"/>
         </form>
-</section> <br>
-        <section class="border">
-        <form action="/pollweb/participants" method="post" enctype="multipart/form-data">
-                <legend>Importa partecipanti da CSV</legend><br>
+</div> <br>
+        <div class="border">
+        <form action="/pollweb/participants" method="post" enctype="multipart/form-data"><br>
+                Importa partecipanti da CSV<br><br>
                 <input class="small-btn" type="reset" value="Reset"/>&nbsp;
-                <input type="file" name="csv"/></br>
+                <input type="file" name="csv"/><br>
                 <input type="hidden" name="survey" value="#{survey.id}"/><br>
                 <input type="submit" class="small-btn" name="add-from-file" value="Aggiungi partecipanti"/>
         </form>
-</section> <br>
+</div> <br>
 </#if>
-<div class="title"
-<p>Status: 
+<div class="title">
+Status: 
     <#if survey.active>
         Aperto <form action="/pollweb/surveys" method="post">
             <input type="hidden" name="survey" value="#{survey.id}"/>
@@ -118,6 +117,6 @@
             <input type="submit" class="btn" name="open" value="Apri"/>
         </form>
     </#if> 
-</p>
+</div>
 </div>
 </div>

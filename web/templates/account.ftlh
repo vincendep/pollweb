@@ -1,4 +1,4 @@
-    <#assign openSurveys = surveys?filter(survey -> survey.active)>
+ <#assign openSurveys = surveys?filter(survey -> survey.active)>
     <div class="account-content info-utente">
         <div class="info-utente">
             <h3>Informazioni personali</h3>
@@ -24,6 +24,7 @@
                         <td><strong>Titolo</strong></td>
                         <td class="status"><strong>Status</strong></td>
                         <td class="tipo"><strong>Tipo</strong></td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,7 +43,6 @@
                 </tr>
                 </#list>
             </tbody>
-            </td>
         </table>
         <a class="btn" href="account/create-survey">Crea sondaggio</a>
         </section>

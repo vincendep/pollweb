@@ -3,46 +3,46 @@
 
 <div class="row">
     <div class="col-25">
-    <label for="email">Email: </label>
+    <label id="email">Email: </label>
     </div>
     <div class="col-75">
-    <input name="email" type="email" required /></br></br>
+    <input name="email" type="email" required /><br><br>
     </div>
 </div>
 <div class="row">
     <div class="col-25">
-    <label for="password">Password: </label>
+    <label id="password">Password: </label>
     </div>
     <div class="col-75">
-    <input name="password" type="text" required /></br></br>
+    <input name="password" type="text" required /><br><br>
     </div>
 </div>
 <div class="row">
     <div class="col-25">
-    <label for="name">Nome: </label>
+    <label id="name">Nome: </label>
     </div>
     <div class="col-75">
-    <input name="name" type="text" required /></br></br>
+    <input name="name" type="text" required /><br><br>
     </div>
 </div>
 <div class="row">
     <div class="col-25">
-    <label for="surname">Cognome: </label>
+    <label id="surname">Cognome: </label>
     </div>
     <div class="col-75">
-    <input name="surname" type="text" required /></br></br>
+    <input name="surname" type="text" required /><br><br>
     </div>
 </div>
 <div class="row">
     <div class="col-25">
-    <label for="role">Ruolo: </label> </br>
-    </div></br>
+    <label id="role">Ruolo: </label> <br>
+    </div><br>
     <div class="col-75">
-    <input type="radio" name="role" value="responsible" checked>Responsabile</input>&nbsp;
-    <input type="radio" name="role" value="administrator">Amministratore</input>
+    <input type="radio" name="role" value="responsible" checked>Responsabile &nbsp;
+    <input type="radio" name="role" value="administrator">Amministratore
     </div>
 </div>
-</br></br>
+<br><br>
 <div class="row">
 <div class="col-25"></div>
 <div class="col-75">
@@ -51,7 +51,7 @@
 </div>
 </form> 
 
-</div></br>
+</div><br>
 <div  class="center">
 <ul>
     <#list users as user>
@@ -62,7 +62,7 @@
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>
-        </li></br>
+        </li>
     </#list>
 </ul>
 </div>
