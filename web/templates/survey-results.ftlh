@@ -8,10 +8,9 @@
 
 <#list survey.questions as question>  
   <div class="card">
-    ${question.class.simpleName}
-    <div class="card-header">
-      <h4>#{question?counter} - ${question.text}</h4>
-      <p>Numero di risposte: #{question.answers?size}</p>
+    <div class="card-header" onclick="toggle(this)">
+        <h4 class="question-text">#{question?counter} - ${question.text}</h4>
+        <p class="question-answer">Numero di risposte: #{question.answers?size}</p>
     </div>
     <div class="card-body">
       <#if question.class.simpleName == "ChoiceQuestion">
@@ -24,7 +23,7 @@
               </#if>
             </#list>
           </#list>
-          <div>${option.text} - #{optCount}</div>
+          <div>${option.text} : #{optCount}</div>
         </#list>
       <#else>
         <#list question.answers as answer>
@@ -34,3 +33,19 @@
     </div>
   </div>
 </#list>
+
+<script type="text/javascript">
+let cards = document.getElementsByClassName('card-body');
+for (let card of cards) {
+    card.style.display = 'none';
+}
+
+function toggle(element){
+    let card = element.nextElementSibling;
+  if (card.style.display == 'none') {
+    card.style.display = 'block';
+  } else {
+        card.style.display = 'none';
+  }
+}
+</script>

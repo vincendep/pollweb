@@ -5,6 +5,7 @@
  */
 package it.univaq.f4i.iw.pollweb.business.controller;
 
+import it.univaq.f4i.iw.pollweb.business.utility.MailUtility;
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
 import it.univaq.f4i.iw.pollweb.business.model.Participant;
 import it.univaq.f4i.iw.pollweb.business.model.ReservedSurvey;
@@ -15,11 +16,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import static java.lang.System.out;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +61,14 @@ public class ParticipantsController extends BaseController {
         // TODO manage duplicate email?
         ((DataLayer) request.getAttribute("datalayer")).getParticipantDAO().saveOrUpdate(participant);
         response.sendRedirect("account/survey-details?survey=" + idSurvey);
+
+        String mittente = "pollweb2019@gmail.com";
+        String passwordEmail = "Pass1!word";
+        String oggetto = "Sondaggio riservato PollWeb";
+        String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password;
+
+        MailUtility.send(mittente, passwordEmail, email, oggetto, testoEmail);
+
     }
 
     private void action_add_from_file(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -92,6 +103,15 @@ public class ParticipantsController extends BaseController {
                             participant.setPassword(columns[1]);
                             participant.setReservedSurvey((ReservedSurvey) survey);
                             ((DataLayer) request.getAttribute("datalayer")).getParticipantDAO().saveOrUpdate(participant);
+
+                            String mittente = "pollweb2019@gmail.com";
+                            String email = participant.getEmail();
+                            String oggetto = "Sondaggio riservato PollWeb";
+                            String passwordEmail = "Pass1!word";
+                            String password = participant.getPassword();
+                            String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password;
+
+                            MailUtility.send(mittente, passwordEmail, email, oggetto, testoEmail);
                         }
                     }
                 } else {
@@ -102,6 +122,7 @@ public class ParticipantsController extends BaseController {
             }
         }
         response.sendRedirect("account/survey-details?survey=" + idSurvey);
+
     }
 
     private void action_delete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

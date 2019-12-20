@@ -16,34 +16,34 @@ and open the template in the editor.
 }
 
 a {
-  color: blue;;
-  color: var(--primary-color);
-  text-decoration: none;
+    color: blue;;
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 input {
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
 .btn {
-  background-color: #5e86c1;
-  border: 2px solid;
-  border-radius: 10px;
-  color: white;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
+    background-color: #5e86c1;
+    border: 2px solid;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
 .btn--small {
-  font-size: 12px;
-  padding: 6px 15px;
+    font-size: 12px;
+    padding: 6px 15px;
 }
 
 .btn:hover {
@@ -52,31 +52,31 @@ input {
 }
 
 .btn--danger:hover {
-  color: var(--danger-color);
+    color: var(--danger-color);
 }
 
 .btn--danger {
-  background-color: var(--danger-color);
-  border: 2px solid var(--danger-color);
+    background-color: var(--danger-color);
+    border: 2px solid var(--danger-color);
 }
 
 
 /* LOGIN PAGE */
 
 .auth-form {
-  max-width: 400px;
-  margin: 0 auto;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .form-field {
-  margin: 1em;
-  display: flex;
-  flex-direction: column;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
 }
 
 .input {
-  padding: 0.3em 0;
-  margin: 0.5em 0;
+    padding: 0.3em 0;
+    margin: 0.5em 0;
 }
 
 
@@ -85,218 +85,219 @@ input {
 
 /* HOMEPAGE */
 .title {
-  text-align: center;
+    text-align: center;
 }
 
 
 .list {
-  padding: 0.2em;
-  list-style-type: none;
-  max-width: 750px;
-  margin: 0 auto;
+    padding: 0.2em;
+    list-style-type: none;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 .list .item {
-  position: relative;
-  display: flex;
-  padding: 0.3em;
-  border-bottom: 1px solid black;
-  margin-bottom: 0.7em;
+    position: relative;
+    display: flex;
+    padding: 0.3em;
+    border-bottom: 1px solid black;
+    margin-bottom: 0.7em;
 }
 
 .item a {display: block;}
 
 .list .icon {
-  align-self: center;
-  margin-right: 1em;
+    align-self: center;
+    margin-right: 1em;
 }
 
 .icon--left {
-  float:left;
+    float:left;
 } 
 
 .icon--right {
-  float: right;
-  position: absolute;
-  right: 0;
-  overflow: hidden;
+    float: right;
+    position: absolute;
+    right: 0;
+    overflow: hidden;
 }
 
 .text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .text .head {
-  color: var(--primary-color);
-  margin-top: 0;
-  margin-bottom: 0.3em;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.3em;
 }
 
 .text .info {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 @media screen and (max-width: 600px) {
-  .text .info {
-    display: none;
-  }
+    .text .info {
+        display: none;
+    }
 
-  .icon--right {
-    display: none;
-  }
+    .icon--right {
+        display: none;
+    }
 }
 
 
 /* COMPILE SURVEY PAGE */
 
 .opening, .closing {
-  text-align: center;
+    text-align: center;
 }
 
 #larrow, #rarrow {
-  display: none;
-  position: fixed;
-  top: 51%;
+    display: none;
+    position: fixed;
+    top: 51%;
 }
 
 #larrow:hover, #rarrow:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #larrow {
-  left: 0.8em;
+    left: 0.8em;
 }
 
 #rarrow {
-  right: 0.8em;
+    right: 0.8em;
 }
 
 .card {
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 6px 6px 10px;
-  padding: 1.5em;
-  margin: 3em auto;
-  max-width: 800px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px;
+    padding: 1.5em;
+    margin: 3em auto;
+    max-width: 800px;
+    text-align: center
 }
 
 .card input[type="text"], .card textarea {
-  width: 100%;
-  resize: none;
+    width: 90%;
+    resize: none;
 }
 
 
 /* ACCOUNT PAGE */
 
 .account-content {
-  max-width: 700px;
-  margin: 0 auto;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .info-utente {
-  margin-bottom: 3em;
-  border-bottom: 3px solid gray;
+    margin-bottom: 3em;
+    border-bottom: 3px solid gray;
 }
 
 .info-utente h3 {
-  text-align: center;
+    text-align: center;
 }
 
 .info-utente ul{
-  padding: 0;
+    padding: 0;
 }
 
 .info-utente li {
-  list-style-type: none;
-  padding: 0.5em;
-  text-align: center;
+    list-style-type: none;
+    padding: 0.5em;
+    text-align: center;
 }
 
 
 .info-utente form {
-  text-align: center;
-  margin-bottom: 1em;
+    text-align: center;
+    margin-bottom: 1em;
 
 }
 
 .my-surveys table {
-  margin: 0 auto;
-  width: 100%;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .my-surveys table a:hover {
-  color: black;
-  text-decoration: underline;
+    color: black;
+    text-decoration: underline;
 }
 
 .my-surveys .status {
-  text-align: center;
+    text-align: center;
 }
 
 .my-surveys .tipo {
-  text-align: center;
+    text-align: center;
 }
 
 .my-surveys tr {
-  border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .my-surveys td {
-  padding: 0.5em 0;
+    padding: 0.5em 0;
 }
 
 .my-surveys .btn {
-  max-width: 10em;
-  display: block;
-  margin: 2em auto;
+    max-width: 10em;
+    display: block;
+    margin: 2em auto;
 }
 
 td .trash-icon {
-  text-align: center;
+    text-align: center;
 }
 
 /*CREATE SURVEY*/
- 
- .create-survey {
-     display: block;
-     text-align: center;
-     font-size: 20px;
-     
- }
- 
+
+.create-survey {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+
+}
+
 .create-survey input {
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px;
- 
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px;
+
 }
 
 .create-survey textarea {
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px;
-   align-self: stretch;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px;
+    align-self: stretch;
 }
 
 .create-survey h4 {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 /*SURVEY DETAILS*/
- .survey-details {
-     text-align: center;
-     font-size: 25px;
- }
- 
- .questions {
-    
-     font-size: 20px;
-     text-justify: auto;
- }
- 
- .questions h4 {
-  margin-bottom: 1em;
+.survey-details {
+    text-align: center;
+    font-size: 25px;
+}
+
+.questions {
+
+    font-size: 20px;
+    text-justify: auto;
+}
+
+.questions h4 {
+    margin-bottom: 1em;
 }
 
 .questions fieldset {
@@ -312,8 +313,8 @@ td .trash-icon {
 }
 
 .clear {clear:both; 
-       line-height:0.01px; 
-       font-size:0.01px;}
+        line-height:0.01px; 
+        font-size:0.01px;}
 
 .right {
     padding-right: 100px;
@@ -324,14 +325,14 @@ td .trash-icon {
 }
 
 .details {
-   
+
     width: 100%;
 }
 
 .details input {
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px;
- 
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px;
+
 }
 
 /*MANAGE-USERS*/
@@ -340,132 +341,132 @@ td .trash-icon {
 {
     text-align: center;
     margin: 0 auto;
-    
+
 }
 
 .container input[type=text], textarea{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 
 .container input[type=password]{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .container input[type=date]{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .container input[type=number]{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .container input[type=email]{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 
 label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
+    padding: 12px 12px 12px 0;
+    display: inline-block;
 }
 
 .container {
-  width:50%;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 10px;
-  margin: auto;
-  padding-left: 18%;
+    width:50%;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin: auto;
+    padding-left: 18%;
 }
 
 .col-25 {
-  float: left;
-  width: 20%;
-  margin-top: 6px;
+    float: left;
+    width: 20%;
+    margin-top: 6px;
 }
 
 .col-75 {
-  float: left;
-  width: 40%;
-  margin-top: 6px;
+    float: left;
+    width: 40%;
+    margin-top: 6px;
 }
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .col-25, .col-75{
-    width: 60%;
-    margin-top: 0;
- }
+    .col-25, .col-75{
+        width: 60%;
+        margin-top: 0;
+    }
 }
 
 /*SURVEY-DETAILS*/
- 
- .arrow-btn{
-  font-size: 12px;
-  padding: 6px 15px;
-  border-radius: 10px;
-  background-color: #d3d3d3;
-  border: 2px solid grey;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
- }
 
- .arrow-btn:hover {
-   background-color: white;
+.arrow-btn{
+    font-size: 12px;
+    padding: 6px 15px;
+    border-radius: 10px;
+    background-color: #d3d3d3;
+    border: 2px solid grey;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.arrow-btn:hover {
+    background-color: white;
     color: var(--primary-color);
- }
- 
- .delete-btn{
-  font-size: 12px;
-  padding: 6px 15px;
-  background-color: #a0a0a0;
-  border-radius: 10px;
- }
- 
- .delete-btn:hover {
+}
+
+.delete-btn{
+    font-size: 12px;
+    padding: 6px 15px;
+    background-color: #a0a0a0;
+    border-radius: 10px;
+}
+
+.delete-btn:hover {
     background-color: black;
     color: white;
- }
- 
- .total{
-     width: 100%;
-     
- }
+}
 
- .border{
+.total{
+    width: 100%;
+
+}
+
+.border{
     border: 1px solid black;
     border-radius: 10px;
     margin: auto;
@@ -476,7 +477,7 @@ label {
 .lines1{
     border-width: 3px;
     width: 50%;
-     
+
 }
 
 .lines2{
@@ -486,8 +487,8 @@ label {
 
 .question{
     width: 40%;
-   margin: auto;
-    
+    margin: auto;
+
 }
 
 .queston-center {
@@ -498,21 +499,54 @@ h3 {
 }
 
 .small-btn{
-  font-size: 12px;
-  padding: 6px 15px;
-  border-radius: 10px;
-  background-color: #5e86c1;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
- }
+    font-size: 12px;
+    padding: 6px 15px;
+    border-radius: 10px;
+    background-color: #5e86c1;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
 
- .small-btn:hover {
-   background-color: white;
+.small-btn:hover {
+    background-color: white;
     color: var(--primary-color);
- }
+}
+
+/*SURVEY-RESULTS*/
+.question-text{
+    background-color: #c8c8c8;
+    padding: 20px 5px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.question-answer{
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+.card {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1.5em;
+    margin: 3em auto;
+    max-width: 600px;
+
+}
+span{
+    margin-left: 10px;
+}
+
+/* AUTHENTICATION */
+.authentication{
+    text-align: center;
+}
+
