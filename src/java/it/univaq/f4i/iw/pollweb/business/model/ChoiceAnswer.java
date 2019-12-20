@@ -7,6 +7,7 @@ package it.univaq.f4i.iw.pollweb.business.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ChoiceAnswer extends Answer {
         return options;
     }
 
+    @XmlElement(name = "choice")
     public void setOptions(Set<Option> options) {
         this.options = options;
     }

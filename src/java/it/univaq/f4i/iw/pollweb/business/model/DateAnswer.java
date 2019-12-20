@@ -5,7 +5,10 @@
  */
 package it.univaq.f4i.iw.pollweb.business.model;
 
+import it.univaq.f4i.iw.pollweb.business.model.adapter.LocalDateXmlAdapter;
 import java.time.LocalDate;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -26,6 +29,8 @@ public class DateAnswer extends Answer {
         return answer;
     }
 
+    @XmlAttribute(name = "value")
+    @XmlJavaTypeAdapter(value = LocalDateXmlAdapter.class)
     public void setAnswer(LocalDate answer) {
         this.answer = answer;
     }

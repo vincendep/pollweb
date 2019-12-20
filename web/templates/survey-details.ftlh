@@ -5,43 +5,47 @@
 <div class="border">
         <p>Numero di domande: #{survey.questions?size} (#{mandatoryQuestions?size} obbligatorie)</p>
         <p>Numero di risposte: #{survey.surveyResponses?size}</p>
-<form action="survey-results" method="get">
+<form style="display:inline-block;" action="survey-results" method="get">
     <input type="hidden" name="survey" value="#{survey.id}"/>
     <input type="submit" class="small-btn" value="Mostra risultati"/>
 </form>
+<form style="display:inline-block;" action="/pollweb/surveys" method="get">
+    <input type="hidden" name="survey" value="#{survey.id}"/>
+    <input type="submit" class="small-btn" name="download" value="Download risultati"/>
+</form>
 </div>
    
-        <h4 class="queston-center">Domande:</h4>
-    <div class="question">
-        <ol>
-        <#list survey.questions as question>
-            <li>
-                ${question.text} - <#if question.mandatory>(obbligatoria)</#if>
-                <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                    <input type="hidden" name="survey" value="#{survey.id}"/>
-                    <input type="hidden" name="question-index" value="#{question?index}"/>
-                    <button type="submit" class="delete-btn" name="delete">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </form>
-                <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                    <input type="hidden" name="survey" value="#{survey.id}"/>
-                    <input type="hidden" name="question-index" value="#{question?index}"/>
-                    <button class="arrow-btn" type="submit" name="down">
-                        <i class="fas fa-arrow-down"></i>
-                    </button>
-                </form>
-                <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                    <input type="hidden" name="survey" value="#{survey.id}"/>
-                    <input type="hidden" name="question-index" value="#{question?index}"/>
-                    <button class="arrow-btn" type="submit" name="up">
-                        <i class="fas fa-arrow-up"></i>
-                    </button> 
-                </form>
-            </li> 
-        </#list>
-        </ol>
-    </div>
+<h4 class="queston-center">Domande:</h4>
+<div class="question">
+    <ol>
+    <#list survey.questions as question>
+        <li>
+            ${question.text} - <#if question.mandatory>(obbligatoria)</#if>
+            <form style="display: inline-block;" action="/pollweb/questions" method="post">
+                <input type="hidden" name="survey" value="#{survey.id}"/>
+                <input type="hidden" name="question-index" value="#{question?index}"/>
+                <button type="submit" class="delete-btn" name="delete">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </form>
+            <form style="display: inline-block;" action="/pollweb/questions" method="post">
+                <input type="hidden" name="survey" value="#{survey.id}"/>
+                <input type="hidden" name="question-index" value="#{question?index}"/>
+                <button class="arrow-btn" type="submit" name="down">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </form>
+            <form style="display: inline-block;" action="/pollweb/questions" method="post">
+                <input type="hidden" name="survey" value="#{survey.id}"/>
+                <input type="hidden" name="question-index" value="#{question?index}"/>
+                <button class="arrow-btn" type="submit" name="up">
+                    <i class="fas fa-arrow-up"></i>
+                </button> 
+            </form>
+        </li> 
+    </#list>
+    </ol>
+</div>
 <div class="border">
     <form  action="create-question" method="get" ><br>    
             Aggiungi domanda <br>

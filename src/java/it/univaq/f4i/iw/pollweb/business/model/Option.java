@@ -6,6 +6,8 @@
 package it.univaq.f4i.iw.pollweb.business.model;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -26,6 +28,7 @@ public class Option {
         return id;
     }
 
+    @XmlTransient
     public void setId(Long id) {
         this.id = id;
     }
@@ -34,6 +37,7 @@ public class Option {
         return text;
     }
 
+    @XmlAttribute(name = "value")
     public void setText(String text) {
         this.text = text;
     }

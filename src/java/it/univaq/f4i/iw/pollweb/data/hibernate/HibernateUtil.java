@@ -5,6 +5,7 @@
  */
 package it.univaq.f4i.iw.pollweb.data.hibernate;
 
+import it.univaq.f4i.iw.pollweb.business.model.ChoiceAnswer;
 import it.univaq.f4i.iw.pollweb.business.model.ChoiceQuestion;
 import it.univaq.f4i.iw.pollweb.business.model.DateQuestion;
 import it.univaq.f4i.iw.pollweb.business.model.NumberQuestion;
@@ -12,12 +13,16 @@ import it.univaq.f4i.iw.pollweb.business.model.Option;
 import it.univaq.f4i.iw.pollweb.business.model.Participant;
 import it.univaq.f4i.iw.pollweb.business.model.ReservedSurvey;
 import it.univaq.f4i.iw.pollweb.business.model.Role;
+import it.univaq.f4i.iw.pollweb.business.model.ShortTextAnswer;
 import it.univaq.f4i.iw.pollweb.business.model.ShortTextQuestion;
 import it.univaq.f4i.iw.pollweb.business.model.Survey;
+import it.univaq.f4i.iw.pollweb.business.model.SurveyResponse;
+import it.univaq.f4i.iw.pollweb.business.model.TextAnswer;
 import it.univaq.f4i.iw.pollweb.business.model.TextQuestion;
 import it.univaq.f4i.iw.pollweb.business.model.User;
 import it.univaq.f4i.iw.pollweb.data.dao.ParticipantDAO;
 import it.univaq.f4i.iw.pollweb.data.dao.SurveyDAO;
+import it.univaq.f4i.iw.pollweb.data.dao.SurveyResponseDAO;
 import it.univaq.f4i.iw.pollweb.data.dao.UserDAO;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -58,37 +63,65 @@ public class HibernateUtil implements ServletContextListener {
         SurveyDAO sd = dl.getSurveyDAO();
         UserDAO ud = dl.getUserDAO();
         ParticipantDAO pd = dl.getParticipantDAO();
+        SurveyResponseDAO srd = dl.getSurveyResponseDAO();
         
         Survey s = new Survey();
         s.setOpeningText("Testo apertura sondaggio 1");
         s.setClosingText("Testo chiusura sondaggio 1");
         s.setActive(true);
         s.setTitle("Sondaggio");
+        SurveyResponse sr = new SurveyResponse();
+        sr.setSurvey(s);
+        s.addSurveyResponse(sr);
         
         TextQuestion tq = new TextQuestion();
         tq.setCode("tq-1");
         tq.setText("Come ti chiami?");
         s.addQuestion(tq);
+        TextAnswer ta = new TextAnswer();
+        ta.setQuestion(tq);
+        tq.addAnswer(ta);
+        ta.setAnswer("Vincenzo");
+        sr.addAnswer(ta);
         
         ChoiceQuestion cq = new ChoiceQuestion();
         cq.setCode("cq-1");
         cq.setText("Che animale preferisci?");
-        cq.addOption(new Option("Cane"));
-        cq.addOption(new Option("Gatto"));
+        Option opt1 = new Option("Cane");
+        Option opt2 = new Option("Gatto");
+        cq.addOption(opt1);
+        cq.addOption(opt2);
         s.addQuestion(cq);
+        ChoiceAnswer ca = new ChoiceAnswer();
+        ca.setQuestion(cq);
+        cq.addAnswer(ca);
+        ca.addOption(opt1);
+        sr.addAnswer(ca);
         
         TextQuestion tq1 = new ShortTextQuestion();
         tq1.setText("Che università frequenti?");
         tq1.setCode("tq-2");
         s.addQuestion(tq1);
+        ShortTextAnswer ta1 = new ShortTextAnswer();
+        ta1.setQuestion(tq1);
+        tq1.addAnswer(ta1);
+        ta1.setAnswer("Univaq");
+        sr.addAnswer(ta1);
         
         ChoiceQuestion cq1 = new ChoiceQuestion();
         cq1.setCode("cq-2");
         cq1.setText("Ti piacciono i film horror?");
-        cq1.addOption(new Option("si"));
-        cq1.addOption(new Option("no"));
+        Option o = new Option("si");
+        Option o2 = new Option("no");
+        cq1.addOption(o);
+        cq1.addOption(o2);
         cq1.setMaxNumberOfChoices(1);
         s.addQuestion(cq1);
+        ChoiceAnswer ca1 = new ChoiceAnswer();
+        ca1.setQuestion(cq1);
+        cq1.addAnswer(ca1);
+        ca1.addOption(o);
+        sr.addAnswer(ca1);
         
         ReservedSurvey rs = new ReservedSurvey();
         rs.setTitle("Sondaggio riservato");
@@ -151,6 +184,7 @@ public class HibernateUtil implements ServletContextListener {
         
         sd.saveOrUpdate(s);
         sd.saveOrUpdate(rs);
+        srd.saveOrUpdate(sr);
         pd.saveOrUpdate(p);
         pd.saveOrUpdate(p1);
         

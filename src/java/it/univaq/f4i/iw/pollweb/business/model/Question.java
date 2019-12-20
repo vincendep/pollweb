@@ -8,11 +8,18 @@ package it.univaq.f4i.iw.pollweb.business.model;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author vince
  */
+@XmlRootElement(name="question")
+@XmlType (propOrder={"code", "mandatory", "text", "note", "answers"})
 public abstract class Question {
     
     private Long id;
@@ -30,6 +37,7 @@ public abstract class Question {
         return id;
     }
 
+    @XmlTransient
     public void setId(Long id) {
         this.id = id;
     }
@@ -38,6 +46,7 @@ public abstract class Question {
         return code;
     }
 
+    @XmlAttribute
     public void setCode(String code) {
         this.code = code;
     }
@@ -46,6 +55,7 @@ public abstract class Question {
         return text;
     }
 
+    @XmlElement(name = "text")
     public void setText(String text) {
         this.text = text;
     }
@@ -54,6 +64,7 @@ public abstract class Question {
         return note;
     }
 
+    @XmlElement(name="note")
     public void setNote(String note) {
         this.note = note;
     }
@@ -62,6 +73,7 @@ public abstract class Question {
         return mandatory;
     }
 
+    @XmlAttribute
     public void setMandatory(boolean mandatory) {
         this.mandatory = mandatory;
     }
@@ -70,8 +82,13 @@ public abstract class Question {
         return answers;
     }
 
+    @XmlElement(name="answer", type = Answer.class)
     public void setAnswers(Set<Answer> answers) {
         this.answers = answers;
+    }
+    
+    public void addAnswer(Answer a) {
+        this.getAnswers().add(a);
     }
     
     @Override

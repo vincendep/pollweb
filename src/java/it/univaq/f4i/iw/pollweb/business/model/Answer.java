@@ -6,11 +6,16 @@
 package it.univaq.f4i.iw.pollweb.business.model;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author vince
  */
+@XmlRootElement(name="answer")
+@XmlSeeAlso({ TextAnswer.class, DateAnswer.class, ChoiceAnswer.class, NumberAnswer.class})
 public abstract class Answer {
     private Long id;
     private Question question;
@@ -19,6 +24,7 @@ public abstract class Answer {
         return id;
     }
 
+    @XmlTransient
     public void setId(Long id) {
         this.id = id;
     }
@@ -27,6 +33,7 @@ public abstract class Answer {
         return question;
     }
 
+    @XmlTransient
     public void setQuestion(Question question) {
         this.question = question;
     }

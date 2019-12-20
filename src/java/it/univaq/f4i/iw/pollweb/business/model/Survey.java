@@ -11,11 +11,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author vince
  */
+@XmlRootElement(name = "survey")
+@XmlType (propOrder={"title", "openingText", "closingText", "questions"})
 public class Survey {
     private Long id;
     private String title;
@@ -35,6 +42,7 @@ public class Survey {
         return id;
     }
 
+    @XmlTransient
     public void setId(Long id) {
         this.id = id;
     }
@@ -43,14 +51,16 @@ public class Survey {
         return title;
     }
 
+    @XmlAttribute
     public void setTitle(String title) {
         this.title = title;
     }
-
+    
     public String getOpeningText() {
         return openingText;
     }
 
+    @XmlElement(name="opening-text")
     public void setOpeningText(String openingText) {
         this.openingText = openingText;
     }
@@ -59,6 +69,7 @@ public class Survey {
         return closingText;
     }
 
+    @XmlElement(name="closing-text")
     public void setClosingText(String closingText) {
         this.closingText = closingText;
     }
@@ -67,14 +78,16 @@ public class Survey {
         return pubblicationDate;
     }
 
+    @XmlTransient
     public void setPubblicationDate(LocalDate pubblicationDate) {
         this.pubblicationDate = pubblicationDate;
     }
-
+    
     public List<Question> getQuestions() {
         return questions;
     }
 
+    @XmlElement(name="question")
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
@@ -98,6 +111,7 @@ public class Survey {
         return manager;
     }
 
+    @XmlTransient
     public void setManager(User manager) {
         this.manager = manager;
     }
@@ -106,6 +120,7 @@ public class Survey {
         return active;
     }
 
+    @XmlTransient
     public void setActive(boolean active) {
         this.active = active;
     } 
@@ -114,6 +129,7 @@ public class Survey {
         return surveyResponses;
     }
 
+    @XmlTransient
     public void setSurveyResponses(Set<SurveyResponse> responses) {
         this.surveyResponses = responses;
     }

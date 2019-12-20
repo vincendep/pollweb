@@ -5,6 +5,8 @@
  */
 package it.univaq.f4i.iw.pollweb.business.model;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  *
  * @author vince
@@ -17,6 +19,7 @@ public class TextAnswer extends Answer {
         return answer;
     }
 
+    @XmlElement(name="value")
     public void setAnswer(String answer) {
         this.answer = answer;
     }
