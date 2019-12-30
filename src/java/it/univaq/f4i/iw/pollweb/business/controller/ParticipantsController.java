@@ -65,7 +65,8 @@ public class ParticipantsController extends BaseController {
         String mittente = "pollweb2019@gmail.com";
         String passwordEmail = "Pass1!word";
         String oggetto = "Sondaggio riservato PollWeb";
-        String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password;
+        String url = "http://localhost:8080/pollweb/compile-survey?survey=" +  SecurityLayer.checkNumeric(request.getParameter("survey"));
+        String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password + "\n" + url;
 
         MailUtility.send(mittente, passwordEmail, email, oggetto, testoEmail);
 
@@ -109,7 +110,8 @@ public class ParticipantsController extends BaseController {
                             String oggetto = "Sondaggio riservato PollWeb";
                             String passwordEmail = "Pass1!word";
                             String password = participant.getPassword();
-                            String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password;
+                            String url = "http://localhost:8080/pollweb/compile-survey?survey=" +  SecurityLayer.checkNumeric(request.getParameter("survey"));
+                            String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password + "\n" + url;
 
                             MailUtility.send(mittente, passwordEmail, email, oggetto, testoEmail);
                         }
