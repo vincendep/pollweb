@@ -43,7 +43,7 @@ public class AuthenticationPage extends BaseController {
                 throw new ServletException("Parametro survey invalido");
             } 
             TemplateResult res = new TemplateResult(getServletContext());
-            request.setAttribute("page_title", "Account page");
+            request.setAttribute("page_title", "Authentication page");
             request.setAttribute("survey", survey.getId());
             res.activate("authentication.ftlh", request, response);
         } catch (TemplateManagerException |NumberFormatException e) {
