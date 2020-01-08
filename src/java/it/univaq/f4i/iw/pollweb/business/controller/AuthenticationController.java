@@ -6,14 +6,17 @@
 package it.univaq.f4i.iw.pollweb.business.controller;
 
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
+import it.univaq.f4i.iw.pollweb.business.model.Participant;
 import it.univaq.f4i.iw.pollweb.business.model.User;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,6 +46,21 @@ public class AuthenticationController extends BaseController {
         response.sendRedirect("/pollweb");
     }
     
+    private void action_authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Integer surveyId = SecurityLayer.checkNumeric(request.getParameter("survey"));
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        DataLayer dataLayer = (DataLayer) request.getAttribute("datalayer");
+        Participant participant = dataLayer.getParticipantDAO().findByEmailAndPasswordAndSurveyId(email, password, surveyId);
+        if (participant != null) {
+            HttpSession session = SecurityLayer.createSession(request, "", 0);
+            session.setAttribute("participantid", participant.getId());
+            response.sendRedirect("compile-survey?survey=" + surveyId);
+        } else {
+            throw new ServletException("Credenziali errate");
+        }
+    }
+    
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
@@ -50,6 +68,8 @@ public class AuthenticationController extends BaseController {
                 action_login(request, response);
             } else if (request.getParameter("logout") != null) {
                 action_logout(request, response);
+            }else if (request.getParameter("authenticate") != null) {
+                action_authenticate(request, response);
             } else {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }

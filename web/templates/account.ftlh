@@ -35,7 +35,7 @@
                     <td class="tipo"><#if survey.class.simpleName == "ReservedSurvey">Riservato<#else>Pubblico</#if></td>
                     <td class="trash-icon">
                         <form action="/pollweb/surveys" method="post">
-                            <input type="hidden" name="n" value="#{survey.id}">
+                            <input type="hidden" name="survey" value="#{survey.id}">
                             <button class="delete-btn" type="submit" name="delete">
                                 <i class="fas fa-trash-alt"></i>
                             </button>

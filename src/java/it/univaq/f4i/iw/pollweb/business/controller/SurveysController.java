@@ -76,7 +76,7 @@ public class SurveysController extends BaseController {
                 throw new ServletException("Non sei il responsabile di questo sondaggio");
             }
             survey.setActive(false);
-            response.sendRedirect("account/survey-details?n=" + surveyId);
+            response.sendRedirect("account/survey-details?survey=" + surveyId);
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }

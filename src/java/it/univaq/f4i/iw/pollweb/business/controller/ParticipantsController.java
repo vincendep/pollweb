@@ -16,13 +16,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import static java.lang.System.out;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -146,21 +144,6 @@ public class ParticipantsController extends BaseController {
         response.sendRedirect("account/survey-details?survey=" + idSurvey);
     }
 
-    private void action_authenticate(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
-        Integer surveyId = SecurityLayer.checkNumeric(request.getParameter("survey"));
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        DataLayer dataLayer = (DataLayer) request.getAttribute("datalayer");
-        Participant participant = dataLayer.getParticipantDAO().findByEmailAndPasswordAndSurveyId(email, password, surveyId);
-        if (participant != null) {
-            session.setAttribute("participantid", participant.getId());
-            response.sendRedirect("compile-survey?survey=" + surveyId);
-        } else {
-            throw new ServletException("Credenziali errate");
-        }
-    }
-
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
@@ -170,8 +153,6 @@ public class ParticipantsController extends BaseController {
                 action_add_from_file(request, response);
             } else if (request.getParameter("delete") != null) {
                 action_delete(request, response);
-            } else if (request.getParameter("authenticate") != null) {
-                action_authenticate(request, response);
             } else {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }
