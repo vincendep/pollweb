@@ -28,7 +28,7 @@ public class CreateQuestionPage extends BaseController {
                 throw new ServletException("Parametro mancante");
             }
             String typeParam = request.getParameter("type");
-            if ((!"short text".equals(typeParam)) && (!"long text".equals(typeParam)) && (!"number".equals(typeParam)) && (!"date".equals(typeParam)) && (!"date".equals(typeParam))) {
+            if ((!"short text".equals(typeParam)) && (!"long text".equals(typeParam)) && (!"number".equals(typeParam)) && (!"date".equals(typeParam)) && (!"choice".equals(typeParam))) {
                 throw new ServletException("Parametro type invalido");
             }
             long surveyId = SecurityLayer.checkNumeric(request.getParameter("survey"));

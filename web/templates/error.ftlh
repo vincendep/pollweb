@@ -6,11 +6,11 @@
         <#--<link rel="stylesheet" href="/pollweb/style/default.css" type="text/css"/>-->
     </head>
     <body>
-        <div class="content">
+        <div class="opening">
             <h1>Error</h1>
             <p>The system encountered the following error while handling your request:</p>
             <p><b>${error!"Unknown error"}</b></p>
-            <span><a href="/pollweb">Return to homepage</a></span>
+            <span class="btn"><a href="/pollweb">Return to homepage</a></span>
         </div>
     </body>
 </html>

@@ -10,6 +10,7 @@ import it.univaq.f4i.iw.pollweb.business.model.Role;
 import it.univaq.f4i.iw.pollweb.business.model.User;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 import java.io.IOException;
+import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,9 +36,13 @@ public class UsersController extends BaseController {
         response.sendRedirect("/pollweb/account/manage-users");
     }
     
-    private void action_delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void action_delete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        User userLogged = (User) request.getAttribute("logged_user");
         int userId = SecurityLayer.checkNumeric(request.getParameter("n"));
         User user = ((DataLayer) request.getAttribute("datalayer")).getUserDAO().findById(userId);
+        if(Objects.equals(userLogged.getId(), user.getId()))
+        {throw new ServletException("Non puoi eliminare il tuo account");
+        }
         ((DataLayer) request.getAttribute("datalayer")).getUserDAO().delete(user);
         response.sendRedirect("/pollweb/account/manage-users");
     }

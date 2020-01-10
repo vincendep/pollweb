@@ -7,7 +7,7 @@
         <label>Titolo:</label>
         </div>
         <div class="col-75">
-        <input type="text" name="text"/>
+        <input type="text" name="text" required/>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         <label>Codice:</label>
         </div>
         <div class="col-75">
-        <input type="text" name="code"/>
+        <input type="text" name="code" required/>
         </div>
     </div>
 
@@ -25,13 +25,13 @@
         <label>Nota:</label>
         </div>
         <div class="col-75">
-        <textarea name="note"></textarea>
+        <textarea name="note" ></textarea>
         </div>
     </div><br>
 
  <div class="row">
     <div class="col-25">
-    <input type="checkbox" name="mandatory" checked>Obbligatoria<br>
+    <input type="checkbox" name="mandatory" checked >Obbligatoria<br>
     </div>
 </div>
    
@@ -43,7 +43,7 @@
             <label>Minimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num-char"/><br>
+            <input type="number" name="min-num-char" required/><br>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
             <label>Massimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num-char"/><br>
+            <input type="number" name="max-num-char" required/><br>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
             <label>Pattern: </label>
             </div>
             <div class="col-75">
-            <input type="text" name="pattern"/><br>
+            <input type="text" name="pattern" required/><br>
             </div>
         </div>
     <#elseif type == "long text">
@@ -70,7 +70,7 @@
             <label>Minimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num-char"/><br>
+            <input type="number" name="min-num-char" required/><br>
             </div>
         </div>
          <div class="row">
@@ -78,7 +78,7 @@
             <label>Massimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num-char"/><br>
+            <input type="number" name="max-num-char" required/><br>
             </div>
         </div>
     <#elseif type == "date">
@@ -87,7 +87,7 @@
             <label>Data minima:</label>
             </div>
             <div class="col-75">
-            <input type="date" name="min-date"/><br>
+            <input type="date" name="min-date" required/><br>
             </div>
         </div><br>
 
@@ -96,7 +96,7 @@
             <label>Data massima:</label>
             </div>
             <div class="col-75">
-            <input type="date" name="max-date"/><br>
+            <input type="date" name="max-date" required/><br>
             </div>
         </div>
 
@@ -106,7 +106,7 @@
             <label>Minimo numero:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num"/><br>
+            <input type="number" name="min-num" required/><br>
             </div>
         </div>
         <div class="row">
@@ -114,7 +114,7 @@
             <label>Massimo numero:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num"/><br>
+            <input type="number" name="max-num" required/><br>
             </div>
         </div>
     <#elseif type == "choice">
@@ -123,7 +123,7 @@
             <label>Minimo numero di scelte:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num-choices"/><br>
+            <input type="number" name="min-num-choices" required/><br>
             </div>
         </div>
         
@@ -132,7 +132,7 @@
             <label>Massimo numero di scelte:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num-choices"/><br>
+            <input type="number" name="max-num-choices" required/><br>
             </div>
         </div>
 
@@ -141,10 +141,10 @@
             <label>Scelte: </label>
             </div>
             <div class="col-75">
-            <textarea name="choices">Inserire le scelte separate da ";"</textarea>
+            <textarea required name="choices"  placeholder=" Inserire le scelte separate da ' ; ' "></textarea>
              </div>
         </div>
-    </#if>
+        </#if>
         <div class="row">
             <div class="col-25"></div>
             <div class="col-75">

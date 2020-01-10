@@ -6,7 +6,7 @@
     <label>Titolo: </label>
     </div>
     <div class="col-75">
-    <input type="text" name="title"/>
+    <input type="text" name="title" required/>
     </div>
 </div><br>
 <div class="row">

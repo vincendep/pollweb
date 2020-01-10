@@ -88,6 +88,10 @@ input {
     text-align: center;
 }
 
+.title1 {
+    text-align: center;
+    color: #5e86c1;
+}
 
 .list {
     padding: 0.2em;
@@ -449,6 +453,7 @@ label {
     color: var(--primary-color);
 }
 
+
 .delete-btn{
     font-size: 12px;
     padding: 6px 15px;
@@ -466,14 +471,36 @@ label {
 
 }
 
-.border{
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: auto;
-    width: 30%;
-    text-align: center;
-
+.split{
+    width: 100%;
 }
+
+.clear{
+     float: none; 
+     clear: left
+}
+
+.border{
+    border-radius: 5px;
+    width: 48%;
+    float:left;
+    text-align: center;
+    margin: 10px;
+    padding-top: 0px;
+    min-height:100vh;
+    background-color: #f2f2f2;
+    
+}
+
+.col-1{
+    border-radius: 5px;
+    width: 48%;
+    text-align: center;
+    margin: auto;
+    background-color: #f2f2f2;
+    
+}
+
 .lines1{
     border-width: 3px;
     width: 50%;
