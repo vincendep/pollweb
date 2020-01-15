@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
     <title>Pollweb - Online Surveys</title>
     <link rel="stylesheet" href="/pollweb/style/normalize.css" type="text/css"/>
     <link rel="stylesheet" href="/pollweb/style/outline.css" type="text/css"/>
