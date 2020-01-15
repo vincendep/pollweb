@@ -136,6 +136,7 @@ input {
     color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 0.3em;
+    width: 100%;
 }
 
 .text .info {
@@ -145,10 +146,6 @@ input {
 
 @media screen and (max-width: 600px) {
     .text .info {
-        display: none;
-    }
-
-    .icon--right {
         display: none;
     }
 }

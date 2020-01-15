@@ -19,7 +19,7 @@
 		                <p class="info">Responsabile: ${survey.manager.name} ${survey.manager.surname}</p> 
 		                <p class="info">Data di pubblicazione: ${survey.pubblicationDate}</p>
 	            	</div>
-	            	<div class="icon icon--right"><i class="fas fa-greater-than fa-2x"></i></div>
+	            	<div class="icon icon--right"><i class="fas fa-caret-right fa-2x"></i></div>
             	</a>
             </li>
         </#list>
