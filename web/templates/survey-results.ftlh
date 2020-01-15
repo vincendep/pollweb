@@ -10,7 +10,7 @@
   <div class="card">
     <div class="card-header" onclick="toggle(this)">
         <h4 class="question-text">#{question?counter} - ${question.text}</h4>
-        <p class="question-answer">Numero di risposte: #{question.answers?size}</p>
+        <i class="fas fa-caret-down"></i>
     </div>
     <div class="card-body">
       <#if question.class.simpleName == "ChoiceQuestion">

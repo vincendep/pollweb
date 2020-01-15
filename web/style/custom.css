@@ -155,50 +155,97 @@ input {
 
 
 /* COMPILE SURVEY PAGE */
+#compile-survey {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 100%;
+    flex: 1;
+}
 
-.opening, .closing {
+#compile-survey .opening, #compile-survey .closing {
+    text-align: center;
+    align-items: center;
+}
+
+#compile-survey #larrow {
+    grid-column-start: 1;
     text-align: center;
 }
 
-#larrow, #rarrow {
-    display: none;
-    position: fixed;
-    top: 51%;
+#compile-survey #rarrow {
+    grid-column-start: 3;
+    text-align: center;
 }
 
-#larrow:hover, #rarrow:hover {
+#compile-survey #larrow:hover, #compile-survey #rarrow:hover {
     cursor: pointer;
 }
 
-#larrow {
-    left: 0.8em;
+#compile-survey #survey {
+    grid-column-start: 2;
+    width: 100%;
+    margin: 0 auto;
 }
 
-#rarrow {
-    right: 0.8em;
-}
-
-.card {
+#compile-survey .question-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 6px 6px 10px;
     padding: 1.5em;
-    margin: 3em auto;
-    max-width: 800px;
     text-align: center
+    width: 100%;
+    margin: 10px auto;
+    max-width: 800px;
 }
 
-.card input[type="text"], .card textarea {
+#compile-survey .question-card input[type="text"], #compile-survey .question-card textarea {
     width: 90%;
     resize: none;
+}
+
+#compile-survey .btn {
+    max-width: 400px;
+}
+
+@media screen and (max-width: 600px) {
+    #compile-survey {
+        grid-template-rows: 90% 10%;
+        grid-template-columns: 50% 50%;
+    }
+
+    #compile-survey #survey {
+        grid-row-start: 1;
+        grid-column-end: 3;
+        grid-column-start: 1;
+        width: 100%;
+    }
+
+    #compile-survey #larrow {
+        grid-row-start: 2;
+        grid-column-start: 1;
+    }
+
+    #compile-survey #rarrow {
+        grid-row-start: 2;
+        grid-column-start: 2;
+    }
+
+    #compile-survey .question-card {
+        padding: 0.5em;
+    }
 }
 
 
 /* ACCOUNT PAGE */
 
 .account-content {
-    max-width: 700px;
     margin: 0 auto;
+    flex: 1;
+    min-width: 75%;
 }
 
 .info-utente {
@@ -547,27 +594,47 @@ h3 {
 
 /*SURVEY-RESULTS*/
 .question-text{
-    background-color: #c8c8c8;
-    padding: 20px 5px;
     text-align: center;
     border-radius: 10px;
+    flex: 1;
 }
 
+.opening {
+    text-align: center;
+}
 .question-answer{
     text-align: center;
     font-weight: bold;
 }
 
+.card-header {
+    background-color:#9ebee2;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 15px;
+}
 
+.card-body {
+    padding: 10px 10px;
+}
 
 .card {
     border: 1px solid black;
     border-radius: 10px;
-    padding: 1.5em;
-    margin: 3em auto;
-    max-width: 600px;
-
+    max-width: 800px;
+    min-width: 70%;
+    margin: 15px auto;
 }
+
+@media screen and (max-width: 600px) {
+    .card {
+        min-width: 90%;
+    }
+}
+
 span{
     margin-left: 10px;
 }

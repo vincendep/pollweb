@@ -37,6 +37,8 @@ header .title h3 {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     padding: 1.5em;
     flex: 1;
 }
@@ -91,8 +93,8 @@ footer img {
 
 @media screen and (max-width: 600px) {
     .title {display: none;}
-    main {padding: 0.5em;}
-    footer {padding: 0; margin: 0;}
+    main {padding: 0.5em; margin-bottom: 84px; display: flex; flex-direction: column;}
+    footer {padding: 0; margin: 0; position: fixed; left: 0; bottom: 0}
     footer img {display: none;}
     
     ul.topnav li.right, 
