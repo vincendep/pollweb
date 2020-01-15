@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/pollweb/style/custom.css" type="text/css"/>
     <script src="https://kit.fontawesome.com/11a7f05f45.js" crossorigin="anonymous"></script>
 </head>
-<body class="boh">
+<body>
     <header>
         <div class="title">
             <h1>Pollweb</h1>
@@ -26,7 +26,7 @@
             </ul>
         </nav>
     </header> 
-    <div class="title">
+    <div id="error-page">
         <h1>Ooops! C'&egrave; stato un errore!</h1>
         <img src="/pollweb/images/error.jpg" alt="pollweb"/ height="120" width="120">
         <h3><b>${error!"Unknown error"}</b></h3>
