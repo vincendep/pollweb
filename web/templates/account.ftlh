@@ -36,7 +36,8 @@
                     <td class="trash-icon">
                         <form action="/pollweb/surveys" method="post">
                             <input type="hidden" name="survey" value="#{survey.id}">
-                            <button class="delete-btn" type="submit" name="delete">
+                            <input type="hidden" name="delete">
+                            <button class="delete-btn" type="button" onclick="deleteSurvey(this.form)">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </form></td>
@@ -47,3 +48,12 @@
         <a class="btn" href="account/create-survey">Crea sondaggio</a>
         </section>
     </div>
+    <script type="text/javascript">
+        function deleteSurvey(form) {
+            if (window.confirm("Sei sicuro di voler eliminare il sondaggio?")) {
+                form.submit();
+            } else {
+                
+            }
+        }
+    </script>
