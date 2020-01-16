@@ -15,7 +15,7 @@
                             </#if>
 	            	</div>
 	            	<div class="text">
-		                <h4 class="head">${survey.getTitle()}</h4>
+		                <h5 class="head">${survey.getTitle()}</h5>
 		                <p class="info">Responsabile: ${survey.manager.name} ${survey.manager.surname}</p> 
 		                <p class="info">Data di pubblicazione: ${survey.pubblicationDate}</p>
 	            	</div>

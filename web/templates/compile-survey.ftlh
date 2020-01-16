@@ -1,14 +1,14 @@
 <div id="compile-survey">
     <i id="larrow" onclick="back()" class="arrow fas fa-arrow-left fa-2x"></i>
         <div id="survey">
-        <div id="opening" class="opening" style="flex-direction: column;">
+        <div id="opening" class="page opening" style="flex-direction: column;">
             <h2>${survey.title}</h2>
             <p>${survey.openingText}</p>
         </div>
-        <form id="survey-form" action="/pollweb/compile-survey-controller?survey=${survey.id}" method="post">
+        <form id="survey-form" action="/pollweb/compile-survey-controller?survey=${survey.id}" method="get">
             <input type="hidden" name="survey" value="#{survey.id}">
             <#list survey.questions as question>
-                <section class="question-card">
+                <section class="page question-card">
                     <h4>#{question?counter}. ${question.text}</h4>
                     <#if question.note??><p>${question.note}</p></#if>
                     <#if question.class.simpleName == "ShortTextQuestion">
@@ -31,7 +31,7 @@
                 </section>
             </#list>
         </form>
-        <div id="closing" class="closing" style="flex-direction: column;">
+        <div id="closing" class="page closing" style="flex-direction: column;">
             <p>${survey.closingText}</p>
             <input form="survey-form" class="btn" type="submit" name="submit" value="Conferma"  />
         </div>

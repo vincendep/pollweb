@@ -7,7 +7,7 @@
         <label>Titolo:</label>
         </div>
         <div class="col-75">
-        <input type="text" name="text" required/>
+        <input type="text" name="text" placeholder="Inserire il titolo della domanda" required/>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         <label>Codice:</label>
         </div>
         <div class="col-75">
-        <input type="text" name="code" required/>
+        <input type="text" name="code" placeholder="Inserire il codice identificativo" required/>
         </div>
     </div>
 
@@ -25,7 +25,7 @@
         <label>Nota:</label>
         </div>
         <div class="col-75">
-        <textarea name="note" ></textarea>
+        <textarea name="note" placeholder="Inserire informazioni utili alla compilazione della domanda" ></textarea>
         </div>
     </div><br>
 
@@ -43,7 +43,7 @@
             <label>Minimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num-char" required/><br>
+            <input type="number" name="min-num-char" /><br>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
             <label>Massimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num-char" required/><br>
+            <input type="number" name="max-num-char" /><br>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
             <label>Pattern: </label>
             </div>
             <div class="col-75">
-            <input type="text" name="pattern" required/><br>
+            <input type="text" name="pattern" /><br>
             </div>
         </div>
     <#elseif type == "long text">
@@ -70,7 +70,7 @@
             <label>Minimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num-char" required/><br>
+            <input type="number" name="min-num-char" /><br>
             </div>
         </div>
          <div class="row">
@@ -78,7 +78,7 @@
             <label>Massimo numero di caratteri:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num-char" required/><br>
+            <input type="number" name="max-num-char" /><br>
             </div>
         </div>
     <#elseif type == "date">
@@ -87,7 +87,7 @@
             <label>Data minima:</label>
             </div>
             <div class="col-75">
-            <input type="date" name="min-date" required/><br>
+            <input type="date" name="min-date" /><br>
             </div>
         </div><br>
 
@@ -96,7 +96,7 @@
             <label>Data massima:</label>
             </div>
             <div class="col-75">
-            <input type="date" name="max-date" required/><br>
+            <input type="date" name="max-date" /><br>
             </div>
         </div>
 
@@ -106,7 +106,7 @@
             <label>Minimo numero:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num" required/><br>
+            <input type="number" name="min-num" /><br>
             </div>
         </div>
         <div class="row">
@@ -114,7 +114,7 @@
             <label>Massimo numero:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num" required/><br>
+            <input type="number" name="max-num" /><br>
             </div>
         </div>
     <#elseif type == "choice">
@@ -123,7 +123,7 @@
             <label>Minimo numero di scelte:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="min-num-choices" required/><br>
+            <input type="number" name="min-num-choices" /><br>
             </div>
         </div>
         
@@ -132,7 +132,7 @@
             <label>Massimo numero di scelte:</label>
             </div><br>
             <div class="col-75">
-            <input type="number" name="max-num-choices" required/><br>
+            <input type="number" name="max-num-choices" /><br>
             </div>
         </div>
 

@@ -58,7 +58,8 @@
         <li>${user.email} 
             <form style="display: inline;" action="/pollweb/users" method="post">
                 <input type="hidden" name="n" value="#{user.id}">
-                <button class="delete-btn" type="submit" name="delete">
+                <input type="hidden" name="delete">
+                <button onclick="deleteAlert(this.form)" class="delete-btn" type="button">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>
@@ -66,3 +67,12 @@
     </#list>
 </ul>
 </div>
+<script type="text/javascript">
+    function deleteAlert(form) {
+        if (window.confirm("Sei sicuro di volere eliminare l'utente?")) {
+            form.submit();
+        } else {
+
+        }
+    }
+</script>

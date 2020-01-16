@@ -33,15 +33,24 @@ Status:
 <#if survey.class.simpleName != "ReservedSurvey">
 
 <div class="col-1">  
-<h2 class="title1">Domande:</h2>
+<h3 class="title1">Domande</h3>
    
     <#list survey.questions as question>
         
-            ${question.text} - <#if question.mandatory>(obbligatoria)</#if>
+            ${question?counter} - ${question.text} -
+            <form style="display: inline-block;" action="/pollweb/questions" method="get">
+                <input type="hidden" name="survey" value="#{survey.id}"/>
+                <input type="hidden" name="question-index" value="#{question?index}"/>
+                <label>Obbligatoria: 
+                    <input onchange="this.form.submit();" type="checkbox" <#if question.mandatory>checked="checked"</#if> />
+                </label>
+                <input type="hidden" name="change_mandatory">
+            </form>
             <form style="display: inline-block;" action="/pollweb/questions" method="post">
                 <input type="hidden" name="survey" value="#{survey.id}"/>
                 <input type="hidden" name="question-index" value="#{question?index}"/>
-                <button type="submit" class="delete-btn" name="delete">
+                <input type="hidden" name="delete">
+                <button type="button" onclick="deleteQuestion(this.form)" class="delete-btn">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>
@@ -136,7 +145,8 @@ Status:
                         <form style="display: inline-block;" action="/pollweb/participants" method="post">
                             <input type="hidden" name="survey" value="#{survey.id}">
                             <input type="hidden" name="participant" value="#{participant.id}">
-                            <button class="delete-btn" type="submit" name="delete"> 
+                            <input type="hidden" name="delete">
+                            <button onclick="removeParticipant(this.form);" class="delete-btn" type="button" > 
                                 <i class="fas fa-times"></i>
                             </button>
                         </form><br>
@@ -186,3 +196,21 @@ Status:
 <div class="clear"></div>
 </#if>
 </div>
+
+<script type="text/javascript">
+    function deleteQuestion(form) {
+        if(window.confirm("Sei sicuro di voler cancellare la domanda?")) {
+            form.submit();
+        } else {
+            //
+        }
+    }
+
+    function removeParticipant(form) {
+        if(window.confirm("Sei sicuro di voler rimuovere il participante?")) {
+            form.submit();
+        } else {
+            //
+        }
+    }
+</script>
