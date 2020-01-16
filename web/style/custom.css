@@ -16,9 +16,8 @@ and open the template in the editor.
 }
 
 a {
-    color: blue;;
+    color: black;
     color: var(--primary-color);
-    text-decoration: none;
 }
 
 input {
@@ -48,6 +47,7 @@ input {
 
 .btn:hover {
     background-color: white;
+    color: black;
     color: var(--primary-color);
 }
 
@@ -106,6 +106,7 @@ input {
     padding: 0.3em;
     border-bottom: 1px solid black;
     margin-bottom: 0.7em;
+    text-decoration: none;
 }
 
 .item a {display: block;}
@@ -133,6 +134,7 @@ input {
 }
 
 .text .head {
+    color: black;
     color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 0.3em;
@@ -186,17 +188,10 @@ input {
 }
 
 #compile-survey .question-card {
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
-    border-radius: 10px;
-    box-shadow: 6px 6px 10px;
-    padding: 1.5em;
-    text-align: center
-    width: 100%;
-    margin: 10px auto;
-    max-width: 800px;
 }
 
 #compile-survey .question-card input[type="text"], #compile-survey .question-card textarea {
@@ -210,6 +205,8 @@ input {
 
 @media screen and (max-width: 600px) {
     #compile-survey {
+        text-align: center;
+        min-height: calc(100vh - 222px);
         grid-template-rows: 90% 10%;
         grid-template-columns: 50% 50%;
     }
@@ -241,8 +238,7 @@ input {
 
 .account-content {
     margin: 0 auto;
-    flex: 1;
-    min-width: 75%;
+    
 }
 
 .info-utente {
