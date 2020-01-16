@@ -15,8 +15,8 @@ public class NumberQuestion extends Question {
     private int maxValue;
 
     public NumberQuestion() {
-        this.minValue = -1000000000;
-        this.maxValue = 1000000000;
+        this.minValue = -100000000;
+        this.maxValue = 100000000;
     }
     
     public int getMinValue() {

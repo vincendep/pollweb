@@ -8,25 +8,13 @@ package it.univaq.f4i.iw.pollweb.business.controller;
 import it.univaq.f4i.iw.framework.result.TemplateManagerException;
 import it.univaq.f4i.iw.framework.result.TemplateResult;
 import it.univaq.f4i.iw.framework.security.SecurityLayer;
-import it.univaq.f4i.iw.pollweb.business.model.Answer;
-import it.univaq.f4i.iw.pollweb.business.model.ChoiceAnswer;
-import it.univaq.f4i.iw.pollweb.business.model.ChoiceQuestion;
-import it.univaq.f4i.iw.pollweb.business.model.DateAnswer;
-import it.univaq.f4i.iw.pollweb.business.model.DateQuestion;
-import it.univaq.f4i.iw.pollweb.business.model.NumberAnswer;
-import it.univaq.f4i.iw.pollweb.business.model.NumberQuestion;
 import it.univaq.f4i.iw.pollweb.business.model.Participant;
-import it.univaq.f4i.iw.pollweb.business.model.Question;
 import it.univaq.f4i.iw.pollweb.business.model.ReservedSurvey;
-import it.univaq.f4i.iw.pollweb.business.model.ShortTextAnswer;
-import it.univaq.f4i.iw.pollweb.business.model.ShortTextQuestion;
 import it.univaq.f4i.iw.pollweb.business.model.Survey;
 import it.univaq.f4i.iw.pollweb.business.model.SurveyResponse;
-import it.univaq.f4i.iw.pollweb.business.model.TextAnswer;
-import it.univaq.f4i.iw.pollweb.business.model.TextQuestion;
+import it.univaq.f4i.iw.pollweb.business.utility.FormUtility;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 import java.io.IOException;
-import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,7 +48,7 @@ public class CompileSurveyController extends BaseController {
                 long participantId = (Long) session.getAttribute("participantid");
                 Participant participant = ((DataLayer) request.getAttribute("datalayer")).getParticipantDAO().findById(participantId);
                 if ( (! participant.hasAlreadySubmitted()) && participant.getReservedSurvey().equals(reservedSurvey)) {
-                    SurveyResponse surveyResponse = createSurveyResponseFromRequest(request, reservedSurvey);
+                    SurveyResponse surveyResponse = FormUtility.createSurveyResponseModel(request, reservedSurvey);
                     if (surveyResponse.isValid()) {
                         ((DataLayer) request.getAttribute("datalayer")).getSurveyResponseDAO().saveOrUpdate(surveyResponse);
                         participant.setSubmitted(true);
@@ -77,7 +65,7 @@ public class CompileSurveyController extends BaseController {
                     throw new ServletException("Non puoi compilare questo sondaggio");
                 }
             } else {
-                SurveyResponse surveyResponse = createSurveyResponseFromRequest(request, survey);
+                SurveyResponse surveyResponse = FormUtility.createSurveyResponseModel(request, survey);
                 if (surveyResponse.isValid()) {
                     ((DataLayer) request.getAttribute("datalayer")).getSurveyResponseDAO().saveOrUpdate(surveyResponse);
                     TemplateResult res = new TemplateResult(getServletContext());
@@ -91,43 +79,5 @@ public class CompileSurveyController extends BaseController {
         } catch (NumberFormatException | TemplateManagerException ex) {
             throw new ServletException(ex);
         } 
-    }
-    
-    private SurveyResponse createSurveyResponseFromRequest(HttpServletRequest request, Survey survey) {
-        SurveyResponse surveyResponse = new SurveyResponse();
-        surveyResponse.setSurvey(survey);
-        for (Question q: survey.getQuestions()) {
-            if (request.getParameter(q.getCode()) != null) {
-                Answer answer = null;
-                if (q instanceof ChoiceQuestion) {
-                    ChoiceAnswer ca = new ChoiceAnswer();
-                    for (String index: request.getParameterValues(q.getCode())) {
-                        ca.addOption(((ChoiceQuestion) q).getOption(Integer.valueOf(index)));
-                    }
-                    answer = ca;
-                } else if (q instanceof DateQuestion) {
-                    DateAnswer da = new DateAnswer();
-                    da.setAnswer(LocalDate.parse(request.getParameter(q.getCode())));
-                    answer = da;
-                } else if (q instanceof NumberQuestion) {
-                    NumberAnswer na = new NumberAnswer();
-                    na.setAnswer(Float.valueOf(request.getParameter(q.getCode())));
-                    answer = na;
-                } else if (q instanceof ShortTextQuestion) {
-                    ShortTextAnswer sta = new ShortTextAnswer();
-                    sta.setAnswer(request.getParameter(q.getCode()));
-                    answer = sta;
-                } else if (q instanceof TextQuestion){
-                    TextAnswer ta = new TextAnswer();
-                    ta.setAnswer(request.getParameter(q.getCode()));
-                    answer = ta;
-                } else {
-                    continue;
-                }
-                answer.setQuestion(q);
-                surveyResponse.addAnswer(answer);
-            }
-        }
-        return surveyResponse;
     }
 }
