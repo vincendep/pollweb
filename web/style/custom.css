@@ -196,6 +196,12 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    background-color: white;
+    min-height: 180px;
 }
 
 #compile-survey .question-card input[type="text"], #compile-survey .question-card textarea {
