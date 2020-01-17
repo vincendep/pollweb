@@ -238,12 +238,33 @@ input {
 
 .account-content {
     margin: 0 auto;
-    
+    width: 100%;
+}
+
+.account-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 600px) {
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .account-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .info-utente {
-    margin-bottom: 3em;
-    border-bottom: 3px solid gray;
+    max-width: 650px;
+    margin: 2em auto;
+    padding: 0 2em;
+    background-color: #9ebee2;
+    border: 1px solid #9ebee2;
+    border-radius: 10px;
 }
 
 .info-utente h3 {
@@ -256,8 +277,7 @@ input {
 
 .info-utente li {
     list-style-type: none;
-    padding: 0.5em;
-    text-align: center;
+    padding: 0.5em
 }
 
 
@@ -381,6 +401,49 @@ td .trash-icon {
 
 /*MANAGE-USERS*/
 
+.users-list {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.users-list thead td {
+    font-weight: bold;
+}
+
+.users-list tr {
+    border-bottom: 1px solid black;
+}
+
+.users-list td {
+    padding: 0.5em 0;
+}
+
+.add-user-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-user {
+    flex: 1 0 0;
+    max-width: 800px;
+    padding: 0.5em;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+
+.add-user-title {
+    text-align: center;
+}
+
+.add-user-form .input-field label {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .center
 {
     text-align: center;
@@ -490,6 +553,7 @@ label {
 
 .arrow-btn:hover {
     background-color: white;
+    color: black;
     color: var(--primary-color);
 }
 
@@ -506,64 +570,7 @@ label {
     color: white;
 }
 
-.total{
-    width: 100%;
 
-}
-
-.split{
-    width: 100%;
-}
-
-.clear{
-     float: none; 
-     clear: left
-}
-
-.border{
-    border-radius: 5px;
-    width: 48%;
-    float:left;
-    text-align: center;
-    margin: 10px;
-    padding-top: 0px;
-    min-height:100vh;
-    background-color: #f2f2f2;
-    
-}
-
-.col-1{
-    border-radius: 5px;
-    width: 48%;
-    text-align: center;
-    margin: auto;
-    background-color: #f2f2f2;
-    
-}
-
-.lines1{
-    border-width: 3px;
-    width: 50%;
-
-}
-
-.lines2{
-    border: 0.5px solid black;
-    width: 60%;
-}
-
-.question{
-    width: 40%;
-    margin: auto;
-
-}
-
-.queston-center {
-    text-align: center;
-}
-h3 {
-    text-align: center;
-}
 
 .small-btn{
     font-size: 12px;

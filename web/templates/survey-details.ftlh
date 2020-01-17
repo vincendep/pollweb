@@ -1,97 +1,35 @@
-<div class="total">
 <#assign mandatoryQuestions = survey.questions?filter(question -> question.mandatory)>
 
-<div class="center">
-Status: 
-    <#if survey.active>
-        Aperto <form action="/pollweb/surveys" method="post">
-            <input type="hidden" name="survey" value="#{survey.id}"/>
-            <input type="submit" class="btn" name="close" value="Chiudi"/>
-        </form>
-    <#else>
-        Chiuso <form action="/pollweb/surveys" method="post">
-            <input type="hidden" name="survey" value="#{survey.id}"/>
-            <input type="submit" class="btn" name="open" value="Apri"/>
-        </form>
-    </#if> 
+<div class="survey-info"> 
+    <h3>${survey.title}</h3>
 
-
-
-    <h2 class="title1">${survey.title}</h2>
-
-        <p>Numero di domande: #{survey.questions?size} (#{mandatoryQuestions?size} obbligatorie)</p>
-        <p>Numero di risposte: #{survey.surveyResponses?size}</p>
-<form style="display:inline-block;" action="survey-results" method="get">
-    <input type="hidden" name="survey" value="#{survey.id}"/>
-    <input type="submit" class="small-btn" value="Mostra risultati"/>
-</form>
-<form style="display:inline-block;" action="/pollweb/surveys" method="get">
-    <input type="hidden" name="survey" value="#{survey.id}"/>
-    <input type="submit" class="small-btn" name="download" value="Download risultati"/>
-</form>
-</div>
-<#if survey.class.simpleName != "ReservedSurvey">
-
-<div class="col-1">  
-<h3 class="title1">Domande</h3>
-   
-    <#list survey.questions as question>
-        
-            ${question?counter} - ${question.text} -
-            <form style="display: inline-block;" action="/pollweb/questions" method="get">
-                <input type="hidden" name="survey" value="#{survey.id}"/>
-                <input type="hidden" name="question-index" value="#{question?index}"/>
-                <label>Obbligatoria: 
-                    <input onchange="this.form.submit();" type="checkbox" <#if question.mandatory>checked="checked"</#if> />
-                </label>
-                <input type="hidden" name="change_mandatory">
-            </form>
-            <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                <input type="hidden" name="survey" value="#{survey.id}"/>
-                <input type="hidden" name="question-index" value="#{question?index}"/>
-                <input type="hidden" name="delete">
-                <button type="button" onclick="deleteQuestion(this.form)" class="delete-btn">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </form>
-            <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                <input type="hidden" name="survey" value="#{survey.id}"/>
-                <input type="hidden" name="question-index" value="#{question?index}"/>
-                <button class="arrow-btn" type="submit" name="down">
-                    <i class="fas fa-arrow-down"></i>
-                </button>
-            </form>
-            <form style="display: inline-block;" action="/pollweb/questions" method="post">
-                <input type="hidden" name="survey" value="#{survey.id}"/>
-                <input type="hidden" name="question-index" value="#{question?index}"/>
-                <button class="arrow-btn" type="submit" name="up">
-                    <i class="fas fa-arrow-up"></i>
-                </button> 
-            </form><br>
-       
-    </#list>
-    
-
-    <form  action="create-question" method="get" ><br>    
-            <h2 class="title1"> Aggiungi domanda </h2> <br>
-            <input type="hidden" name="survey" value="#{survey.id}"/>
-            <select name="type">
-                <option value="long text">Testo lungo</option>
-                <option value="choice">Scelta multipla</option>
-                <option value="number">Numerica</option>
-                <option value="date">Data</option>
-                <option value="short text">Testo breve</option>
-            </select> 
-            <input type="submit" class="small-btn" value="Aggiungi"/>
-        
+    <p>Numero di domande: #{survey.questions?size}</p>
+    <p>Numero di domande obbligatorie: #{mandatoryQuestions?size}</p>
+    <p>Numero di risposte ricevute: #{survey.surveyResponses?size}</p>
+    <p>Status attuale: <#if survey.active>Aperto<#else>Chiuso</#if></p>
+    <form style="display:inline-block;" action="survey-results" method="get">
+        <input type="hidden" name="survey" value="#{survey.id}"/>
+        <input type="submit" class="small-btn" value="Mostra risultati"/>
     </form>
+    
+    <form style="display:inline-block;" action="/pollweb/surveys" method="get">
+        <input type="hidden" name="survey" value="#{survey.id}"/>
+        <input type="submit" class="small-btn" name="download" value="Download risultati"/>
+    </form>
+
+    <form style="display: inline-block;" action="/pollweb/surveys" method="post">
+            <input type="hidden" name="survey" value="#{survey.id}"/>
+            <input type="submit" class="small-btn" 
+                <#if survey.active>
+                    name="close" value="Chiudi"
+                <#else>
+                    name="open" value="Apri"/>
+                </#if>
+        </form>
 </div>
 
-<#elseif survey.class.simpleName == "ReservedSurvey">
-<div class="split">
-<div class="border">  
-<h2 class="title1">Domande:</h2>
-   
+<div class="survey-questions">
+    <h2 class="title1">Domande:</h2>  
     <#list survey.questions as question>
         
             ${question.text} - <#if question.mandatory>(obbligatoria)</#if>
@@ -134,6 +72,11 @@ Status:
         
     </form>
 </div>
+
+
+<#if survey.class.simpleName == "ReservedSurvey">
+<div class="split">
+<div class="border">  
 <div class="border">
 
         <h2 class="title1">Partecipanti</h2>

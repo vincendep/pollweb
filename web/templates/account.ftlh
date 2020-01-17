@@ -1,14 +1,17 @@
  <#assign openSurveys = surveys?filter(survey -> survey.active)>
-    <div class="account-content info-utente">
+    <div class="account-content">
         <div class="info-utente">
             <h3>Informazioni personali</h3>
-            <ul>
-                <li>Nome: ${logged_user.name}</li>
-                <li>Cognome: ${logged_user.surname}</li>
-                <li>Email: ${logged_user.email}</li>
-                <li>Sondaggi pubblicati: ${surveys?size}</li>
-                <li>Livello utente: <#if logged_user.role == "RESPONSIBLE">Responsabile<#else>Amministratore</#if></li>
-            </ul>
+            <div class="account-container">
+                <img class="avatar" src="/pollweb/images/avatar.png" height="150">
+                <ul>
+                    <li>Nome: ${logged_user.name}</li>
+                    <li>Cognome: ${logged_user.surname}</li>
+                    <li>Email: ${logged_user.email}</li>
+                    <li>Sondaggi pubblicati: ${surveys?size}</li>
+                    <li>Livello utente: <#if logged_user.role == "RESPONSIBLE">Responsabile<#else>Amministratore</#if></li>
+                </ul>
+            </div>
             <div style="text-align: center;">
                 <form style="display: inline-block;" action="/pollweb/auth"><input class="btn" type="submit" name="logout" value="Logout"/></form>
                 <#if logged_user.role == "ADMINISTRATOR">
@@ -34,7 +37,7 @@
                     <td class="status"><#if survey.active>Aperto<#else>Chiuso</#if></td>
                     <td class="tipo"><#if survey.class.simpleName == "ReservedSurvey">Riservato<#else>Pubblico</#if></td>
                     <td class="trash-icon">
-                        <form action="/pollweb/surveys" method="post">
+                        <form style="text-align: center;" action="/pollweb/surveys" method="post">
                             <input type="hidden" name="survey" value="#{survey.id}">
                             <input type="hidden" name="delete">
                             <button class="delete-btn" type="button" onclick="deleteSurvey(this.form)">

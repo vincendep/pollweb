@@ -24,7 +24,7 @@ public class ShortTextAnswer extends TextAnswer {
             if(getAnswer().length() < question.getMinLength()){
                 return false;
             }
-            if (! Pattern.matches(question.getPattern(), question.getText())) {
+            if (! Pattern.matches(question.getPattern(), this.getAnswer())) {
                 return false;
             }
             return true;
