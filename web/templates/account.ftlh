@@ -1,24 +1,35 @@
  <#assign openSurveys = surveys?filter(survey -> survey.active)>
     <div class="account-content">
-        <div class="info-utente">
-            <h3>Informazioni personali</h3>
-            <div class="account-container">
-                <img class="avatar" src="/pollweb/images/avatar.png" height="150">
-                <ul>
-                    <li>Nome: ${logged_user.name}</li>
-                    <li>Cognome: ${logged_user.surname}</li>
-                    <li>Email: ${logged_user.email}</li>
-                    <li>Sondaggi pubblicati: ${surveys?size}</li>
-                    <li>Livello utente: <#if logged_user.role == "RESPONSIBLE">Responsabile<#else>Amministratore</#if></li>
-                </ul>
+        <div class="top-cards">
+            <div class="info-utente">
+                <h3>Informazioni personali</h3>
+                <div class="account-container">
+                    <img class="avatar" src="/pollweb/images/avatar.png" height="150">
+                    <ul>
+                        <li>Nome: ${logged_user.name}</li>
+                        <li>Cognome: ${logged_user.surname}</li>
+                        <li>Email: ${logged_user.email}</li>
+                        <li>Sondaggi pubblicati: ${surveys?size}</li>
+                        <li>Livello utente: <#if logged_user.role == "RESPONSIBLE">Responsabile<#else>Amministratore</#if></li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <form style="display: inline-block;" action="/pollweb/auth">
+                        <input class="btn" type="submit" name="logout" value="Logout"/>
+                    </form>
+                </div>
             </div>
-            <div style="text-align: center;">
-                <form style="display: inline-block;" action="/pollweb/auth"><input class="btn" type="submit" name="logout" value="Logout"/></form>
-                <#if logged_user.role == "ADMINISTRATOR">
-                    <form style="display: inline-block;" action="account/manage-users" method="get"><input class="btn" type="submit" value="Gestisci utenti"/></form>
-                </#if>
+            <#if logged_user.role == "ADMINISTRATOR">
+            <div class="card-utenti">
+                <h3>Utenti registrati</h3>
+                <p style="font-size: 5em; margin: 0;">#{users_size}</p>
+                <form style="display: inline-block;" action="account/manage-users" method="get">
+                    <input class="btn" type="submit" value="Gestisci utenti"/>
+                </form>
             </div>
+            </#if>
         </div>
+
         <section class="my-surveys">
             <h3>Sondaggi gestiti</h3>
             <table>

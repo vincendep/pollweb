@@ -15,9 +15,8 @@
                             </#if>
 	            	</div>
 	            	<div class="text">
-		                <h5 class="head">${survey.getTitle()}</h5>
-		                <p class="info">Responsabile: ${survey.manager.name} ${survey.manager.surname}</p> 
-		                <p class="info">Data di pubblicazione: ${survey.pubblicationDate}</p>
+		                <h4 class="head">${survey.getTitle()}</h4>
+		                <p class="info">Pubblicato il ${survey.pubblicationDate}</p>
 	            	</div>
 	            	<div class="icon icon--right"><i class="fas fa-caret-right fa-2x"></i></div>
             	</a>

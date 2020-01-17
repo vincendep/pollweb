@@ -101,12 +101,16 @@ input {
 }
 
 .list .item {
+    min-height: 5em;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
     position: relative;
     display: flex;
     padding: 0.3em;
-    border-bottom: 1px solid black;
     margin-bottom: 0.7em;
     text-decoration: none;
+    background-color: white;
 }
 
 .item a {display: block;}
@@ -236,6 +240,26 @@ input {
 
 /* ACCOUNT PAGE */
 
+.top-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: : stretch;
+}
+
+.card-utenti {
+    margin: 1em;
+    flex: 0.3 0 370px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    background-color: #fff;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .account-content {
     margin: 0 auto;
     width: 100%;
@@ -259,12 +283,24 @@ input {
 }
 
 .info-utente {
+    margin: 1em;
+    flex: 0.3 0 370px;
     max-width: 650px;
-    margin: 2em auto;
-    padding: 0 2em;
-    background-color: #9ebee2;
-    border: 1px solid #9ebee2;
+    padding: 1em 2em;
     border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    background-color: #fff;
+}
+
+@media screen and (max-width: 950px) {
+    .top-cards {
+        flex-wrap: wrap;
+    }
+
+    .info-utente, .card-utenti {
+        flex-shrink: 1;
+    }
 }
 
 .info-utente h3 {
@@ -285,6 +321,10 @@ input {
     text-align: center;
     margin-bottom: 1em;
 
+}
+
+.my-surveys {
+    margin-top: 5em;
 }
 
 .my-surveys table {
@@ -429,9 +469,11 @@ td .trash-icon {
     flex: 1 0 0;
     max-width: 800px;
     padding: 0.5em;
-    margin: 0 auto;
-    background-color: #f4f4f4;
+    margin: 5em auto;
     border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    background-color: #fff;
 }
 
 .add-user-title {

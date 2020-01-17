@@ -18,9 +18,11 @@ public class AccountPage extends BaseController {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             List<Survey> surveys = ((DataLayer) request.getAttribute("datalayer")).getSurveyDAO().findByManager((User) request.getAttribute("logged_user"));
+            int usersCount = ((DataLayer) request.getAttribute("datalayer")).getUserDAO().findAll().size();
             TemplateResult res = new TemplateResult(getServletContext());
             request.setAttribute("page_title", "Account page");
             request.setAttribute("surveys", surveys);
+            request.setAttribute("users_size", usersCount);
             res.activate("account.ftlh", request, response);
         } catch (TemplateManagerException e) {
             throw new ServletException(e);
