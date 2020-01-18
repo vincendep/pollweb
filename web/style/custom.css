@@ -22,6 +22,7 @@ a {
 
 input {
     border-radius: 5px;
+    padding: 0.3em;
 }
 
 .btn {
@@ -60,6 +61,9 @@ input {
     border: 2px solid var(--danger-color);
 }
 
+.text-center {
+    text-align: center;
+}
 
 /* LOGIN PAGE */
 
@@ -202,6 +206,7 @@ input {
     box-shadow: 0 0 10px #888;
     background-color: white;
     min-height: 180px;
+    margin: 2em;
 }
 
 #compile-survey .question-card input[type="text"], #compile-survey .question-card textarea {
@@ -248,8 +253,8 @@ input {
 
 .top-cards {
     display: flex;
-    justify-content: space-around;
-    align-items: : stretch;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
 .card-utenti {
@@ -330,12 +335,22 @@ input {
 }
 
 .my-surveys {
-    margin-top: 5em;
+    margin: 1em;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    background-color: #fff;
+    padding: 1.5em;
+}
+
+.my-surveys h3 {
+    text-align: center;
 }
 
 .my-surveys table {
     margin: 0 auto;
     width: 100%;
+    margin-bottom: 1em;
 }
 
 .my-surveys table a:hover {
@@ -362,7 +377,7 @@ input {
 .my-surveys .btn {
     max-width: 10em;
     display: block;
-    margin: 2em auto;
+    margin: 0 auto;
 }
 
 td .trash-icon {
@@ -396,60 +411,74 @@ td .trash-icon {
 
 /*SURVEY DETAILS*/
 .survey-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.survey-info, .survey-questions {
+    flex: 0.5 1 500px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    background-color: #fff;
+    padding: 2em;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.survey-participants {
+    flex: 0.5 1 500px;
+    margin: 2em auto;
     text-align: center;
-    font-size: 25px;
+    padding: 0 2em;
 }
 
-.questions {
-
-    font-size: 20px;
-    text-justify: auto;
+.participants {
+    margin-top: 2em;
 }
 
-.questions h4 {
+.participant { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    background-color: #fff;
+    padding: 1em;
     margin-bottom: 1em;
 }
 
-.questions fieldset {
-    width:50%;
+.survey-info {
+    flex-grow: 0;
+    flex-basis: content;
+    max-width: 600px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
 }
 
-
-.left  {
-    float : left;  
-    text-align: center;
-    font-size: 25px;
-    width: 40%;
+.question-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
 }
 
-.clear {clear:both; 
-        line-height:0.01px; 
-        font-size:0.01px;}
-
-.right {
-    padding-right: 100px;
-    float: right;
-    text-align: center;
-    font-size: 25px;
-    width: 40%;
-}
-
-.details {
-
-    width: 100%;
-}
-
-.details input {
-    border-radius: 5px;
-    box-shadow: 1px 1px 5px;
-
-}
 
 /*MANAGE-USERS*/
 
+.manage-users {
+    
+}
+
 .users-list {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     margin-bottom: 20px;
 }
@@ -473,8 +502,8 @@ td .trash-icon {
 
 .add-user {
     flex: 1 0 0;
-    max-width: 800px;
-    padding: 0.5em;
+    max-width: 600px;
+    padding: 1em;
     margin: 5em auto;
     border-radius: 10px;
     -webkit-box-shadow: 0 0 10px #888;

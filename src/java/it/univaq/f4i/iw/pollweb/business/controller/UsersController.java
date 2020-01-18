@@ -10,6 +10,8 @@ import it.univaq.f4i.iw.pollweb.business.model.Role;
 import it.univaq.f4i.iw.pollweb.business.model.User;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 import java.io.IOException;
+import java.rmi.ServerException;
+import java.util.List;
 import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UsersController extends BaseController {
 
-    private void action_add(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void action_add(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         User user = new User();
         user.setName(request.getParameter("name"));
         user.setSurname(request.getParameter("surname"));
@@ -31,6 +33,10 @@ public class UsersController extends BaseController {
             user.setRole(Role.ADMINISTRATOR);
         } else {
             user.setRole(Role.RESPONSIBLE);
+        }
+        List<User> users = ((DataLayer) request.getAttribute("datalayer")).getUserDAO().findAll();
+        if (users.contains(user)) {
+            throw new ServletException("La mail inserita è già associata ad un utente registrato");
         }
         ((DataLayer) request.getAttribute("datalayer")).getUserDAO().saveOrUpdate(user);
         response.sendRedirect("/pollweb/account/manage-users");
