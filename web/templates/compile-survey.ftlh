@@ -12,28 +12,28 @@
                     <h4>#{question?counter}. ${question.text}</h4>
                     <#if question.note??><p>${question.note}</p></#if>
                     <#if question.class.simpleName == "ShortTextQuestion">
-                        <input type="text" name="${question.code}"/>
+                        <input <#if question.mandatory>required="required"</#if> minlength="#{question.minLength}" maxlength="#{question.maxLength}" pattern="${question.pattern}" type="text" name="${question.code}"/>
                     <#elseif question.class.simpleName == "TextQuestion">
-                        <textarea rows="4" name="${question.code}"></textarea>
+                        <textarea <#if question.mandatory>required="required"</#if> minlength="#{question.minLength}" maxlength="#{question.maxLength}" rows="4" name="${question.code}"></textarea>
                     <#elseif question.class.simpleName == "NumberQuestion">
-                        <input type="number" name="${question.code}"/>
+                        <input <#if question.mandatory>required="required"</#if> min="${question.minValue}" max="${question.maxValue}" type="number" name="${question.code}"/>
                     <#elseif question.class.simpleName == "DateQuestion">
-                        <input type="date" name="${question.code}"/>
+                        <input <#if question.mandatory>required="required"</#if> type="date" min="${question.minDate}" max="${question.maxDate}" name="${question.code}"/>
                     <#elseif question.class.simpleName == "ChoiceQuestion">
-                        <div class="options">
+                        <fieldset style="border: none;" <#if question.mandatory>data-required="required"</#if> data-min="${question.minNumberOfChoices}" data-max="${question.maxNumberOfChoices}" class="options">
                             <#list question.options as option>
                                 <label>
                                     <input <#if question.maxNumberOfChoices == 1>type="radio"<#else>type="checkbox"</#if> name="${question.code}" value="${option?index}"/> ${option.text}
                                 </label>
                             </#list>
-                        </div>
+                        </fieldset>
                     </#if>
                 </section>
             </#list>
         </form>
         <div id="closing" class="page closing" style="flex-direction: column;">
             <p>${survey.closingText}</p>
-            <input form="survey-form" class="btn" type="submit" name="submit" value="Conferma"  />
+            <button form="survey-form" class="btn" type="button" onclick="submitSurvey(this.form)">Conferma</button>
         </div>
     </div>
     <i id="rarrow" onclick="next()" class="fas fa-arrow-right fa-2x"></i>
@@ -69,6 +69,19 @@
                 pages[currPage].style.display = "none";
                 currPage++;
                 pages[currPage].style.display = "flex";
+            }
+        }
+
+        function submitSurvey(form) {
+            let validity = true;
+            for (let input of form.elements) {
+                validity = validity && input.checkValidity();
+            }
+            if (validity) {
+                form.submit();
+            } else {
+                window.alert("Compilazione non valida!");
+                form.reportValidity();
             }
         }
     </script>

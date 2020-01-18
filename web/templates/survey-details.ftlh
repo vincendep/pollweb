@@ -72,6 +72,7 @@
         </div>
         </#list>
         
+        <p class="text-center"><small>*L'asterisco identifica le domande obbligatorie</small></p>
 
         <form class="text-center" action="create-question" method="get" ><br>    
             <h5 class="text-center"> Aggiungi domanda </h5>
