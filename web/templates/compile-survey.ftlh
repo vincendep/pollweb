@@ -9,7 +9,7 @@
             <input type="hidden" name="survey" value="#{survey.id}">
             <#list survey.questions as question>
                 <section class="page question-card">
-                    <h4>#{question?counter}. ${question.text}</h4>
+                    <h4>#{question?counter}. ${question.text?no_esc}</h4>
                     <#if question.note??><p>${question.note}</p></#if>
                     <#if question.class.simpleName == "ShortTextQuestion">
                         <input <#if question.mandatory>required="required"</#if> minlength="#{question.minLength}" maxlength="#{question.maxLength}" pattern="${question.pattern}" type="text" name="${question.code}"/>

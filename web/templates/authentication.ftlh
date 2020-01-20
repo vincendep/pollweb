@@ -6,8 +6,9 @@
         <label id="email">Email: </label>
         </div>
         <div class="col-75">
-        <label for="email"/> 
+        <label> 
         <input type="email" name="email" required="required"/>
+        </label>
         </div>
     </div>
     <div class="row">
@@ -15,9 +16,11 @@
         <label id="password">Password: </label>
         </div>
         <div class="col-75">
-        <label for="password"/>
+        <label>
         <input type="password" name="password" required="required" />
+        </label>
         </div>
+
     </div>
     <div class="row">
         <div class="col-25"></div>

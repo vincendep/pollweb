@@ -47,16 +47,22 @@ public class ParticipantsController extends BaseController {
         if (!survey.getManager().equals(user)) {
             throw new ServletException("Non sei il responsabile di questo sondaggio");
         }
+        
         Participant participant = new Participant();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         if (email == null || password == null) {
             throw new ServletException("Parametro mancante");
         }
+        
         participant.setEmail(email);
         participant.setPassword(password);
         participant.setReservedSurvey((ReservedSurvey) survey);
-        // TODO manage duplicate email?
+
+        if( ((ReservedSurvey) survey).getParticipants().contains(participant)) {
+            throw new ServletException("Il participante è già registrato.");
+        }
+        
         ((DataLayer) request.getAttribute("datalayer")).getParticipantDAO().saveOrUpdate(participant);
         response.sendRedirect("account/survey-details?survey=" + idSurvey);
 
@@ -64,9 +70,10 @@ public class ParticipantsController extends BaseController {
         String passwordEmail = "Pass1!word";
         String oggetto = "Sondaggio riservato PollWeb";
         String url = "http://localhost:8080/pollweb/compile-survey?survey=" +  SecurityLayer.checkNumeric(request.getParameter("survey"));
-        String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password + "\n" + url;
+        String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password + "\n" + "Clicca il link qui: " + url;
 
         MailUtility.send(mittente, passwordEmail, email, oggetto, testoEmail);
+       
 
     }
 
@@ -83,7 +90,6 @@ public class ParticipantsController extends BaseController {
         }
 
         Part filePart = request.getPart("csv"); // Retrieves <input type="file" name="csv">
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
         InputStream is = filePart.getInputStream();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -96,10 +102,15 @@ public class ParticipantsController extends BaseController {
                 if (!(columns[0].equals(""))) {
                     Matcher matcher = pattern.matcher(columns[0]);
                     if (matcher.matches()) {
-                        if (!(columns[1].equals(""))) {
+                        if (!(columns[1].equals(""))){
+                          
                             Participant participant = new Participant();
                             participant.setEmail(columns[0]);
                             participant.setPassword(columns[1]);
+                            
+                            if (((ReservedSurvey) survey).getParticipants().contains(participant)) {
+                                continue;
+                            }                            
                             participant.setReservedSurvey((ReservedSurvey) survey);
                             ((DataLayer) request.getAttribute("datalayer")).getParticipantDAO().saveOrUpdate(participant);
 
@@ -109,7 +120,8 @@ public class ParticipantsController extends BaseController {
                             String passwordEmail = "Pass1!word";
                             String password = participant.getPassword();
                             String url = "http://localhost:8080/pollweb/compile-survey?survey=" +  SecurityLayer.checkNumeric(request.getParameter("survey"));
-                            String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " + password + "\n" + url;
+                            String testoEmail = "Credenziali di accesso per il sondaggio riservato. \n\n" + "Email: " + email + "\n" + "Password: " 
+                                    + password + "\n" + "Clicca il link per autenticarti al sondaggio :" + url;
 
                             MailUtility.send(mittente, passwordEmail, email, oggetto, testoEmail);
                         }
@@ -117,8 +129,8 @@ public class ParticipantsController extends BaseController {
                 } else {
                     System.out.println("La riga " + line + "non è nel formato corretto");
                 }
-            } catch (Exception e) {
-                throw new ServletException("Caricamento non riuscito");
+            } catch (NumberFormatException ex) {
+                throw new ServletException(ex);
             }
         }
         response.sendRedirect("account/survey-details?survey=" + idSurvey);

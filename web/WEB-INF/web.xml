@@ -228,6 +228,6 @@
     </context-param>
     <context-param>
         <param-name>view.data.author</param-name>
-        <param-value>Vincenzo</param-value>
+        <param-value>Vincenzo, Laura, Denis</param-value>
     </context-param>
 </web-app>

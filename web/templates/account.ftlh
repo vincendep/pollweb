@@ -4,7 +4,7 @@
             <div class="info-utente">
                 <h3>Informazioni personali</h3>
                 <div class="account-container">
-                    <img class="avatar" src="/pollweb/images/avatar.png" height="150">
+                    <img class="avatar" alt="" src="/pollweb/images/avatar.png" height="150">
                     <ul>
                         <li>Nome: ${logged_user.name}</li>
                         <li>Cognome: ${logged_user.surname}</li>
@@ -62,7 +62,7 @@
         <a class="btn" href="account/create-survey">Crea sondaggio</a>
         </section>
     </div>
-    <script type="text/javascript">
+    <script>
         function deleteSurvey(form) {
             if (window.confirm("Sei sicuro di voler eliminare il sondaggio?")) {
                 form.submit();

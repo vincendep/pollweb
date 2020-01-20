@@ -2,9 +2,11 @@
     <h4 style="text-align: center;">Utenti registrati</h4>
     <table class="users-list">
         <thead>
-            <td>Email</td>
-            <td>Livello</td>
-            <td></td>
+            <tr>
+                <td>Email</td>
+                <td>Livello</td>
+                <td></td>
+            </tr>
         </thead>
         <tbody>
             <#list users as user>
@@ -54,7 +56,7 @@
     </form> 
 </div>
 
-<script type="text/javascript">
+<script>
     function deleteAlert(form) {
         if (window.confirm("Sei sicuro di volere eliminare l'utente?")) {
             form.submit();

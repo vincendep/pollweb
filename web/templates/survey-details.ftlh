@@ -44,7 +44,7 @@
 
         <#list survey.questions as question>
         <div class="question-item">
-            #{question?counter} - ${question.text}<#if question.mandatory>*</#if>
+            #{question?counter} - ${question.text?no_esc}<#if question.mandatory>*</#if>
             <div class="buttons">
                 
                 <form style="display: inline-block;" action="/pollweb/questions" method="post">
@@ -131,7 +131,7 @@
     </#if>
 </div>
 
-<script type="text/javascript">
+<script>
     function deleteQuestion(form) {
         if(window.confirm("Sei sicuro di voler cancellare la domanda?")) {
             form.submit();
