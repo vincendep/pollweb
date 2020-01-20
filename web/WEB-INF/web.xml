@@ -89,6 +89,16 @@
         <servlet-name>authentication-page</servlet-name>
         <url-pattern>/authentication</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>manage-participants-page</servlet-name>
+        <servlet-class>it.univaq.f4i.iw.pollweb.controller.page.ManageParticipantsPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manage-participants-page</servlet-name>
+        <url-pattern>/manage-participants</url-pattern>
+    </servlet-mapping>
+
     <!-- CONTROLLERS -->
     <servlet>
         <servlet-name>surveys-controller</servlet-name>
@@ -178,6 +188,10 @@
     <filter-mapping>
         <filter-name>authentication-filter</filter-name>
         <servlet-name>users-controller</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>authentication-filter</filter-name>
+        <servlet-name>manage-participants-page</servlet-name>
     </filter-mapping>
     <welcome-file-list>
         <welcome-file>/</welcome-file>

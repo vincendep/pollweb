@@ -10,7 +10,6 @@ import it.univaq.f4i.iw.pollweb.business.model.Role;
 import it.univaq.f4i.iw.pollweb.business.model.User;
 import it.univaq.f4i.iw.pollweb.data.dao.DataLayer;
 import java.io.IOException;
-import java.rmi.ServerException;
 import java.util.List;
 import java.util.Objects;
 import javax.servlet.ServletException;
