@@ -66,9 +66,34 @@
 
         function next() {
             if (currPage < pages.length - 1) {
-                pages[currPage].style.display = "none";
-                currPage++;
-                pages[currPage].style.display = "flex";
+
+                if (currPage >= 1 && currPage < pages.length - 1) {
+                    let page = pages[currPage];
+                    let input = page.childNodes[3];
+                    console.log(page);
+                    console.log(input);
+
+                    if (input.nodeName == "FIELDSET") {
+                        let min = input.getAttribute('data-min');
+                        let max = input.getAttribute('data-max');
+                        let required = input.getAttribute('data-required') ? true : false;
+                        let selected = input.childNodes;
+                        console.log(selected);
+
+                    } else {
+                        if (input.checkValidity()) {
+                            pages[currPage].style.display = "none";
+                            currPage++;
+                            pages[currPage].style.display = "flex";
+                        } else {
+                            input.reportValidity();
+                        }
+                    }
+                } else {
+                    pages[currPage].style.display = "none";
+                    currPage++;
+                    pages[currPage].style.display = "flex";
+                }
             }
         }
 
