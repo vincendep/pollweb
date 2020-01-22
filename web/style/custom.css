@@ -418,7 +418,7 @@ td .trash-icon {
 }
 
 .survey-info {
-    flex-grow: 0.5;
+    flex: 1 1 500px;
     border-radius: 10px;
     -webkit-box-shadow: 0 0 10px #888;
     box-shadow: 0 0 10px #888;
@@ -465,7 +465,7 @@ td .trash-icon {
     justify-content: center;
     align-items: stretch;
     flex-direction: column;
-    flex-grow: 0.5;
+    flex: 1 1 500px;
 }
 
 @media screen and (max-width: 600px) {

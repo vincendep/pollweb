@@ -64,7 +64,8 @@
             <form style="display: inline-block;" action="/pollweb/questions" method="post">
                 <input type="hidden" name="survey" value="#{survey.id}"/>
                 <input type="hidden" name="question-index" value="#{question?index}"/>
-                <button type="submit" class="delete-btn" name="delete">
+                <input type="hidden" name="delete">
+                <button type="button" class="delete-btn" onclick="deleteQuestion(this.form)">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>

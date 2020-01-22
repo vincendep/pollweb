@@ -22,11 +22,12 @@
                     <#elseif question.class.simpleName == "ChoiceQuestion">
                         <fieldset style="border: none;" <#if question.mandatory>data-required="required"</#if> data-min="${question.minNumberOfChoices}" data-max="${question.maxNumberOfChoices}" class="options">
                             <#list question.options as option>
-                                <label>
-                                    <input <#if question.maxNumberOfChoices == 1>type="radio"<#else>type="checkbox"</#if> name="${question.code}" value="${option?index}"/> ${option.text}
-                                </label>
+                                <label for=${question.code}-${option?counter}>${option.text}</label>
+                                <input id="${question.code}-${option?counter}" <#if question.maxNumberOfChoices == 1>type="radio"<#else>type="checkbox"</#if> name="${question.code}" value="${option?index}"/>
                             </#list>
+                              <p style="color: red"></p>
                         </fieldset>
+                      
                     </#if>
                 </section>
             </#list>
@@ -67,32 +68,112 @@
         function next() {
             if (currPage < pages.length - 1) {
 
-                if (currPage >= 1 && currPage < pages.length - 1) {
-                    let page = pages[currPage];
-                    let input = page.childNodes[3];
-                    console.log(page);
-                    console.log(input);
-
-                    if (input.nodeName == "FIELDSET") {
-                        let min = input.getAttribute('data-min');
-                        let max = input.getAttribute('data-max');
-                        let required = input.getAttribute('data-required') ? true : false;
-                        let selected = input.childNodes;
-                        console.log(selected);
-
-                    } else {
-                        if (input.checkValidity()) {
-                            pages[currPage].style.display = "none";
-                            currPage++;
-                            pages[currPage].style.display = "flex";
-                        } else {
-                            input.reportValidity();
-                        }
-                    }
+                if (currPage > 0 && currPage < pages.length - 1) {
+                    validateQuestion(pages[currPage]);
                 } else {
                     pages[currPage].style.display = "none";
                     currPage++;
                     pages[currPage].style.display = "flex";
+                }
+            }
+        }
+
+        function validateQuestion(question) {
+            let input;
+            for (let i of question.childNodes) {
+                if (i.nodeName == "INPUT" || i.nodeName == "TEXTAREA" || i.nodeName == "FIELDSET") {
+                    input = i;
+                    break;
+                }
+            }
+
+            // checkbox and radio
+            if (input.nodeName == "FIELDSET") {
+                let min = input.getAttribute('data-min');
+                let max = input.getAttribute('data-max');
+                let required = input.getAttribute('data-required') ? true : false;
+                let selected = 0;
+                for (let choice of input.childNodes) {
+                    if (choice.nodeName == "INPUT" && choice.checked) {
+                        selected++;
+                    }
+                }
+                let valid = true;
+                let errorMessage = "";
+                
+                if (required) {
+                    if (selected < min) {
+                        valid = false;
+                        errorMessage = "Select at least " + min;
+                        if (min == 1) {
+                            errorMessage += " choice";
+                        } else {
+                            errorMessage += " choices";
+                        }
+                    }
+                    if (selected > max) {
+                        valid = false;
+                        if (errorMessage != "") {
+                            errorMessage += "\n";
+                        }
+                        errorMessage = "Select at most " + max;
+                        if (max == 1) {
+                            errorMessage += " choice";
+                        } else {
+                            errorMessage += " choices";
+                        }
+                    }
+                } else {
+                    if (selected == 0) {
+                        let errorElement = input.getElementsByTagName('p')[0];
+                        errorElement.innerHTML = "";
+                        pages[currPage].style.display = "none";
+                        currPage++;
+                        pages[currPage].style.display = "flex";
+                    } else {
+                        if (selected < min) {
+                            valid = false;
+                            errorMessage = "Select at least " + min;
+                            if (min == 1) {
+                                errorMessage += " choice";
+                            } else {
+                                errorMessage += " choices";
+                            }
+                        }
+                        if (selected > max) {
+                            valid = false;
+                            if (errorMessage != "") {
+                                errorMessage += "\n";
+                            }
+                            errorMessage = "Select at most " + max;
+                            if (max == 1) {
+                                errorMessage += " choice";
+                            } else {
+                                errorMessage += " choices";
+                            }
+                        }
+                    }
+                }
+
+                
+                if (!valid) {
+                    let errorElement = input.getElementsByTagName('p')[0];
+                    errorElement.innerHTML = errorMessage;
+                } else {
+                    let errorElement = input.getElementsByTagName('p')[0];
+                    errorElement.innerHTML = "";
+                    pages[currPage].style.display = "none";
+                    currPage++;
+                    pages[currPage].style.display = "flex";
+                }
+
+            } else {
+                if (input.checkValidity()) {
+                    pages[currPage].style.display = "none";
+                    currPage++;
+                    pages[currPage].style.display = "flex";
+                } else {
+                    input.reportValidity();
                 }
             }
         }
