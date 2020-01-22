@@ -248,6 +248,16 @@ input {
     }
 }
 
+.error-message {
+    display: none;
+    position: absolute;
+    color: white;
+    background-color: #444;
+    border: 1px solid black;
+    padding: 1em;
+    font-size: 0.8em;
+}
+
 
 /* ACCOUNT PAGE */
 

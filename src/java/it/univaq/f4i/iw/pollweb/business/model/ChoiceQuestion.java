@@ -19,11 +19,7 @@ public class ChoiceQuestion extends Question {
     private List<Option> options = new ArrayList<>();
 
     public ChoiceQuestion() {
-        if (this.isMandatory()) {
-            this.minNumberOfChoices = 1;
-        } else {
-            this.minNumberOfChoices = 0;
-        }
+        this.minNumberOfChoices = 0;
         this.maxNumberOfChoices = 50;
     }
 

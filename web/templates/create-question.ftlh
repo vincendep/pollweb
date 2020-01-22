@@ -28,12 +28,14 @@
         <textarea name="note" placeholder="Inserire informazioni utili alla compilazione della domanda" ></textarea>
         </div>
     </div><br>
-
+    
+<#if type != "choice">
  <div class="row">
     <div class="col-25">
     <input type="checkbox" name="mandatory" checked >Obbligatoria<br>
     </div>
 </div>
+</#if>
    
     
     <#if type == "short text">

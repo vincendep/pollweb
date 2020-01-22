@@ -20,14 +20,14 @@
                     <#elseif question.class.simpleName == "DateQuestion">
                         <input <#if question.mandatory>required="required"</#if> type="date" min="${question.minDate}" max="${question.maxDate}" name="${question.code}"/>
                     <#elseif question.class.simpleName == "ChoiceQuestion">
-                        <fieldset style="border: none;" <#if question.mandatory>data-required="required"</#if> data-min="${question.minNumberOfChoices}" data-max="${question.maxNumberOfChoices}" class="options">
+                        <fieldset style="border: none; position: relative;" <#if question.mandatory>data-required="required"</#if> data-min="${question.minNumberOfChoices}" data-max="${question.maxNumberOfChoices}" class="options">
                             <#list question.options as option>
                                 <label for=${question.code}-${option?counter}>${option.text}</label>
                                 <input id="${question.code}-${option?counter}" <#if question.maxNumberOfChoices == 1>type="radio"<#else>type="checkbox"</#if> name="${question.code}" value="${option?index}"/>
                             </#list>
-                              <p style="color: red"></p>
+                            <div class="error-message"></div>
                         </fieldset>
-                      
+                        
                     </#if>
                 </section>
             </#list>
@@ -38,19 +38,17 @@
         </div>
     </div>
     <i id="rarrow" onclick="next()" class="fas fa-arrow-right fa-2x"></i>
+    
     <script type="text/javascript">
         document.getElementById("larrow").style.display = "block";
         document.getElementById("rarrow").style.display = "block";
-        var pages = [];
-        pages.push(document.getElementById("opening"))
         
+        var pages = [];
+        pages.push(document.getElementById("opening"));
         for (let page of document.getElementsByTagName("section")) {
             pages.push(page)
         }
-        
-        pages.push(document.getElementById("closing"))
-        
-
+        pages.push(document.getElementById("closing"));
         for (let page of pages) {
             page.style.display = "none";
         }
@@ -67,7 +65,6 @@
 
         function next() {
             if (currPage < pages.length - 1) {
-
                 if (currPage > 0 && currPage < pages.length - 1) {
                     validateQuestion(pages[currPage]);
                 } else {
@@ -78,103 +75,54 @@
             }
         }
 
-        function validateQuestion(question) {
-            let input;
-            for (let i of question.childNodes) {
-                if (i.nodeName == "INPUT" || i.nodeName == "TEXTAREA" || i.nodeName == "FIELDSET") {
-                    input = i;
+        function validateQuestion(sectionElement) {
+            let formElement;
+            for (let element of sectionElement.childNodes) {
+                if (element.nodeName == "FIELDSET" || element.nodeName == "INPUT" || element.nodeName == "TEXTAREA") {
+                    formElement = element;
                     break;
                 }
             }
-
-            // checkbox and radio
-            if (input.nodeName == "FIELDSET") {
-                let min = input.getAttribute('data-min');
-                let max = input.getAttribute('data-max');
-                let required = input.getAttribute('data-required') ? true : false;
-                let selected = 0;
-                for (let choice of input.childNodes) {
-                    if (choice.nodeName == "INPUT" && choice.checked) {
-                        selected++;
-                    }
-                }
-                let valid = true;
-                let errorMessage = "";
-                
-                if (required) {
-                    if (selected < min) {
-                        valid = false;
-                        errorMessage = "Select at least " + min;
-                        if (min == 1) {
-                            errorMessage += " choice";
-                        } else {
-                            errorMessage += " choices";
-                        }
-                    }
-                    if (selected > max) {
-                        valid = false;
-                        if (errorMessage != "") {
-                            errorMessage += "\n";
-                        }
-                        errorMessage = "Select at most " + max;
-                        if (max == 1) {
-                            errorMessage += " choice";
-                        } else {
-                            errorMessage += " choices";
-                        }
-                    }
-                } else {
-                    if (selected == 0) {
-                        let errorElement = input.getElementsByTagName('p')[0];
-                        errorElement.innerHTML = "";
-                        pages[currPage].style.display = "none";
-                        currPage++;
-                        pages[currPage].style.display = "flex";
-                    } else {
-                        if (selected < min) {
-                            valid = false;
-                            errorMessage = "Select at least " + min;
-                            if (min == 1) {
-                                errorMessage += " choice";
-                            } else {
-                                errorMessage += " choices";
-                            }
-                        }
-                        if (selected > max) {
-                            valid = false;
-                            if (errorMessage != "") {
-                                errorMessage += "\n";
-                            }
-                            errorMessage = "Select at most " + max;
-                            if (max == 1) {
-                                errorMessage += " choice";
-                            } else {
-                                errorMessage += " choices";
-                            }
-                        }
-                    }
-                }
-
-                
-                if (!valid) {
-                    let errorElement = input.getElementsByTagName('p')[0];
-                    errorElement.innerHTML = errorMessage;
-                } else {
-                    let errorElement = input.getElementsByTagName('p')[0];
-                    errorElement.innerHTML = "";
-                    pages[currPage].style.display = "none";
-                    currPage++;
-                    pages[currPage].style.display = "flex";
-                }
-
+            if (formElement.nodeName == "FIELDSET") {
+                validateChoiceQuestion(formElement);
             } else {
-                if (input.checkValidity()) {
+                if (formElement.checkValidity()) {
                     pages[currPage].style.display = "none";
                     currPage++;
                     pages[currPage].style.display = "flex";
                 } else {
-                    input.reportValidity();
+                    formElement.reportValidity();
                 }
+            }
+        }
+
+        function validateChoiceQuestion(fieldsetElement) {
+            let errorElement = fieldsetElement.parentNode.getElementsByClassName("error-message")[0];
+            let isValid = true;
+            let min = fieldsetElement.getAttribute("data-min");
+            let max = fieldsetElement.getAttribute("data-max");
+            // let required = fieldsetElement.getAttribute("data-required") ? true : false;
+            let selected = Array.prototype.slice.call(fieldsetElement.getElementsByTagName("input"), 0).filter(function(input) {
+                    return input.checked;
+                }).length;
+            
+            if (selected < min) {
+                errorElement.innerHTML = "Select at least " + min;
+                isValid = false;
+            }
+            if (selected > max) {
+                errorElement.innerHTML += errorElement.innerHTML ? "\n" : "";
+                errorElement.innerHTML += "Select at most " + max;
+                isValid = false; 
+            }
+            if (isValid) {
+                errorElement.innerHTML = "";
+                errorElement.style.display = "none";
+                pages[currPage].style.display = "none";
+                currPage++;
+                pages[currPage].style.display = "flex";
+            } else {
+                errorElement.style.display = "block";
             }
         }
 
