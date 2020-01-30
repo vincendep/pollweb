@@ -45,12 +45,13 @@ Contributor(s):
             <generator class="increment"/>
         </id>
         <property name="submissionDate"/>
-        <set name="answers" cascade="all">
+        <list name="answers" cascade="all">
             <key>
                 <column name="id_survey_response"></column>
             </key>
+            <index column="position"></index>
             <one-to-many class="it.univaq.f4i.iw.pollweb.business.model.Answer"></one-to-many>
-        </set>
+        </list>
         <many-to-one name="survey" column="id_survey"/>
     </class>
 </hibernate-mapping>

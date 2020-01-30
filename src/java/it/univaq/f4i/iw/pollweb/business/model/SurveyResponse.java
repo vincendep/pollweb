@@ -20,7 +20,7 @@ public class SurveyResponse {
     private Long id;
     private Survey survey;
     private LocalDate submissionDate;
-    private Set<Answer> answers = new HashSet<>();
+    private List<Answer> answers = new ArrayList<>();
     
     public SurveyResponse() {
         this.submissionDate = LocalDate.now();
@@ -50,11 +50,11 @@ public class SurveyResponse {
         this.submissionDate = submissionDate;
     }
 
-    public Set<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(Set<Answer> answers) {
+    public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
 

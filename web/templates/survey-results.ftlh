@@ -39,7 +39,7 @@
 <#list survey.surveyResponses as response>
     <div class="card">
     <div class="card-header" onclick="toggle(this)">    
-        <p><h2 class="text-center"><strong>Compilazione numero: #{response?counter}</strong></h2></p>
+        <p><h4 class="text-center">Compilazione numero: #{response?counter}</h4></p>
         <p>Data di compilazione: ${response.submissionDate}</p>
         <i class="fas fa-caret-down"></i>
     </div>
@@ -49,12 +49,12 @@
     <#list response.answers as answer>
       <#assign question = answer.question />
       
-      <p> <h3><strong>#{answer?counter}. ${question.text?no_esc}</strong></h3></p>
-      <#if question.note??><p><h3>${question.note}</h3></p></#if>
+      <p> <h5>#{answer?counter}. ${question.text?no_esc}</h5></p>
+      <#if question.note??><p>${question.note}</p></#if>
       <#if question.class.simpleName == "ShortTextQuestion">
           <input value="${answer.answer}" disabled/>
       <#elseif question.class.simpleName == "TextQuestion">
-          <textarea value="${answer.answer}" disabled class="resize" ></textarea>
+          <textarea value="${answer.answer}" style="resize: none" disabled class="resize" >${answer.answer}</textarea>
       <#elseif question.class.simpleName == "NumberQuestion">
           <input type="number" value="#{answer.answer}" disabled />
       <#elseif question.class.simpleName == "DateQuestion">

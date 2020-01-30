@@ -69,5 +69,4 @@ public abstract class Answer {
 
     
     public abstract boolean isValid();
-    
 }
