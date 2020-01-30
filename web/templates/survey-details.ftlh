@@ -56,8 +56,11 @@
 
 <div style="text-align: center; margin-bottom: 3em;" class="survey-address">
     <h5>Condividi il link per raccogliere risposte</h5>
-    <input style="display: inline-block; width: 75%;" type="text" disabled="disabled" value="http://localhost:8080/pollweb/compile-survey?survey=#{survey.id}">
-    <i style="display: inline-block; cursor: pointer;" class="fas fa-copy"></i>
+    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+        <textarea id="survey-address" rows="1" style="resize: none; display: inline-block; width: 75%;text-align: center;height: auto;">http://localhost:8080/pollweb/compile-survey?survey=#{survey.id}</textarea>
+        <i id="copy-icon" style="display: inline-block; cursor: pointer; margin: 0 1em;" class="fas fa-copy"></i>
+        <div id="copy-text" style="border-radius: 5px; display: none;padding: 0.5em;background-color: #333;color: white;position: absolute; left: 48%; top: 100%; margin-top: 1em;">Copiato!</div>
+    </div>
 </div>
 
 <div class="survey-questions">
@@ -108,6 +111,18 @@
 
 
 <script>
+    let surveyAddress = document.getElementById('survey-address');
+    let copyIcon = document.getElementById('copy-icon');
+    let copyText = document.getElementById('copy-text');
+    copyIcon.onclick = function() {
+        surveyAddress.select();
+        document.execCommand('copy');
+        copyText.style.display = 'block';
+        setTimeout(function() {
+            copyText.style.display = 'none';
+        } , 1500);
+    }
+
     function deleteQuestion(form) {
         if(window.confirm("Sei sicuro di voler cancellare la domanda?")) {
             form.submit();
