@@ -768,3 +768,8 @@ span{
         margin-bottom: 86px;
     }
 }
+
+.resize{
+    height: 10%;
+    width: 60%;
+}
