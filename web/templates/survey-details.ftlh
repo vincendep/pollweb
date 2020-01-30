@@ -54,6 +54,11 @@
 </#if>
 </div>
 
+<div style="text-align: center; margin-bottom: 3em;" class="survey-address">
+    <h5>Condividi il link per raccogliere risposte</h5>
+    <input style="display: inline-block; width: 75%;" type="text" disabled="disabled" value="http://localhost:8080/pollweb/compile-survey?survey=#{survey.id}">
+    <i style="display: inline-block; cursor: pointer;" class="fas fa-copy"></i>
+</div>
 
 <div class="survey-questions">
     <h4 class="text-center">Domande</h4> 

@@ -28,7 +28,21 @@ public class ChoiceQuestion extends Question {
     }
 
     public void setMinNumberOfChoices(int minNumberOfChoices) {
+        if (minNumberOfChoices > 0) {
+            super.setMandatory(true);
+        } else {
+            super.setMandatory(false);
+        }
         this.minNumberOfChoices = minNumberOfChoices;
+    }
+    
+    @Override
+    public void setMandatory(boolean mandatory) {
+        if (this.minNumberOfChoices == 0) {
+            super.setMandatory(false);
+        } else {
+            super.setMandatory(true);
+        }
     }
     
     public int getMaxNumberOfChoices() {

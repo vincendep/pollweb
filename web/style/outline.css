@@ -77,7 +77,7 @@ footer img {
 
 .topnav li a:hover:not(.active) {
     background-color: white;
-    color: var(--primary-color);
+    color: #222;
 }
 
 .topnav li a.active {

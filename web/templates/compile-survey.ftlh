@@ -1,6 +1,5 @@
 <div id="compile-survey">
-    <i id="larrow" onclick="back()" class="arrow fas fa-arrow-left fa-2x"></i>
-        <div id="survey">
+    <div id="survey">
         <div id="opening" class="page opening" style="flex-direction: column;">
             <h2>${survey.title}</h2>
             <p>${survey.openingText}</p>
@@ -26,117 +25,18 @@
                                 <input id="${question.code}-${option?counter}" <#if question.maxNumberOfChoices == 1>type="radio"<#else>type="checkbox"</#if> name="${question.code}" value="${option?index}"/>
                             </#list>
                             <div class="error-message"></div>
-                        </fieldset>
-                        
+                        </fieldset> 
                     </#if>
                 </section>
             </#list>
         </form>
         <div id="closing" class="page closing" style="flex-direction: column;">
             <p>${survey.closingText}</p>
-            <button form="survey-form" class="btn" type="button" onclick="submitSurvey(this.form)">Conferma</button>
+            <input form="survey-form" class="btn" type="submit" value="Conferma">
         </div>
     </div>
-    <i id="rarrow" onclick="next()" class="fas fa-arrow-right fa-2x"></i>
+    <i id="larrow" class="arrow fas fa-arrow-left fa-2x"></i>
+    <i id="rarrow" class="fas fa-arrow-right fa-2x"></i>
     
-    <script type="text/javascript">
-        document.getElementById("larrow").style.display = "block";
-        document.getElementById("rarrow").style.display = "block";
-        
-        var pages = [];
-        pages.push(document.getElementById("opening"));
-        for (let page of document.getElementsByTagName("section")) {
-            pages.push(page)
-        }
-        pages.push(document.getElementById("closing"));
-        for (let page of pages) {
-            page.style.display = "none";
-        }
-        var currPage = 0;
-        pages[currPage].style.display = "flex";
-
-        function back() {
-            if (currPage > 0) {
-                pages[currPage].style.display = "none";
-                currPage--;
-                pages[currPage].style.display = "flex";
-            }
-        }
-
-        function next() {
-            if (currPage < pages.length - 1) {
-                if (currPage > 0 && currPage < pages.length - 1) {
-                    validateQuestion(pages[currPage]);
-                } else {
-                    pages[currPage].style.display = "none";
-                    currPage++;
-                    pages[currPage].style.display = "flex";
-                }
-            }
-        }
-
-        function validateQuestion(sectionElement) {
-            let formElement;
-            for (let element of sectionElement.childNodes) {
-                if (element.nodeName == "FIELDSET" || element.nodeName == "INPUT" || element.nodeName == "TEXTAREA") {
-                    formElement = element;
-                    break;
-                }
-            }
-            if (formElement.nodeName == "FIELDSET") {
-                validateChoiceQuestion(formElement);
-            } else {
-                if (formElement.checkValidity()) {
-                    pages[currPage].style.display = "none";
-                    currPage++;
-                    pages[currPage].style.display = "flex";
-                } else {
-                    formElement.reportValidity();
-                }
-            }
-        }
-
-        function validateChoiceQuestion(fieldsetElement) {
-            let errorElement = fieldsetElement.parentNode.getElementsByClassName("error-message")[0];
-            let isValid = true;
-            let min = fieldsetElement.getAttribute("data-min");
-            let max = fieldsetElement.getAttribute("data-max");
-            // let required = fieldsetElement.getAttribute("data-required") ? true : false;
-            let selected = Array.prototype.slice.call(fieldsetElement.getElementsByTagName("input"), 0).filter(function(input) {
-                    return input.checked;
-                }).length;
-            
-            if (selected < min) {
-                errorElement.innerHTML = "Select at least " + min;
-                isValid = false;
-            }
-            if (selected > max) {
-                errorElement.innerHTML += errorElement.innerHTML ? "\n" : "";
-                errorElement.innerHTML += "Select at most " + max;
-                isValid = false; 
-            }
-            if (isValid) {
-                errorElement.innerHTML = "";
-                errorElement.style.display = "none";
-                pages[currPage].style.display = "none";
-                currPage++;
-                pages[currPage].style.display = "flex";
-            } else {
-                errorElement.style.display = "block";
-            }
-        }
-
-        function submitSurvey(form) {
-            let validity = true;
-            for (let input of form.elements) {
-                validity = validity && input.checkValidity();
-            }
-            if (validity) {
-                form.submit();
-            } else {
-                window.alert("Compilazione non valida!");
-                form.reportValidity();
-            }
-        }
-    </script>
+    <script src="/pollweb/js/compile-survey.js"></script>      
 </div>
