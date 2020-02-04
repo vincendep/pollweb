@@ -156,6 +156,7 @@ input {
 
 /* COMPILE SURVEY PAGE */
 #compile-survey {
+    min-height: inherit;
     display: grid;
     align-items: center;
     grid-template-columns: 10% 80% 10%;
@@ -169,11 +170,13 @@ input {
 }
 
 #compile-survey #larrow {
+    grid-row-start: 1;
     grid-column-start: 1;
     text-align: center;
 }
 
 #compile-survey #rarrow {
+    grid-row-start: 1;
     grid-column-start: 3;
     text-align: center;
 }
